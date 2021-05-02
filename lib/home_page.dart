@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -9,7 +11,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black38,
+        backgroundColor: gradientEndColor,
         body: Container(
             child: SafeArea(
                 child: Column(
@@ -17,12 +19,34 @@ class _HomePageState extends State<HomePage> {
             Text(
               "Uygulama Hakkında",
               style: TextStyle(
-                fontFamily: "Avenir",
+                fontFamily: "Ubuntu",
                 fontSize: 44,
-                color: Colors.blue,
+                color: Colors.white,
                 fontWeight: FontWeight.w900,
               ),
               textAlign: TextAlign.left,
+            ),
+            DropdownButton(
+              items: [
+                DropdownMenuItem(
+                  child: Text(
+                    "Detaylar",
+                    style: TextStyle(
+                      fontFamily: "Ubuntu",
+                      fontSize: 22,
+                      color: const Color(0x7cdbf1ff),
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ],
+              onChanged: (value) {},
+              icon: Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Icon(Icons.add),
+              ),
+              underline: SizedBox(),
             ),
           ],
         ))));

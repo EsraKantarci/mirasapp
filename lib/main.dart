@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: "Ubuntu",
       ),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
