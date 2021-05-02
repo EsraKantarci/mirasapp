@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:miras/pages/start_page.dart';
-
-import '../constants.dart';
+import 'package:miras/constants.dart';
+import 'package:miras/my_flutter_app_icons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,104 +11,124 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        // in order not to use constants like pixels,
-        // we decided to use MediaQuery for responsiveness.
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppColors.mainColor,
-              AppColors.mainColor.withOpacity(.2),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Stack(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Image.asset("assets/images/logo.png"),
+      backgroundColor: AppColors.backgroundColor,
+      body: Column(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.mainColor,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
             ),
-            Positioned(
-              bottom: 50,
-              child: buildBottom(context),
+            padding: EdgeInsets.only(top: 25),
+            child: Stack(
+              children: [
+                //Background decoration:
+                //Image.asset("assets/images/logo.png"),
+                buildHeaderDetails(),
+              ],
             ),
-          ],
-        ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: <Widget>[
+                RichText(text: TextSpan(
+                  text: "Yine bir takım yazılar, buraya blog eklenecek. Şimdilik form kısmına geçebiliriz.",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.black38,
+                  ),
+                ),),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
-}
 
-// Adding bottom container here for readability
-Widget buildBottom(BuildContext context) {
-  return Container(
-    width: MediaQuery.of(context).size.width,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          "Lorem ipsum bir şey bir şey",
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.white,
-          ),
-        ),
-        Text(
-          "Açıklamalar bir şey bir şey bir şey uzun uzun açıklama hebele hübele",
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-            height: 1.5,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-        GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => StartPage(),
-              ),
-            );
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black38,
-                  offset: Offset(1, 1),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                ),
-              ],
-            ),
-            width: MediaQuery.of(context).size.width * 0.8,
-            //bunu direkt pixel olarak versek daha iyi oluyor ama
-            //biraz kontrol edelim şimdilik responsiveness için
-            height: MediaQuery.of(context).size.height * 0.05,
-            child: Center(
-                child: Text("BAŞLA",
+  Column buildHeaderDetails() {
+    return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildHeader(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text("Miras Paylaşımı Uygulaması",
                     style: TextStyle(
-                      color: AppColors.mainColor,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                    ))),
-          ),
+                      fontSize: 36,
+                    )),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text("Detaylar bir şey iki şey",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                    "Yine bir sürü detaylar lorem ipsumlar birler ikiler çalışkan üçler bakalım bunu ne kadar uzun uzadıya devam ettirebiliyoruz çünkü ettirebiliriz galiba.",
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
+              ),
+              SizedBox(height: 25),
+              //Instead of raised button, we use elevated one
+              //It is newer.
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: buildButton(),
+              ),
+            ],
+          );
+  }
+
+  Widget buildButton() {
+    return Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        child: Text('HESAPLAMAYA BAŞLA'),
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 16),
+                            primary: Colors.white,
+                            onPrimary: AppColors.mainColor,
+                            textStyle: TextStyle(
+                                color: AppColors.mainColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                );
+  }
+
+  Widget buildHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.account_circle, color: Colors.white),
+          onPressed: null,
         ),
       ],
-    ),
-  );
+    );
+  }
 }
-
-Widget buildButton() {}

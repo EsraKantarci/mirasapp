@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart';
+import 'pages/disclaimer_page.dart';
 
-// For readability purposes, home_page.dart is in another file.
+// For readability purposes, disclaimer_page.dart is in another file.
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       fontFamily: "Ubuntu",
       ),
-      home: HomePage(),
+      home: DisclaimerPage(),
       debugShowCheckedModeBanner: false,
     );
   }
