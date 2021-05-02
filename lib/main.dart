@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'pages/home_page.dart';
 
 // For readability purposes, home_page.dart is in another file.
 
@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Miras App',
       theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: "Ubuntu",
+        primarySwatch: Colors.blue,
+      fontFamily: "Ubuntu",
       ),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
