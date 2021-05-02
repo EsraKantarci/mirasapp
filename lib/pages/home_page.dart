@@ -27,7 +27,15 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         child: Stack(
-          children: <Widget>[],
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Image.asset("assets/images/logo.png"),
+              ),
+            )
+          ],
         ),
       ),
     );
