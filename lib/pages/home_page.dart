@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miras/pages/start_page.dart';
 
 import '../constants.dart';
 
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 // Adding bottom container here for readability
-Widget buildBottom(context) {
+Widget buildBottom(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
     child: Column(
@@ -70,32 +71,41 @@ Widget buildBottom(context) {
           textAlign: TextAlign.center,
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(
-              Radius.circular(20),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black38,
-                offset: Offset(1, 1),
-                spreadRadius: 1,
-                blurRadius: 3,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => StartPage(),
               ),
-            ],
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black38,
+                  offset: Offset(1, 1),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                ),
+              ],
+            ),
+            width: MediaQuery.of(context).size.width * 0.8,
+            //bunu direkt pixel olarak versek daha iyi oluyor ama
+            //biraz kontrol edelim şimdilik responsiveness için
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: Center(
+                child: Text("BAŞLA",
+                    style: TextStyle(
+                      color: AppColors.mainColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                    ))),
           ),
-          width: MediaQuery.of(context).size.width * 0.8,
-          //bunu direkt pixel olarak versek daha iyi oluyor ama
-          //biraz kontrol edelim şimdilik responsiveness için
-          height: MediaQuery.of(context).size.height * 0.05,
-          child: Center(
-              child: Text("BAŞLA",
-                  style: TextStyle(
-                    color: AppColors.mainColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ))),
         ),
       ],
     ),
