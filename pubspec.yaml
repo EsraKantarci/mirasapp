@@ -64,6 +64,11 @@ flutter:
      - family: Ubuntu
        fonts:
          - asset: assets/fonts/Ubuntu-Regular.ttf
+     - family: MyFlutterApp
+       fonts:
+         - asset: assets/fonts/MyFlutterApp.ttf
+
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
