@@ -57,16 +57,9 @@ class _StartPageState extends State<StartPage> {
                 SizedBox(height: 25),
                 //Instead of raised button, we use elevated one
                 //It is newer.
-                ElevatedButton(
-                  child: Text('Hesaplamaya Başla'),
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: AppColors.mainColor,
-                      textStyle: TextStyle(
-                          color: AppColors.mainColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold)),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: buildButton(),
                 ),
               ],
             ),
@@ -74,6 +67,32 @@ class _StartPageState extends State<StartPage> {
         ],
       ),
     );
+  }
+
+  Widget buildButton() {
+    return Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        child: Text('HESAPLAMAYA BAŞLA'),
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 16),
+                            primary: Colors.white,
+                            onPrimary: AppColors.mainColor,
+                            textStyle: TextStyle(
+                                color: AppColors.mainColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                );
   }
 
   Row buildHeader() {
