@@ -22,29 +22,69 @@ class _StartPageState extends State<StartPage> {
                 bottomRight: Radius.circular(20),
               ),
             ),
-           child: buildHeader(),
+            padding: EdgeInsets.only(top: 25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildHeader(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text("Miras Paylaşımı Uygulaması",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 36,
+                      )),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text("Detaylar bir şey iki şey",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                      "Yine bir sürü detaylar lorem ipsumlar birler ikiler çalışkan üçler bakalım bunu ne kadar uzun uzadıya devam ettirebiliyoruz çünkü ettirebiliriz galiba.",
+                      style: TextStyle(
+                        color: Colors.white,
+                      )),
+                ),
+                SizedBox(height: 25),
+                //Instead of raised button, we use elevated one
+                //It is newer.
+                ElevatedButton(
+                  child: Text('Hesaplamaya Başla'),
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      onPrimary: AppColors.mainColor,
+                      textStyle: TextStyle(
+                          color: AppColors.mainColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  Column buildHeader() {
-    return Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 25),
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(MyFlutterApp.account_circle, color: Colors.white),
-                      onPressed: null,
-                    ),
-
-                  ],
-                ),
-              ),
-            ],
-          );
+  Row buildHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.account_circle, color: Colors.white),
+          onPressed: null,
+        ),
+      ],
+    );
   }
 }
