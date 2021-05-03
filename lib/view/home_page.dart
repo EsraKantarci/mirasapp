@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:miras/constants.dart';
-import 'package:miras/my_flutter_app_icons.dart';
-import 'package:miras/pages/form_page.dart';
+import 'package:miras/model/constants.dart';
+import 'package:miras/model/my_flutter_app_icons.dart';
+import 'package:miras/view/form_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'pages/disclaimer_page.dart';
+import 'package:miras/view/disclaimer_page.dart';
 
 // For readability purposes, disclaimer_page.dart is in another file.
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:miras/pages/home_page.dart';
+import 'package:miras/view/home_page.dart';
+import 'package:miras/view/start_page.dart';
 
-import '../constants.dart';
+import '../model/constants.dart';
 
 class DisclaimerPage extends StatefulWidget {
   @override
@@ -75,7 +76,7 @@ Widget buildBottom(BuildContext context) {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => HomePage(),
+                builder: (_) => StartPage(),
               ),
             );
           },
@@ -111,5 +112,3 @@ Widget buildBottom(BuildContext context) {
     ),
   );
 }
-
-Widget buildButton() {}
