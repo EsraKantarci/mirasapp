@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miras/constants.dart';
 import 'package:miras/my_flutter_app_icons.dart';
+import 'package:miras/pages/form_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -100,7 +101,10 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ElevatedButton(
                         child: Text('HESAPLAMAYA BAŞLA'),
-                        onPressed: () {},
+                        onPressed: () {Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => FormPage()),
+                        );},
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
