@@ -19,13 +19,48 @@ class StartPage extends StatelessWidget {
             ),
             padding: EdgeInsets.only(top: 25),
             child: Stack(
-              children: [
+              children: <Widget>[
                 //Background decoration:
                 //Image.asset("assets/images/logo.png"),
                 buildHeaderDetails(),
               ],
             ),
           ),
+          SafeArea(child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+               Container(),
+                Container(
+                  child: Text(
+                    "Miras bırakanın ismi:",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.mainColor,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30,),
+                Container(
+                  child: TextField(
+                    onChanged: (text) {},
+                    decoration: InputDecoration(
+                      hintText: "Miras bırakanın ismini giriniz...",
+                      hintStyle: TextStyle(fontWeight: FontWeight.normal),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
