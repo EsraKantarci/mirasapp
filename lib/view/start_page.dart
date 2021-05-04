@@ -5,8 +5,20 @@ import 'package:miras/view/home_page.dart';
 
 // https://www.youtube.com/watch?v=mLAY8sp-IoE
 // https://www.youtube.com/watch?v=H2pVgDjDrxQ
+class StartPage extends StatefulWidget {
+  const StartPage({Key key}) : super(key: key);
 
-class StartPage extends StatelessWidget {
+  @override
+  _StartPageState createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
+  bool hasSpouse;
+  String spouseGroupValue;
+
+  bool hasChildren;
+  String childrenGroupValue;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +44,9 @@ class StartPage extends StatelessWidget {
           ),
           SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20,),
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -46,7 +60,9 @@ class StartPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.1,
                     child: TextField(
@@ -63,9 +79,9 @@ class StartPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 10,),
-
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     "Miras bırakan evli miydi?",
                     style: TextStyle(
@@ -74,11 +90,10 @@ class StartPage extends StatelessWidget {
                       color: AppColors.mainColor,
                     ),
                   ),
-
                   buildHasSpouse(),
-
-                  SizedBox(height: 10,),
-
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     "Miras bırakanın altsoyu (çocuğu/çocukları/torunları vb.) var mıydı?",
                     style: TextStyle(
@@ -87,12 +102,10 @@ class StartPage extends StatelessWidget {
                       color: AppColors.mainColor,
                     ),
                   ),
-
                   buildHasChildren(),
-
-
-                  SizedBox(height: 10,),
-
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.1,
@@ -117,54 +130,61 @@ class StartPage extends StatelessWidget {
 
   Container buildHasSpouse() {
     return Container(
-                  child: Column(
-
-                    children: <Widget>[
-
-
-                      Row(
-                        children: <Widget>[
-                          Radio(value: null, groupValue: null, onChanged: null),
-                          Text("Evet", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
-                        ],
-                      ),
-                  Row(
-                    children: <Widget>[
-                      Radio(value: null, groupValue: null, onChanged: null),
-                      Text("Hayır", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
-                    ],
-                  ),
-
-
-
-                    ],
-                  ),
-                );
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Radio(
+                  value: true,
+                  groupValue: spouseGroupValue,
+                  onChanged: (val) {
+                    hasSpouse = val;
+                    print("Selam evet");
+                  }),
+              Text("Evet",
+                  style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Radio(
+                  value: false,
+                  groupValue: spouseGroupValue,
+                  onChanged: (val) {
+                    hasSpouse = val;
+                    print("Selam hayır");
+                  }),
+              Text("Hayır",
+                  style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   Container buildHasChildren() {
     return Container(
       child: Column(
-
         children: <Widget>[
-
-
           Row(
             children: <Widget>[
               Radio(value: null, groupValue: null, onChanged: null),
-              Text("Evet", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
+              Text("Evet",
+                  style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
             ],
           ),
           Row(
             children: <Widget>[
               Radio(value: null, groupValue: null, onChanged: null),
-              Text("Hayır", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
+              Text("Hayır",
+                  style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
             ],
           ),
-
-
-
-
         ],
       ),
     );
@@ -172,28 +192,27 @@ class StartPage extends StatelessWidget {
 
   ElevatedButton buildElevatedButton(BuildContext context) {
     return ElevatedButton(
-                      child: Text('HESAPLAMAYA BAŞLA'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(50),
-                            ),
-                          ),
-                          padding: EdgeInsets.symmetric(vertical: 5),
-                          primary: Colors.white,
-                          onPrimary: AppColors.mainColor,
-                          textStyle: TextStyle(
-                              color: AppColors.mainColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold)),
-
-                    );
+      child: Text('HESAPLAMAYA BAŞLA'),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(50),
+            ),
+          ),
+          padding: EdgeInsets.symmetric(vertical: 5),
+          primary: Colors.white,
+          onPrimary: AppColors.mainColor,
+          textStyle: TextStyle(
+              color: AppColors.mainColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold)),
+    );
   }
 
   Column buildHeaderDetails() {
