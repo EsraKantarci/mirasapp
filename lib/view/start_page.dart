@@ -32,7 +32,7 @@ class StartPage extends StatelessWidget {
           ),
           SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20,),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -46,9 +46,7 @@ class StartPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
+
                   Container(
                     height: MediaQuery.of(context).size.height * 0.1,
                     child: TextField(
@@ -65,9 +63,36 @@ class StartPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
+
+                  SizedBox(height: 10,),
+
+                  Text(
+                    "Miras bırakan evli miydi?",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.mainColor,
+                    ),
                   ),
+
+                  buildHasSpouse(),
+
+                  SizedBox(height: 10,),
+
+                  Text(
+                    "Miras bırakanın altsoyu (çocuğu/çocukları/torunları vb.) var mıydı?",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.mainColor,
+                    ),
+                  ),
+
+                  buildHasChildren(),
+
+
+                  SizedBox(height: 10,),
+
                   Container(
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.1,
@@ -85,6 +110,61 @@ class StartPage extends StatelessWidget {
               children: <Widget>[],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Container buildHasSpouse() {
+    return Container(
+                  child: Column(
+
+                    children: <Widget>[
+
+
+                      Row(
+                        children: <Widget>[
+                          Radio(value: null, groupValue: null, onChanged: null),
+                          Text("Evet", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
+                        ],
+                      ),
+                  Row(
+                    children: <Widget>[
+                      Radio(value: null, groupValue: null, onChanged: null),
+                      Text("Hayır", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
+                    ],
+                  ),
+
+
+
+                    ],
+                  ),
+                );
+  }
+
+  Container buildHasChildren() {
+    return Container(
+      child: Column(
+
+        children: <Widget>[
+
+
+          Row(
+            children: <Widget>[
+              Radio(value: null, groupValue: null, onChanged: null),
+              Text("Evet", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Radio(value: null, groupValue: null, onChanged: null),
+              Text("Hayır", style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)),
+            ],
+          ),
+
+
+
+
         ],
       ),
     );
