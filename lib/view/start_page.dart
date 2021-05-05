@@ -5,6 +5,19 @@ import 'package:miras/view/home_page.dart';
 
 // https://www.youtube.com/watch?v=mLAY8sp-IoE
 // https://www.youtube.com/watch?v=H2pVgDjDrxQ
+
+//Enum is a better approach for choices
+// so we can change context with less effort in the future.
+enum SpouseAnswer{
+  yes, no
+}
+enum ChildAnswer{
+  yes, no
+}
+
+enum SingingCharacter { lafayette, jefferson }
+
+
 class StartPage extends StatefulWidget {
   const StartPage({Key key}) : super(key: key);
 
@@ -13,25 +26,8 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  // For radio buttons:
-  int hasSpouse;
-  int spouseGroupValue;
 
-  int hasChildren;
-  int childrenGroupValue;
-
-  @override
-  void initState(){
-    super.initState();
-    spouseGroupValue =  0;
-    childrenGroupValue = 0;
-  }
-
-  setSelectedRadio(int val, int groupValue){
-    setState(() {
-      groupValue = val;
-    });
-  }
+  SingingCharacter _character = SingingCharacter.lafayette;
 
   @override
   Widget build(BuildContext context) {
@@ -40,18 +36,10 @@ class _StartPageState extends State<StartPage> {
       body: Column(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-              color: AppColors.mainColor,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-            ),
+            decoration: buildHeaderDecoration(),
             padding: EdgeInsets.only(top: 25),
             child: Stack(
               children: <Widget>[
-                //Background decoration:
-                //Image.asset("assets/images/logo.png"),
                 buildHeaderDetails(),
               ],
             ),
@@ -61,80 +49,15 @@ class _StartPageState extends State<StartPage> {
               padding: EdgeInsets.symmetric(
                 horizontal: 20,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      "Miras bırakanın ismi:",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.mainColor,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    child: TextField(
-                      onChanged: (text) {},
-                      decoration: InputDecoration(
-                        hintText: "Miras bırakanın ismini giriniz...",
-                        hintStyle: TextStyle(fontWeight: FontWeight.normal),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Miras bırakan evli miydi?",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.mainColor,
-                    ),
-                  ),
-                  buildHasSpouse(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Miras bırakanın altsoyu (çocuğu/çocukları/torunları vb.) var mıydı?",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.mainColor,
-                    ),
-                  ),
-                  buildHasChildren(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      width: MediaQuery.of(context).size.width,
-                      child: buildElevatedButton(context),
-                    ),
-                  ),
-                ],
-              ),
+              child: buildMainColumn(context),
             ),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
-              children: <Widget>[],
+              children: <Widget>[
+                //bottom will be here
+              ],
             ),
           ),
         ],
@@ -142,43 +65,116 @@ class _StartPageState extends State<StartPage> {
     );
   }
 
-  Container buildHasSpouse() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Radio(
-                  value: 1,
-                  groupValue: spouseGroupValue,
-                  onChanged: (val) {
-                    hasSpouse = val;
-                    setSelectedRadio(val, spouseGroupValue);
-                    print("Selam evet");
-                  }),
-              Text("Evet",
-                  style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
-            ],
+  Column buildMainColumn(BuildContext context) {
+    return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    "Miras bırakanın ismi:",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.mainColor,
+                    ),
+                  ),
+                ),
+                space10(),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  child: TextField(
+                    onChanged: (text) {},
+                    decoration: InputDecoration(
+                      hintText: "Miras bırakanın ismini giriniz...",
+                      hintStyle: TextStyle(fontWeight: FontWeight.normal),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                space10(),
+                Text(
+                  "Miras bırakan evli miydi?",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.mainColor,
+                  ),
+                ),
+                buildHasSpouse(),
+                space10(),
+                Text(
+                  "Miras bırakanın altsoyu (çocuğu/çocukları/torunları vb.) var mıydı?",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.mainColor,
+                  ),
+                ),
+                buildHasChildren(),
+                space10(),
+                Container(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width,
+                    child: buildElevatedButton(context),
+                  ),
+                ),
+              ],
+            );
+  }
+
+  SizedBox space10() {
+    return SizedBox(
+                height: 10,
+              );
+  }
+
+  BoxDecoration buildHeaderDecoration() {
+    return BoxDecoration(
+            color: AppColors.mainColor,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+          );
+  }
+
+  Widget buildHasSpouse() {
+    SpouseAnswer answer = SpouseAnswer.yes;
+    return Column(
+      children: <Widget>[
+        ListTile(
+          title: const Text('SAÇ BAŞ YOLUCAM ŞİMDİ EVET'),
+          leading: Radio<SpouseAnswer>(
+            value: SpouseAnswer.yes,
+            groupValue: answer,
+            onChanged: (value) {
+              setState(() {
+                answer = value;
+              });
+            },
           ),
-          Row(
-            children: <Widget>[
-              Radio(
-                  value: 0,
-                  groupValue: spouseGroupValue,
-                  onChanged: (val) {
-                    hasSpouse = val;
-                    setSelectedRadio(val, spouseGroupValue);
-                    print("Selam hayır");
-                  }),
-              Text("Hayır",
-                  style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
-            ],
+        ),
+        ListTile(
+          title: const Text('BUGU NASIL BULAMIYORUM YAV'),
+          leading: Radio<SpouseAnswer>(
+            value: SpouseAnswer.no,
+            groupValue: answer,
+            onChanged: (value) {
+              setState(() {
+                answer = value;
+              });
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
+  }
   }
 
   Container buildHasChildren() {
@@ -259,4 +255,3 @@ class _StartPageState extends State<StartPage> {
       ],
     );
   }
-}
