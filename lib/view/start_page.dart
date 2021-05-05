@@ -13,11 +13,25 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  bool hasSpouse;
-  String spouseGroupValue;
+  // For radio buttons:
+  int hasSpouse;
+  int spouseGroupValue;
 
-  bool hasChildren;
-  String childrenGroupValue;
+  int hasChildren;
+  int childrenGroupValue;
+
+  @override
+  void initState(){
+    super.initState();
+    spouseGroupValue =  0;
+    childrenGroupValue = 0;
+  }
+
+  setSelectedRadio(int val, int groupValue){
+    setState(() {
+      groupValue = val;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,10 +149,11 @@ class _StartPageState extends State<StartPage> {
           Row(
             children: <Widget>[
               Radio(
-                  value: true,
+                  value: 1,
                   groupValue: spouseGroupValue,
                   onChanged: (val) {
                     hasSpouse = val;
+                    setSelectedRadio(val, spouseGroupValue);
                     print("Selam evet");
                   }),
               Text("Evet",
@@ -149,10 +164,11 @@ class _StartPageState extends State<StartPage> {
           Row(
             children: <Widget>[
               Radio(
-                  value: false,
+                  value: 0,
                   groupValue: spouseGroupValue,
                   onChanged: (val) {
                     hasSpouse = val;
+                    setSelectedRadio(val, spouseGroupValue);
                     print("Selam hayır");
                   }),
               Text("Hayır",
