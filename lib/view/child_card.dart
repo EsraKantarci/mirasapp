@@ -16,6 +16,8 @@ class ChildCard extends StatefulWidget {
 
   @override
   _ChildCardState createState() => state;
+
+  bool isValid() => state.validate();
 }
 
 class _ChildCardState extends State<ChildCard> {
@@ -37,7 +39,7 @@ class _ChildCardState extends State<ChildCard> {
                   title: Text("X'e Çocuk ekle"),
                   centerTitle: true,
                   actions: <Widget>[
-                    IconButton(icon: Icon(Icons.delete), onPressed: (){},)
+                    IconButton(icon: Icon(Icons.delete), onPressed: widget.onDelete,)
                   ],
                 ),
                 Padding(
@@ -51,15 +53,23 @@ class _ChildCardState extends State<ChildCard> {
                     ),),
                   ),
                 ),
+
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    initialValue: widget.child.name ,
-                    onSaved: (val) => widget.child.name = val,
-                    validator: (val) => val.length > 0  ? null : "Geçersiz isim",
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Kişinin ismini giriniz',
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    child: TextField(
+                      onChanged: (text) {},
+                      decoration: InputDecoration(
+                        hintText: "Miras bırakanın ismini giriniz...",
+                        hintStyle: TextStyle(fontWeight: FontWeight.normal),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -85,6 +95,14 @@ class _ChildCardState extends State<ChildCard> {
 
         ),
     );
+  }
+
+  bool validate(){
+    var valid = form.currentState.validate();
+    if(valid){
+      form.currentState.save();
+      return valid;
+    }
   }
 }
 
