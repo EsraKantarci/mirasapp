@@ -1,10 +1,6 @@
 class Child {
-  String name;
-  String parentName;
-  bool isAlive;
+  String fullName;
+  String email;
 
-  //TO-DO:
-  //String relation;
-
-  Child({this.name = " ", this.parentName = " ", this.isAlive = true});
+  Child({this.fullName = '', this.email = ''});
 }

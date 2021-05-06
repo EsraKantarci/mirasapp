@@ -49,9 +49,7 @@ class _ChildPageState extends State<ChildPage> {
       ),
 
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {
-              // Add your onPressed code here!
-            },
+            onPressed: onAddForm,
             label: const Text('Çocuk ekle'),
             icon: const Icon(Icons.add),
             backgroundColor: AppColors.mainColor,
@@ -63,6 +61,12 @@ class _ChildPageState extends State<ChildPage> {
   void onDelete(int index) {
     setState(() {
       children.removeAt(index);
+    });
+  }
+
+  void onAddForm(){
+    setState(() {
+      children.add(Child());
     });
   }
 }

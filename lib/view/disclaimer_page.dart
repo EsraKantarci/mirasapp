@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miras/view/child_card.dart';
 import 'package:miras/view/home_page.dart';
+import 'package:miras/view/multi_form.dart';
 import 'package:miras/view/start_page.dart';
 
 import '../model/constants.dart';
@@ -78,7 +79,7 @@ Widget buildBottom(BuildContext context) {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => ChildPage(),
+                builder: (_) => MultiForm(),
               ),
             );
           },
