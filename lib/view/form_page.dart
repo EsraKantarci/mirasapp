@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/constants.dart';
+import 'header_design.dart';
+import 'home_page.dart';
 
 // https://www.youtube.com/watch?v=OtrWXLfGtqE
 // https://www.youtube.com/watch?v=HMqye4R-4c4
@@ -26,53 +28,179 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: Column(children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.mainColor,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+      body: Column(
+        children: <Widget>[
+          Container(
+            decoration: buildHeaderDecoration(),
+            padding: EdgeInsets.only(top: 25),
+            child: Stack(
+              children: <Widget>[
+                buildHeaderDetails(),
+              ],
             ),
           ),
-        ),
-
-        //Background decoration:
-        //Image.asset("assets/images/logo.png"),
-        buildHeaderDetails(),
-      ]),
+          SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              child: buildMainColumn(context),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: <Widget>[
+                //bottom will be here
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Column buildHeaderDetails() {
+  Column buildMainColumn(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        buildHeader(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+      children: <Widget>[
+        Container(
           child: Text(
-              "Miras paylarını hesaplamak için aşağıdaki bilgileri doldurunuz:",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              )),
+            "Eşin ismi",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainColor,
+            ),
+          ),
         ),
-        SizedBox(height: 20),
+        space10(),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.1,
+          child: TextField(
+            onChanged: (text) {},
+            decoration: InputDecoration(
+              hintText: "Detaylarda görebilmek için eşin ismini giriniz.",
+              hintStyle: TextStyle(fontWeight: FontWeight.normal),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+        space10(),
+        Text(
+          "Kaç çocuk var?",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.mainColor,
+          ),
+        ),
+        buildHasSpouse(),
+        space10(),
+        Text(
+          "Miras bırakanın altsoyu (çocuğu/çocukları/torunları vb.) var mıydı?",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.mainColor,
+          ),
+        ),
+        buildHasChildren(),
+        space10(),
+        Container(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width,
+            child: buildElevatedButton(context),
+          ),
+        ),
       ],
     );
   }
 
-  Widget buildHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  SizedBox space10() {
+    return SizedBox(
+      height: 10,
+    );
+  }
+
+
+  Widget buildHasSpouse() {
+    return Column(
       children: <Widget>[
-        IconButton(
-          icon: Icon(Icons.account_circle, color: Colors.white),
-          onPressed: null,
+        Row(
+          children: <Widget>[
+            Radio(value: null, groupValue: null, onChanged: null),
+            Text("Evet",
+                style:
+                TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Radio(value: null, groupValue: null, onChanged: null),
+            Text("Hayır",
+                style:
+                TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+          ],
         ),
       ],
     );
   }
 }
+
+Container buildHasChildren() {
+  return Container(
+    child: Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Radio(value: null, groupValue: null, onChanged: null),
+            Text("Evet",
+                style:
+                TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Radio(value: null, groupValue: null, onChanged: null),
+            Text("Hayır",
+                style:
+                TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+ElevatedButton buildElevatedButton(BuildContext context) {
+  return ElevatedButton(
+    child: Text('SONRAKİ ADIM'),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    },
+    style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(50),
+          ),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 5),
+        primary: Colors.white,
+        onPrimary: AppColors.mainColor,
+        textStyle: TextStyle(
+            color: AppColors.mainColor,
+            fontSize: 20,
+            fontWeight: FontWeight.bold)),
+  );
+}
+

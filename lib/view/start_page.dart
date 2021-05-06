@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/home_page.dart';
 
+import 'header_design.dart';
+
 // https://www.youtube.com/watch?v=mLAY8sp-IoE
 // https://www.youtube.com/watch?v=H2pVgDjDrxQ
 
@@ -15,8 +17,6 @@ enum ChildAnswer{
   yes, no
 }
 
-enum SingingCharacter { lafayette, jefferson }
-
 
 class StartPage extends StatefulWidget {
   const StartPage({Key key}) : super(key: key);
@@ -26,8 +26,6 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-
-  SingingCharacter _character = SingingCharacter.lafayette;
 
   @override
   Widget build(BuildContext context) {
@@ -134,43 +132,26 @@ class _StartPageState extends State<StartPage> {
               );
   }
 
-  BoxDecoration buildHeaderDecoration() {
-    return BoxDecoration(
-            color: AppColors.mainColor,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
-          );
-  }
+
 
   Widget buildHasSpouse() {
-    SpouseAnswer answer = SpouseAnswer.yes;
     return Column(
       children: <Widget>[
-        ListTile(
-          title: const Text('SAÇ BAŞ YOLUCAM ŞİMDİ EVET'),
-          leading: Radio<SpouseAnswer>(
-            value: SpouseAnswer.yes,
-            groupValue: answer,
-            onChanged: (value) {
-              setState(() {
-                answer = value;
-              });
-            },
-          ),
+        Row(
+          children: <Widget>[
+            Radio(value: null, groupValue: null, onChanged: null),
+            Text("Evet",
+                style:
+                TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+          ],
         ),
-        ListTile(
-          title: const Text('BUGU NASIL BULAMIYORUM YAV'),
-          leading: Radio<SpouseAnswer>(
-            value: SpouseAnswer.no,
-            groupValue: answer,
-            onChanged: (value) {
-              setState(() {
-                answer = value;
-              });
-            },
-          ),
+        Row(
+          children: <Widget>[
+            Radio(value: null, groupValue: null, onChanged: null),
+            Text("Hayır",
+                style:
+                TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+          ],
         ),
       ],
     );
@@ -204,7 +185,7 @@ class _StartPageState extends State<StartPage> {
 
   ElevatedButton buildElevatedButton(BuildContext context) {
     return ElevatedButton(
-      child: Text('HESAPLAMAYA BAŞLA'),
+      child: Text('SONRAKİ ADIM'),
       onPressed: () {
         Navigator.push(
           context,
@@ -224,34 +205,5 @@ class _StartPageState extends State<StartPage> {
               color: AppColors.mainColor,
               fontSize: 20,
               fontWeight: FontWeight.bold)),
-    );
-  }
-
-  Column buildHeaderDetails() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        buildHeader(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text("Miras Payı Hesaplama",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              )),
-        ),
-        SizedBox(height: 20),
-      ],
-    );
-  }
-
-  Widget buildHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        SizedBox(height: 20),
-        //Header part will be updated.
-      ],
     );
   }
