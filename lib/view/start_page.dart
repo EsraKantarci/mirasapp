@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
+import 'package:miras/view/answered_forms/has_no_spouse_or_children.dart';
 import 'package:miras/view/home_page.dart';
 
 import 'header_design.dart';
 
 // https://www.youtube.com/watch?v=mLAY8sp-IoE
 // https://www.youtube.com/watch?v=H2pVgDjDrxQ
+
+// TO-DO: USE FLEX FOR THE LAYOUT FOR SCROLLABLE CONTAINER
 
 //Enum is a better approach for choices
 // so we can change context with less effort in the future.
@@ -189,7 +192,7 @@ class _StartPageState extends State<StartPage> {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => NoSpouseOrChildForm()),
         );
       },
       style: ElevatedButton.styleFrom(

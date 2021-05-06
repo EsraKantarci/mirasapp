@@ -76,7 +76,7 @@ Widget buildBottom(BuildContext context) {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => StartPage(),
+                builder: (_) => HomePage(),
               ),
             );
           },
