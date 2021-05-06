@@ -17,11 +17,31 @@ class ChildCard extends StatefulWidget {
 }
 
 class _ChildCardState extends State<ChildCard> {
-  @override @override
+  final form = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        body: Column(
+        body: Card(
+          child: Form(
+            key: form,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                AppBar(
+                  leading: Icon(Icons.people),
+                  title: Text("Çocuk ekle"),
+                  centerTitle: true,
+                  actions: <Widget>[
+                    IconButton(icon: Icon(Icons.delete), onPressed: (){},)
+                  ],
+                ),
+
+              ],
+            ),
+          ),
+
         ),
     );
   }
