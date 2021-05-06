@@ -41,6 +41,7 @@ class _ChildCardState extends State<ChildCard> {
                   actions: <Widget>[
                     IconButton(icon: Icon(Icons.delete), onPressed: widget.onDelete,)
                   ],
+
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),

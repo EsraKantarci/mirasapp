@@ -5,7 +5,6 @@ import 'package:miras/model/child.dart';
 import 'child_card.dart';
 import 'header_design.dart';
 
-
 class ChildPage extends StatefulWidget {
   const ChildPage({Key key}) : super(key: key);
 
@@ -15,7 +14,6 @@ class ChildPage extends StatefulWidget {
 
 class _ChildPageState extends State<ChildPage> {
   List<Child> children = [];
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,24 +32,37 @@ class _ChildPageState extends State<ChildPage> {
           ),
           children.length <= 0
               ? Expanded(
-                child: Center(
+                  child: Center(
                     child: Text(
                         "Lütfen ilgili ebeveynin altındaki ikona basarak çocuk ekleyin"),
                   ),
-              )
+                )
               : ListView.builder(
                   itemCount: children.length,
-                  itemBuilder: (_, i) => ChildCard(child: children[i]),
-
+                  itemBuilder: (_, i) => ChildCard(
+                    child: children[i],
+                    onDelete: () => onDelete(i),
+                  ),
                 ),
         ],
+
       ),
-    );
+
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              // Add your onPressed code here!
+            },
+            label: const Text('Çocuk ekle'),
+            icon: const Icon(Icons.add),
+            backgroundColor: AppColors.mainColor,
+          ),
+        );
+
   }
-  void onDelete(int index){
+
+  void onDelete(int index) {
     setState(() {
       children.removeAt(index);
-
     });
   }
 }
