@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../model/constants.dart';
+import 'package:miras/model/constants.dart';
 import '../header_design.dart';
-import '../home_page.dart';
+import 'has_no_spouse_or_children.dart';
 
-class NoSpouseOrChildForm extends StatefulWidget {
-  const NoSpouseOrChildForm({Key key}) : super(key: key);
+class OnlyThirdDegree extends StatefulWidget {
+  const OnlyThirdDegree({Key key}) : super(key: key);
 
   @override
-  _NoSpouseOrChildFormState createState() => _NoSpouseOrChildFormState();
+  _OnlyThirdDegreeState createState() => _OnlyThirdDegreeState();
 }
 
-class _NoSpouseOrChildFormState extends State<NoSpouseOrChildForm> {
+class _OnlyThirdDegreeState extends State<OnlyThirdDegree> {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.backgroundColor,
