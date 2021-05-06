@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/model/child.dart';
-
+import 'package:miras/view/header_design.dart';
+import 'child.dart';
 import 'child_card.dart';
-import 'header_design.dart';
 
 class ChildPage extends StatefulWidget {
   const ChildPage({Key key}) : super(key: key);

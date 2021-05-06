@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/model/child.dart';
+
+import 'child.dart';
 
 //will define ondelete later
 typedef OnDelete();

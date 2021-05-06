@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miras/model/constants.dart';
 
 class EmptyState extends StatelessWidget {
   final String title, message;
@@ -9,8 +10,8 @@ class EmptyState extends StatelessWidget {
     return Material(
       borderRadius: BorderRadius.circular(16),
       elevation: 16,
-      color: Theme.of(context).cardColor.withOpacity(.95),
-      shadowColor: Theme.of(context).accentColor.withOpacity(.5),
+      color: AppColors.backgroundColor.withOpacity(.95),
+      shadowColor: AppColors.mainColor.withOpacity(.5),
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Column(

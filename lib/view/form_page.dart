@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../model/constants.dart';
-import 'header_design.dart';
-import 'home_page.dart';
+import 'package:miras/model/constants.dart';
+import 'package:miras/view/header_design.dart';
+import 'package:miras/view/home_page.dart';
 
 // https://www.youtube.com/watch?v=OtrWXLfGtqE
 // https://www.youtube.com/watch?v=HMqye4R-4c4

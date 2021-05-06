@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:miras/view/child_card.dart';
+import 'package:miras/view/answered_forms/has_no_spouse_or_children.dart';
+import 'package:miras/view/answered_forms/has_only_children.dart';
+import 'package:miras/view/answered_forms/has_only_spouse.dart';
 import 'package:miras/view/home_page.dart';
-import 'package:miras/view/multi_form.dart';
 import 'package:miras/view/start_page.dart';
 
 import '../model/constants.dart';
-import 'child_page.dart';
 
 class DisclaimerPage extends StatefulWidget {
   @override
@@ -79,7 +79,7 @@ Widget buildBottom(BuildContext context) {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => MultiForm(),
+                builder: (_) => OnlySpouse(),
               ),
             );
           },
