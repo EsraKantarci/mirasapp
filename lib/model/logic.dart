@@ -1,5 +1,15 @@
 RateOperator(int rank1, int rank2, double rate1, double rate2,
     double hiddenRate1, double hiddenRate2) {
+
+  /*
+  rank = 0 => spouse
+  rank = 1 => child
+  rank = 2 => parents
+  rank = 3 => grandparents
+  rank = -1 => not alive
+
+ rate = -1 => no rate
+  */
   if (rank1 == 0 && rank2 == 1) {
     //Spouse and children
     rate1 = 0.25;
@@ -20,20 +30,20 @@ RateOperator(int rank1, int rank2, double rate1, double rate2,
     rate1 = 0.75;
     rate2 = 0.25;
     hiddenRate1 = 0.75;
-    hiddenRate2 = 0;
+    hiddenRate2 = -1;
   }
 
   if (rank1 == 1 && rank2 == -1) {
     //Only spouse
     rate1 = 1;
-    rate2 = 0;
+    rate2 = -1;
     hiddenRate1 = 0.75;
     hiddenRate2 = 1;
   }
 
   if (rank1 == -1 && rank2 == 1) {
     //No spouse and children
-    rate1 = 0;
+    rate1 = -1;
     rate2 = 1;
     hiddenRate1 = 1;
     hiddenRate2 = 0.5;
@@ -41,7 +51,7 @@ RateOperator(int rank1, int rank2, double rate1, double rate2,
 
   if (rank1 == -1 && rank2 == 2) {
     //No spouse and parents
-    rate1 = 0;
+    rate1 = -1;
     rate2 = 1;
     hiddenRate1 = 1;
     hiddenRate2 = 0.25;
@@ -49,10 +59,10 @@ RateOperator(int rank1, int rank2, double rate1, double rate2,
 
   if (rank1 == -1 && rank2 == 3) {
     //No spouse and third degree
-    rate1 = 0;
+    rate1 = -1;
     rate2 = 1;
     hiddenRate1 = 1;
-    hiddenRate2 = 0;
+    hiddenRate2 = -1;
   } else {
     print("Log: Uygun mirasçı bulunamadı");
   }
