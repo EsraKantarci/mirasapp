@@ -107,10 +107,10 @@ class _MultiFormState extends State<MultiForm> {
                     itemBuilder: (_, i) =>
                         ListTile(
                           leading: CircleAvatar(
-                            child: Text(data[i].fullName.substring(0, 1)),
+                            child: Text(data[i].childName.substring(0, 1)),
                           ),
-                          title: Text(data[i].fullName),
-                          subtitle: Text(data[i].email),
+                          title: Text(data[i].childName),
+                          subtitle: Text(data[i].parentName),
                         ),
                   ),
                 ),

@@ -1,6 +1,6 @@
 class Child {
-  String fullName;
-  String email;
+  String childName;
+  String parentName;
 
-  Child({this.fullName = '', this.email = ''});
+  Child({this.childName = '', this.parentName = ''});
 }

@@ -48,8 +48,8 @@ class _ChildFormState extends State<ChildForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
-                  initialValue: widget.child.fullName,
-                  onSaved: (val) => widget.child.fullName = val,
+                  initialValue: widget.child.childName,
+                  onSaved: (val) => widget.child.childName = val,
                   validator: (val) =>
                   val.length > 0 ? null : 'Lütfen geçerli bir isim giriniz.',
                   decoration: InputDecoration(
@@ -63,11 +63,11 @@ class _ChildFormState extends State<ChildForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: TextFormField(
-                  initialValue: widget.child.email,
-                  onSaved: (val) => widget.child.email = val,
+                  initialValue: widget.child.parentName,
+                  onSaved: (val) => widget.child.parentName = val,
                   decoration: InputDecoration(
-                    labelText: 'Yaşıyor mu?',
-                    hintText: 'Şimdilik yazıyla yazdık',
+                    labelText: 'Ebeveyni kim?',
+                    hintText: 'Şimdilik yazıyla yazdık, normalde eklendiği karttan alınacak',
                     icon: Icon(Icons.replay),
                     isDense: true,
                   ),

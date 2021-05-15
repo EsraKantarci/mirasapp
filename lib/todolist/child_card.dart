@@ -31,67 +31,69 @@ class _ChildCardState extends State<ChildCard> {
         body: Card(
           child: Form(
             key: form,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                AppBar(
-                  backgroundColor: AppColors.mainColor,
-                  leading: Icon(Icons.people),
-                  title: Text("X'e Çocuk ekle"),
-                  centerTitle: true,
-                  actions: <Widget>[
-                    IconButton(icon: Icon(Icons.delete), onPressed: widget.onDelete,)
-                  ],
+            child: Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  AppBar(
+                    backgroundColor: AppColors.mainColor,
+                    leading: Icon(Icons.people),
+                    title: Text("X'e Çocuk ekle"),
+                    centerTitle: true,
+                    actions: <Widget>[
+                      IconButton(icon: Icon(Icons.delete), onPressed: widget.onDelete,)
+                    ],
 
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("İsim: ", style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.mainColor,
-                    ),),
                   ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    child: TextField(
-                      onChanged: (text) {},
-                      decoration: InputDecoration(
-                        hintText: "Miras bırakanın ismini giriniz...",
-                        hintStyle: TextStyle(fontWeight: FontWeight.normal),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Kişi hayatta mı?",
-                      style: TextStyle(
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("İsim: ", style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: AppColors.mainColor,
+                      ),),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      child: TextField(
+                        onChanged: (text) {},
+                        decoration: InputDecoration(
+                          hintText: "Miras bırakanın ismini giriniz...",
+                          hintStyle: TextStyle(fontWeight: FontWeight.normal),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                buildIsAlive(),
-              ],
+
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Kişi hayatta mı?",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  buildIsAlive(),
+                ],
+              ),
             ),
           ),
 
