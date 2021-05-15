@@ -4,3 +4,10 @@ A new Flutter application on Heritage rates of the inheritors. The orders will b
 The UI will be consist of 4 different view: home, blog, forms and calculation output.
 
 Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup directory.  
+
+## To-do list for myself:
+- Card-views for child 
+- Adding child and bind by parent id
+- Calculation logic on recursive
+- Data access
+- File writing 
