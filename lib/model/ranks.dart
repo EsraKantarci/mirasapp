@@ -11,5 +11,7 @@ class Rank {
       this.hiddenRate = 1});
 
 }
+enum Ranks{SPOUSE, CHILD, PARENT, GRANDPARENT, NONE}
+
 
 
