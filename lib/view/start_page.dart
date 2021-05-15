@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/answered_forms/has_no_spouse_or_children.dart';
 import 'package:miras/view/home_page.dart';
 
 import 'header_design.dart';
@@ -192,7 +191,7 @@ class _StartPageState extends State<StartPage> {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NoSpouseOrChildForm()),
+          MaterialPageRoute(builder: (context) => HomePage()),
         );
       },
       style: ElevatedButton.styleFrom(

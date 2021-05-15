@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:miras/view/answered_forms/has_no_spouse_or_children.dart';
-import 'package:miras/view/answered_forms/has_only_children.dart';
-import 'package:miras/view/answered_forms/has_only_spouse.dart';
 import 'package:miras/view/home_page.dart';
 import 'package:miras/view/start_page.dart';
 
