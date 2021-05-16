@@ -63,7 +63,8 @@ Widget buildBottom(BuildContext context) {
           ),
         ),
         Text(
-          "Açıklamalar bir şey bir şey bir şey uzun uzun açıklama hebele hübele",
+          "Bu uygulamanın sonuçlarının hukuki olarak bağlayıcı "
+              "olmadığını anlatan bir yazı burada yer alacak.",
           style: TextStyle(
             fontSize: 16,
             color: Colors.white,
@@ -100,11 +101,11 @@ Widget buildBottom(BuildContext context) {
             //biraz kontrol edelim şimdilik responsiveness için
             height: MediaQuery.of(context).size.height * 0.05,
             child: Center(
-                child: Text("BAŞLA",
+                child: Text("KABUL ET ve ANASAYFAYA GİT",
                     style: TextStyle(
                       color: AppColors.mainColor,
                       fontWeight: FontWeight.bold,
-                      fontSize: 24,
+                      fontSize: 16,
                     ))),
           ),
         ),
