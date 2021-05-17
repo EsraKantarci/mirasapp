@@ -39,7 +39,7 @@ class _FormPageState extends State<FormPage> {
                 ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: (){},
+          onPressed: onAdd,
         ),
       ),
     );
@@ -48,6 +48,12 @@ class _FormPageState extends State<FormPage> {
   void onDelete(int index) {
     setState(() {
       children.remove(index);
+    });
+  }
+
+  void onAdd(){
+    setState(() {
+      children.add(Child());
     });
   }
 }
