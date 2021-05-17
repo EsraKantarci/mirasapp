@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/child_form.dart';
 
@@ -11,7 +12,7 @@ class FormPage extends StatelessWidget {
       title: "Çocuk Formu",
       color: AppColors.backgroundColor,
       home: Scaffold(
-        body: ChildForm()
+        body: ChildForm(child: Child() ),
       ),
     );
   }

@@ -39,6 +39,21 @@ class _ChildFormState extends State<ChildForm> {
                   ),
                 ],
               ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: TextFormField(
+                    initialValue: widget.child.childName,
+                    validator: (val)=> val.length > 1 ? null
+                        : "Lütfen isim giriniz." ,
+                    decoration: InputDecoration(
+                      labelText: "Çocuğun İsmi: ",
+                      hintText: "Çocuğun ismini giriniz"
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
