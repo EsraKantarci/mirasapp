@@ -13,6 +13,8 @@ class ChildForm extends StatefulWidget {
 
   @override
   _ChildFormState createState() => state;
+
+  bool isValid()=> state.validate();
 }
 
 class _ChildFormState extends State<ChildForm> {
@@ -39,25 +41,57 @@ class _ChildFormState extends State<ChildForm> {
                   ),
                 ],
               ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: TextFormField(
-                    initialValue: widget.child.childName,
-                    validator: (val)=> val.length > 1 ? null
-                        : "Lütfen isim giriniz." ,
-                    decoration: InputDecoration(
-                      labelText: "Çocuğun İsmi: ",
-                      hintText: "Çocuğun ismini giriniz"
+
+             Column(
+                 children: [
+
+                   // This will be automatically fetched in the next sprint.
+                   Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: TextFormField(
+                          initialValue: widget.child.parentName,
+                          onSaved: (val)=>widget.child.parentName = val,
+                          validator: (val)=> val.length > 1 ? null
+                              : "Lütfen isim giriniz." ,
+                          decoration: InputDecoration(
+                              labelText: "Ebeveynin İsmi: ",
+                              hintText: "Ebeveynin ismini giriniz"
+                          ),
+                        ),
+                      ),
+
+
+               Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      initialValue: widget.child.childName,
+                      onSaved: (val)=>widget.child.childName = val,
+                      validator: (val)=> val.length > 1 ? null
+                          : "Lütfen isim giriniz." ,
+                      decoration: InputDecoration(
+                        labelText: "Çocuğun İsmi: ",
+                        hintText: "Çocuğun ismini giriniz"
+
                     ),
                   ),
                 ),
-              ),
+                 ],
+               ),
+
             ],
           ),
         ),
       ),
     );
   }
+
+  // form validator for saving it to a list
+
+bool validate(){
+    var valid = form.currentState.validate();
+    if(valid){
+      form.currentState.save();
+    }
+    return valid;
+}
 }
