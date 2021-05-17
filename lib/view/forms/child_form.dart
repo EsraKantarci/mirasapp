@@ -37,7 +37,7 @@ class _ChildFormState extends State<ChildForm> {
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.delete),
-                    onPressed: (){},
+                    onPressed: widget.onDelete,
                   ),
                 ],
               ),
@@ -55,7 +55,7 @@ class _ChildFormState extends State<ChildForm> {
                               : "Lütfen isim giriniz." ,
                           decoration: InputDecoration(
                               labelText: "Ebeveynin İsmi: ",
-                              hintText: "Ebeveynin ismini giriniz"
+                              hintText: "Ebeveynlerden en az birinin ismini giriniz"
                           ),
                         ),
                       ),
