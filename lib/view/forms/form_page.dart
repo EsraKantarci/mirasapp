@@ -20,17 +20,34 @@ class _FormPageState extends State<FormPage> {
       title: "Çocuk Formu",
       color: AppColors.backgroundColor,
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.mainColor,
-          title: Text("Çocuk ekleme sayfası"),
-          // Burada düzenlemeleri yapalım, ardından 4.1 haline koyalım
+          appBar: AppBar(
+            backgroundColor: AppColors.mainColor,
+            title: Text("Çocuk ekleme sayfası"),
+            // Burada düzenlemeleri yapalım, ardından 4.1 haline koyalım
+          ),
+          body: children.length <= 0
+              ? Center(
+                  child:
+                      Text("[+] butonuna tıklayarak çocuk ekleyebilirsiniz."),
+                )
+              : ListView.builder(
+                  itemCount: children.length,
+                  itemBuilder: (_, i) => ChildForm(
+                    child: children[i],
+                    onDelete: () => onDelete(i),
+                  ),
+                ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){},
         ),
-        body: children.length <= 0 ? Center(
-          child: Text("Henüz çocuk eklenmedi. [+] butonuna tıklayarak çocuk ekleyebilirsiniz."),
-        ):
-            ListView.builder(itemCount: children.length,
-            itemBuilder: (_, i) => ChildForm(child: children[i]),)
       ),
     );
+  }
+
+  void onDelete(int index) {
+    setState(() {
+      children.remove(index);
+    });
   }
 }
