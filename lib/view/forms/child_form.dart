@@ -3,6 +3,7 @@ import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
 
 typedef OnDelete();
+
 class ChildForm extends StatefulWidget {
   final Child child;
   final state = _ChildFormState();
@@ -21,14 +22,25 @@ class _ChildFormState extends State<ChildForm> {
     return Padding(
       padding: EdgeInsets.all(8),
       child: Card(
-        child: Column(
-          children: <Widget>[
-            AppBar(
-              title: Text("Çocuk Formu"),
-              backgroundColor: AppColors.mainColor.withOpacity(0.5),
-
-            ),
-          ],
+        child: Form(
+          key: form,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              AppBar(
+                leading: Icon(Icons.people_alt),
+                title: Text("Çocuk Formu"),
+                centerTitle: true,
+                backgroundColor: AppColors.mainColor.withOpacity(0.5),
+                actions: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: (){},
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
