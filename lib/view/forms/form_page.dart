@@ -47,7 +47,7 @@ class _FormPageState extends State<FormPage> {
 
   void onDelete(int index) {
     setState(() {
-      children.remove(index);
+      children.removeAt(index);
     });
   }
 
