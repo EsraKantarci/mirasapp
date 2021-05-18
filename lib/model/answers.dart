@@ -8,9 +8,17 @@ class Answers {
   int hasParent;
   int hasGrandparent;
 
+  //only one names:
+  String spouseName;
+  String motherName;
+  String fatherName;
+
   //defaults:
   Answers(
       {this.name = "",
+      this.spouseName = "",
+      this.motherName = "",
+      this.fatherName = "",
       this.answers, //cannot be blank
       this.hasSpouse = -1,
       this.hasChild = -1,

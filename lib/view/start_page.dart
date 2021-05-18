@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/child/spouse_0_child.dart';
 
+import 'forms/spouse_child/spouse_1_child.dart';
+
 // TO-DO: "Lütfen isim giriniz" toaster
 class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);
@@ -186,7 +188,7 @@ Widget buildElevatedButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse0Child()),
+        MaterialPageRoute(builder: (context) => Spouse1Child()),
       );
     },
     style: ElevatedButton.styleFrom(

@@ -4,10 +4,16 @@
 //therefore, let's get the parent name input for each child dynamically
 //so, the UI will be different than mockups.
 
+// goes to spouse0 child1 for calculation
+
 import 'package:flutter/material.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/child_form.dart';
+import 'package:miras/view/forms/spouse_child/spouse_1_child.dart';
+import 'package:miras/view/start_page.dart';
+
+// TODO: Add "Sonraki adım" button at the bottom.
 
 class Spouse0Child extends StatefulWidget {
   const Spouse0Child({Key key}) : super(key: key);
@@ -45,6 +51,7 @@ class _Spouse0ChildState extends State<Spouse0Child> {
                   onDelete: () => onDelete(i),
                 ),
               ),
+
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.mainColor,
           child: Icon(Icons.add),
@@ -98,4 +105,31 @@ class _Spouse0ChildState extends State<Spouse0Child> {
       ],
     );
   }
+
+
+  Widget buildElevatedButton(BuildContext context) {
+    return ElevatedButton(
+      child: Text('SONRAKİ ADIM'),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => StartPage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(50),
+            ),
+          ),
+          padding: EdgeInsets.symmetric(vertical: 5),
+          primary: Colors.white,
+          onPrimary: AppColors.mainColor,
+          textStyle: TextStyle(
+              color: AppColors.mainColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold)),
+    );
+  }
+
 }
