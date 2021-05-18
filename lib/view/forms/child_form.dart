@@ -33,7 +33,7 @@ class _ChildFormState extends State<ChildForm> {
                 leading: Icon(Icons.people_alt),
                 title: Text("Çocuk Formu"),
                 centerTitle: true,
-                backgroundColor: AppColors.mainColor.withOpacity(0.5),
+                backgroundColor: AppColors.mainColor.withOpacity(0.8),
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.delete),

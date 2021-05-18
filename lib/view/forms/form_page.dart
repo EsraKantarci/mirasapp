@@ -12,9 +12,17 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   List<Child> children = [];
+  List<ChildForm> forms = [];
 
   @override
   Widget build(BuildContext context) {
+    forms.clear();
+    for(int i = 0; i < children.length; i++){
+      forms.add(ChildForm(
+        child: children[i],
+        onDelete: () => onDelete(i),
+      ));
+    }
     return MaterialApp(
       // gelecekte seçilen ebeveynin ismi ile "X'in Çocuğu" olarak yer alacak
       title: "Çocuk Formu",
@@ -23,6 +31,13 @@ class _FormPageState extends State<FormPage> {
           appBar: AppBar(
             backgroundColor: AppColors.mainColor,
             title: Text("Çocuk ekleme sayfası"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Kaydet'),
+                onPressed: onSave,
+              ),
+            ],
+
             // Burada düzenlemeleri yapalım, ardından 4.1 haline koyalım
           ),
           body: children.length <= 0
@@ -38,6 +53,7 @@ class _FormPageState extends State<FormPage> {
                   ),
                 ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.mainColor,
           child: Icon(Icons.add),
           onPressed: onAdd,
         ),
@@ -55,5 +71,9 @@ class _FormPageState extends State<FormPage> {
     setState(() {
       children.add(Child());
     });
+  }
+
+  void onSave(){
+    forms.forEach((form) => form.isValid());
   }
 }

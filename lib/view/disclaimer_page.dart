@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/view/home_page.dart';
 import 'package:miras/view/start_page.dart';
@@ -34,7 +35,22 @@ class _DisclaimerPageState extends State<DisclaimerPage> {
               padding: const EdgeInsets.only(top: 50),
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Image.asset("assets/images/logo.png"),
+                child: Text(
+                  "Miras Payı Hesaplayıcı",
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 100),
+              child: Align(
+                alignment: Alignment.center,
+                child:
+                    Image.asset("assets/images/mid.png", fit: BoxFit.fitWidth),
               ),
             ),
             Positioned(
@@ -64,7 +80,7 @@ Widget buildBottom(BuildContext context) {
         ),
         Text(
           "Bu uygulamanın sonuçlarının hukuki olarak bağlayıcı "
-              "olmadığını anlatan bir yazı burada yer alacak.",
+          "olmadığını anlatan bir yazı burada yer alacak.",
           style: TextStyle(
             fontSize: 16,
             color: Colors.white,
