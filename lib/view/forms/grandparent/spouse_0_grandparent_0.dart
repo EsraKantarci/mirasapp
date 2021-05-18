@@ -1,1 +1,1 @@
-// go to calculation, goverment will inherit
+// goverment will inherit, go to calculation

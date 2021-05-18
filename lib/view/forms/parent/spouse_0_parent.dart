@@ -1,4 +1,5 @@
 // go to grandparent
+// spouse=0, parent=0, check other ranks.
 
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
