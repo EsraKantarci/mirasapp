@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/spouse_child/spouse_1_child.dart';
+import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 
 class Spouse0Child0 extends StatefulWidget {
   Spouse0Child0({Key key}) : super(key: key);
@@ -26,6 +26,7 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: (<Widget>[
+
             buildQuestion("Miras bırakanın annesinden ya da babasından en az biri sağ mı?"),
             buildRadioButton1("Evet", 1, tester1),
             buildRadioButton1("Hayır", 0, tester1),
@@ -136,7 +137,7 @@ Widget buildElevatedButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse1Child()),
+        MaterialPageRoute(builder: (context) => Spouse1Child1()),
       );
     },
     style: ElevatedButton.styleFrom(

@@ -1,1 +1,1 @@
-// add children then go to calculation
+// add children then calculate

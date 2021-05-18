@@ -1,10 +1,8 @@
 // go to spouse_1_parent page
 
-// go to spouse_0_parent
-
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/spouse_child/spouse_1_child.dart';
+import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 
 class Spouse1Child0 extends StatefulWidget {
   Spouse1Child0({Key key}) : super(key: key);
@@ -34,16 +32,18 @@ class _Spouse1Child0State extends State<Spouse1Child0> {
               buildSpace(),
               buildTextInput(context),
               buildSpace(),
-              buildQuestion(
-                  "Miras bırakanın annesinden ya da babasından en az biri sağ mı?"),
+
+              buildQuestion("Miras bırakanın anne babasından en az biri sağ mı?"),
               buildRadioButton1("Evet", 1, tester1),
               buildRadioButton1("Hayır", 0, tester1),
               buildSpace(),
+
               buildQuestion(
                   "Miras bırakanın anne babasının altsoyu (miras bırakanın kardeşi, yeğenleri vb.) bulunuyor mu?"),
               buildRadioButton2("Evet", 1, tester2),
               buildRadioButton2("Hayır", 0, tester2),
               buildSpace(),
+
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
@@ -144,7 +144,7 @@ Widget buildElevatedButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse1Child()),
+        MaterialPageRoute(builder: (context) => Spouse1Child1()),
       );
     },
     style: ElevatedButton.styleFrom(

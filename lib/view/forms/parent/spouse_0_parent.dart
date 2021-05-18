@@ -1,20 +1,17 @@
-// go to spouse_0_grandparent
-
-
-// go to spouse_0_parent
+// go to grandparent
 
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/spouse_child/spouse_1_child.dart';
+import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 
-class Spouse0Parent0 extends StatefulWidget {
-  Spouse0Parent0({Key key}) : super(key: key);
+class Spouse0Parent extends StatefulWidget {
+  Spouse0Parent({Key key}) : super(key: key);
 
   @override
-  _Spouse0Parent0State createState() => _Spouse0Parent0State();
+  _Spouse0ParentState createState() => _Spouse0ParentState();
 }
 
-class _Spouse0Parent0State extends State<Spouse0Parent0> {
+class _Spouse0ParentState extends State<Spouse0Parent> {
   //in second sprint we will get them inside the Answer list.
   int tester1 = -1;
   int tester2 = -1;
@@ -139,7 +136,7 @@ Widget buildElevatedButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse1Child()),
+        MaterialPageRoute(builder: (context) => Spouse1Child1()),
       );
     },
     style: ElevatedButton.styleFrom(
