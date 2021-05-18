@@ -11,6 +11,4 @@ class Child {
      // this.parentId = -1,
      // this.id = -1,
       this.isAlive = true});
-  //TO-DO: Add constructor
-  //Child({this.childName = '', this.parentName = ''});
 }

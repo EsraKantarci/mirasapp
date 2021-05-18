@@ -214,7 +214,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FormPage()),
+                MaterialPageRoute(builder: (context) => StartPage()),
               );
             },
             style: ElevatedButton.styleFrom(
