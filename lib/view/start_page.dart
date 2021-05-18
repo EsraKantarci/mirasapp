@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
+import 'package:miras/view/forms/child/spouse_0_child.dart';
 
 import 'forms/form_page.dart';
 import 'home_page.dart';
 
+// TO-DO: "Lütfen isim giriniz" toaster
 class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);
 
@@ -15,6 +17,7 @@ class _StartPageState extends State<StartPage> {
   //in second sprint we will get them inside the Answer list.
   int tester1 = -1;
   int tester2 = -1;
+  int tester3 = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +25,10 @@ class _StartPageState extends State<StartPage> {
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: (<Widget>[
             Container(
               child: buildQuestion("Miras bırakanın ismi:"),
             ),
@@ -40,20 +43,24 @@ class _StartPageState extends State<StartPage> {
                 "Miras bırakanın altsoyu (çocukları, torunları vb.) bulunuyor muydu?"),
             buildRadioButton2("Evet", 1, tester2),
             buildRadioButton2("Hayır", 0, tester2),
+            buildSpace(),
+            //sometimes people tend to forget
+            //adopted child is also a child
+            buildQuestion("Miras bırakanın evlatlığı var mıydı?"),
+            buildRadioButton3("Evet", 1, tester3),
+            buildRadioButton3("Hayır", 0, tester3),
+            buildSpace(),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 100),
-                child: Container(
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    width: MediaQuery.of(context).size.width,
-                    child: buildElevatedButton(context),
-                  ),
+              child: Container(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width,
+                  child: buildElevatedButton(context),
                 ),
               ),
             ),
-          ],
+          ]),
         ),
       ),
     );
@@ -101,8 +108,29 @@ class _StartPageState extends State<StartPage> {
     );
   }
 
+  Container buildRadioButton3(String text, int val, int group) {
+    return Container(
+      width: 150,
+      child: Row(
+        children: <Widget>[
+          Radio(
+              value: val,
+              groupValue: group,
+              onChanged: (value) {
+                tester3 = value;
+                setState(() {});
+              }),
+          Text(
+            text,
+            style: TextStyle(fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
+
   SizedBox buildSpace() => SizedBox(
-        height: 10,
+        height: 5,
       );
 
   Container buildTextInput(BuildContext context) {
@@ -161,7 +189,7 @@ Widget buildElevatedButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => FormPage()),
+        MaterialPageRoute(builder: (context) => Spouse0Child()),
       );
     },
     style: ElevatedButton.styleFrom(
