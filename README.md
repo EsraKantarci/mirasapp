@@ -6,7 +6,7 @@ The UI will be consist of 4 different view: home, blog, forms and calculation ou
 Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup directory.  
 
 ## To-do list for myself:
-- Card-views for child 
+- Card-views for child (done)
 - Adding child and bind by parent id
 - Calculation logic on recursive
 - Data access
