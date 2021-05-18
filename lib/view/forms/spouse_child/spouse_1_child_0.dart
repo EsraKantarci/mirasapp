@@ -34,7 +34,8 @@ class _Spouse1Child0State extends State<Spouse1Child0> {
               buildSpace(),
               buildTextInput(context),
               buildSpace(),
-              buildQuestion("Miras bırakanın annesinden ya da babasından en az biri sağ mı?"),
+              buildQuestion(
+                  "Miras bırakanın annesinden ya da babasından en az biri sağ mı?"),
               buildRadioButton1("Evet", 1, tester1),
               buildRadioButton1("Hayır", 0, tester1),
               buildSpace(),
@@ -42,7 +43,7 @@ class _Spouse1Child0State extends State<Spouse1Child0> {
                   "Miras bırakanın anne babasının altsoyu (miras bırakanın kardeşi, yeğenleri vb.) bulunuyor mu?"),
               buildRadioButton2("Evet", 1, tester2),
               buildRadioButton2("Hayır", 0, tester2),
-       
+              buildSpace(),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
@@ -102,10 +103,9 @@ class _Spouse1Child0State extends State<Spouse1Child0> {
     );
   }
 
-
   SizedBox buildSpace() => SizedBox(
-    height: 10,
-  );
+        height: 10,
+      );
 
   Text buildQuestion(String text) {
     return Text(
@@ -126,7 +126,7 @@ class _Spouse1Child0State extends State<Spouse1Child0> {
         IconButton(
           icon: Icon(
             //Step: 1
-            Icons.looks_3,
+            Icons.looks_two,
             color: Colors.white,
           ),
           onPressed: () {
@@ -162,6 +162,7 @@ Widget buildElevatedButton(BuildContext context) {
             fontWeight: FontWeight.bold)),
   );
 }
+
 Container buildTextInput(BuildContext context) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.1,
