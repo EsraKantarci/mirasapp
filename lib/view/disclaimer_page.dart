@@ -72,21 +72,26 @@ Widget buildBottom(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Text(
-          "Lorem ipsum bir şey bir şey",
+          "Önemli Uyarı: ",
           style: TextStyle(
             fontSize: 24,
             color: Colors.white,
           ),
         ),
-        Text(
-          "Bu uygulamanın sonuçlarının hukuki olarak bağlayıcı "
-          "olmadığını anlatan bir yazı burada yer alacak.",
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-            height: 1.5,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Text(
+            "Miras Payı Hesaplayıcı uygulamamızın sonucunda çıkan pay oranları "
+                "hukuki delil niteliğinde değil,"
+                "emsal bilgi mahiyetindir. Hukuki bağlayıcılığı yoktur. "
+                "Kesin sonuçlara ulaşmak için mahkemeye başvurmanız gerekmektedir.",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.03),
         GestureDetector(
