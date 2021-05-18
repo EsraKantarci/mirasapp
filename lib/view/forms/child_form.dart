@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
 
-typedef OnDelete();
+
+typedef OnDelete(); //will be defined in another page
 
 class ChildForm extends StatefulWidget {
   final Child child;
@@ -14,11 +16,13 @@ class ChildForm extends StatefulWidget {
   @override
   _ChildFormState createState() => state;
 
-  bool isValid()=> state.validate();
+  bool isValid() => state.validate();
 }
 
 class _ChildFormState extends State<ChildForm> {
   final form = GlobalKey<FormState>();
+  int count = 0;
+  int tester1 = -1;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +35,7 @@ class _ChildFormState extends State<ChildForm> {
             children: <Widget>[
               AppBar(
                 leading: Icon(Icons.people_alt),
-                title: Text("Çocuk Formu"),
+                title: Text("Çocuk Formu "),
                 centerTitle: true,
                 backgroundColor: AppColors.mainColor.withOpacity(0.8),
                 actions: <Widget>[
@@ -41,43 +45,58 @@ class _ChildFormState extends State<ChildForm> {
                   ),
                 ],
               ),
-
-             Column(
-                 children: [
-
-                   // This will be automatically fetched in the next sprint.
-                   Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: TextFormField(
-                          initialValue: widget.child.parentName,
-                          onSaved: (val)=>widget.child.parentName = val,
-                          validator: (val)=> val.length > 1 ? null
-                              : "Lütfen isim giriniz." ,
-                          decoration: InputDecoration(
-                              labelText: "Ebeveynin İsmi: ",
-                              hintText: "Ebeveynlerden en az birinin ismini giriniz"
-                          ),
-                        ),
-                      ),
-
-
-               Padding(
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: TextFormField(
+                      initialValue: widget.child.parentName,
+                      onSaved: (val) => widget.child.parentName = val,
+                      validator: (val) =>
+                          val.length > 1 ? null : "Lütfen isim giriniz.",
+                      decoration: InputDecoration(
+                          labelText: "Ebeveynin İsmi: ",
+                          hintText:
+                              "Miras bırakanın haricindeki ebeveynin ismini giriniz"),
+                    ),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
                       initialValue: widget.child.childName,
-                      onSaved: (val)=>widget.child.childName = val,
-                      validator: (val)=> val.length > 1 ? null
-                          : "Lütfen isim giriniz." ,
+                      onSaved: (val) => widget.child.childName = val,
+                      validator: (val) =>
+                          val.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(
-                        labelText: "Çocuğun İsmi: ",
-                        hintText: "Çocuğun ismini giriniz"
-
+                          labelText: "Çocuğun İsmi: ",
+                          hintText: "Çocuğun ismini giriniz"),
                     ),
                   ),
-                ),
-                 ],
-               ),
-
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Çocuk hala yaşıyor mu?",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black87,
+                          ),
+                        )),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        buildRadioButton1("Evet", 1, tester1),
+                        buildRadioButton1("Hayır", 0, tester1),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -85,13 +104,34 @@ class _ChildFormState extends State<ChildForm> {
     );
   }
 
-  // form validator for saving it to a list
+  Container buildRadioButton1(String text, int val, int group) {
+    return Container(
+      width: 150,
+      child: Row(
+        children: <Widget>[
+          Radio(
+              value: val,
+              groupValue: group,
+              onChanged: (value) {
+                tester1 = value;
+                setState(() {});
+              }),
+          Text(
+            text,
+            style: TextStyle(fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
 
-bool validate(){
+  // form validator for saving it to a list
+  //empty state will be added for the debug on validation
+  bool validate() {
     var valid = form.currentState.validate();
-    if(valid){
+    if (valid) {
       form.currentState.save();
     }
     return valid;
-}
+  }
 }

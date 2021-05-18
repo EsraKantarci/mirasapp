@@ -3,8 +3,6 @@ import 'package:miras/model/constants.dart';
 import 'package:miras/view/disclaimer_page.dart';
 import 'package:miras/view/start_page.dart';
 
-import 'forms/child_form.dart';
-import 'forms/form_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

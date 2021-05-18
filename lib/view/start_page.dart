@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/child/spouse_0_child.dart';
 
-import 'forms/form_page.dart';
-import 'home_page.dart';
-
 // TO-DO: "Lütfen isim giriniz" toaster
 class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);
