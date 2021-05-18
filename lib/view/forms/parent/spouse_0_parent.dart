@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
+import 'package:miras/view/start_page.dart';
 
 class Spouse0Parent extends StatefulWidget {
   Spouse0Parent({Key key}) : super(key: key);
@@ -137,7 +138,8 @@ Widget buildElevatedButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse1Child1()),
+        //depends on the answer
+        MaterialPageRoute(builder: (context) => StartPage()),
       );
     },
     style: ElevatedButton.styleFrom(

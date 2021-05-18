@@ -1,7 +1,5 @@
 // same with spouse_0_child with spouse = 1
 
-// first page after startpage if there is no spouse but has children
-//spouse may be divorced or dead.
 //there may be several spouses in a life-time.
 //therefore, let's get the parent name input for each child dynamically
 //so, the UI will be different than mockups.

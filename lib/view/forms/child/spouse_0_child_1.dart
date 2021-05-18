@@ -4,7 +4,7 @@
 //therefore, let's get the parent name input for each child dynamically
 //so, the UI will be different than mockups.
 
-// goes to spouse0 child1 for calculation
+//go to calculation
 
 import 'package:flutter/material.dart';
 import 'package:miras/model/child.dart';
