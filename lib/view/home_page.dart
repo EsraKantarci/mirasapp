@@ -3,7 +3,6 @@ import 'package:miras/model/constants.dart';
 import 'package:miras/view/disclaimer_page.dart';
 import 'package:miras/view/start_page.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -33,45 +32,48 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          buildBlogShowcase(context),
+        ],
+      ),
+    );
+  }
 
-          // Blog showcase part
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Örnek Dilekçeler",
-                      style: TextStyle(
-                        color: AppColors.mainColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    ),
-                  ),
+  Container buildBlogShowcase(BuildContext context) {
+    return Container(
+      // Blog showcase part, will be interactive
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 30),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Örnek Dilekçeler",
+                style: TextStyle(
+                  color: AppColors.mainColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
                 ),
-                buildScrollable(),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Blog ve Diğer İçerikler",
-                      style: TextStyle(
-                        color: AppColors.mainColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    ),
-                  ),
-                ),
-                buildManual(context),
-              ],
+              ),
             ),
           ),
+          buildScrollable(),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Blog ve Diğer İçerikler",
+                style: TextStyle(
+                  color: AppColors.mainColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ),
+          buildManual(context),
         ],
       ),
     );
@@ -82,6 +84,7 @@ class _HomePageState extends State<HomePage> {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
+            //Blog layout will be prepared
             builder: (_) => DisclaimerPage(),
           ),
         );
@@ -177,7 +180,7 @@ class _HomePageState extends State<HomePage> {
         SizedBox(height: MediaQuery.of(context).size.height * 0.03),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text("Detaylar bir şey iki şey",
+          child: Text("Detaylar:",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -187,7 +190,9 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-              "Yine bir sürü detaylar lorem ipsumlar birler ikiler çalışkan üçler bakalım bunu ne kadar uzun uzadıya devam ettirebiliyoruz çünkü ettirebiliriz galiba.",
+                  "Hesaplama esnasında alınan bilgilerin hiçbiri tarafımızda saklanmamaktadır. "
+                  "Kullanım konusunda sorun yaşıyor iseniz, aşağıda yer alan Kullanım Kılavuzumuzu okumanızı"
+                  " tavsiye ederiz.",
               style: TextStyle(
                 color: Colors.white,
               )),
