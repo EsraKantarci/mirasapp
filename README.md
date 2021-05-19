@@ -16,5 +16,5 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 - Card-views for child (done)
 - Adding child and bind by parent id
 - Calculation logic on recursive
-- Data access
+- Data access for ranks
 - File writing 
