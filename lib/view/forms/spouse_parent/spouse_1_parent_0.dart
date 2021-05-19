@@ -1,11 +1,8 @@
 // page after spouse_1_child_0 and answers are no
 // go to spouse_1_grandparent
 
-// go to parent
-
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 
 import '../../start_page.dart';
 

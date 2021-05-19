@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
+import 'package:miras/view/forms/spouse_parent/spouse_1_parent_0.dart';
 import 'package:miras/view/start_page.dart';
 
 class Spouse1Parent extends StatefulWidget {
@@ -137,12 +138,12 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
       actions: <Widget>[
         IconButton(
           icon: Icon(
-            //Step: 1
+            //Step: 2
             Icons.looks_two,
             color: Colors.white,
           ),
           onPressed: () {
-            //maybe toasting "Adım: 1'desiniz" is a good idea.
+            //maybe toasting "Adım: 2'desiniz" is a good idea.
           },
         )
       ],
@@ -156,7 +157,7 @@ Widget buildElevatedButton(BuildContext context) {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => StartPage()),
+        MaterialPageRoute(builder: (context) => Spouse1Child1()),
       );
     },
     style: ElevatedButton.styleFrom(
