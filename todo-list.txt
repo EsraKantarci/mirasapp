@@ -1,0 +1,15 @@
+
+TO-DO list:
+
+1- Child CARD:
+a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view.
+b- Parental information should be added
+c- Dynamically changed card appbar title
+
+2- Listing:
+a- Child + parental information should be listed on the top of the screen
+b- Count should be kept
+
+3- Result Page:
+a- Listing shares / legal shares by name-parental info-rate
+b- Save as PDF or PNG
