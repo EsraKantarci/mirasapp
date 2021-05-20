@@ -28,3 +28,7 @@ e- Make blog UI
 a- Blog
 b- Petitions
 c- User manual
+
+7- Test
+a- Unit test
+b- Stress test
