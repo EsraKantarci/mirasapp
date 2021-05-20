@@ -3,7 +3,7 @@ TO-DO list:
 
 1- Child CARD:
 a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view.
-b- Parental information should be added
+b- Parental information should be added, drop-down should be possible.
 c- Dynamically changed card appbar title
 
 2- Listing:
@@ -13,3 +13,18 @@ b- Count should be kept
 3- Result Page:
 a- Listing shares / legal shares by name-parental info-rate
 b- Save as PDF or PNG
+
+4- Logic:
+a- Enumerated ranks
+
+5- UI:
+a- Remember disclaimer page approval
+b- Create splash screen
+c- Show splash screen as welcome screen after first fly
+d- Make petitions clickable
+e- Make blog UI
+
+6- Knowledgebase
+a- Blog
+b- Petitions
+c- User manual
