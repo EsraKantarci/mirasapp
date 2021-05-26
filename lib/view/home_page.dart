@@ -190,7 +190,8 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-                  "Hesaplama esnasında alınan bilgilerin hiçbiri tarafımızda saklanmamaktadır. "
+            // Feedback
+                  "KVKK'ya uygun olarak, uygulamada alınan bilgilerin hiçbiri tarafımızda saklanmamaktadır. "
                   "Kullanım konusunda sorun yaşıyor iseniz, aşağıda yer alan Kullanım Kılavuzumuzu okumanızı"
                   " tavsiye ederiz.",
               style: TextStyle(
