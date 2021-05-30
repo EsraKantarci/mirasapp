@@ -7,6 +7,7 @@
 // TODO: Add "Sonraki adım" button at the bottom.
 
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/answers.dart';
 import 'package:miras/model/constants.dart';
@@ -43,6 +44,7 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Text(GlobalState.instance.answers.toString()),
               buildSpace(),
               buildQuestion("Miras bırakanın eşinin ismi:"),
               buildSpace(),
@@ -81,6 +83,7 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
   }
 
   void onAdd() {
+    GlobalState.instance.childs.add(Child());
     setState(() {
       children.add(Child());
     });

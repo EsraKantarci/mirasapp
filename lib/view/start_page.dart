@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/child/spouse_0_child_1.dart';
 
@@ -47,9 +48,9 @@ class _StartPageState extends State<StartPage> {
             buildSpace(),
             //sometimes people tend to forget
             //adopted child is also a child
-            buildQuestion("Miras bırakanın evlatlığı var mıydı?"),
-            buildRadioButton3("Evet", 1, tester3),
-            buildRadioButton3("Hayır", 0, tester3),
+            // buildQuestion("Miras bırakanın evlatlığı var mıydı?"),
+            //buildRadioButton3("Evet", 1, tester3),
+            //buildRadioButton3("Hayır", 0, tester3),
             buildSpace(),
             Align(
               alignment: Alignment.bottomCenter,
@@ -77,6 +78,7 @@ class _StartPageState extends State<StartPage> {
               groupValue: group,
               onChanged: (value) {
                 tester1 = value;
+                GlobalState.instance.answers.hasSpouse = value;
                 setState(() {});
               }),
           Text(
@@ -98,6 +100,7 @@ class _StartPageState extends State<StartPage> {
               groupValue: group,
               onChanged: (value) {
                 tester2 = value;
+                GlobalState.instance.answers.hasChild = value;
                 setState(() {});
               }),
           Text(
@@ -119,6 +122,7 @@ class _StartPageState extends State<StartPage> {
               groupValue: group,
               onChanged: (value) {
                 tester3 = value;
+                // GlobalState.instance.answers.hasChild = value;
                 setState(() {});
               }),
           Text(
@@ -138,7 +142,9 @@ class _StartPageState extends State<StartPage> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       child: TextField(
-        onChanged: (text) {},
+        onChanged: (text) {
+                         GlobalState.instance.answers.name = text;
+                         },
         decoration: InputDecoration(
           hintText: "Miras bırakanın ismini giriniz...",
           hintStyle: TextStyle(fontWeight: FontWeight.normal),
@@ -188,9 +194,13 @@ Widget buildElevatedButton(BuildContext context) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      var route;
+      // navigate edilecek şeye eşitle
+      route = Spouse1Child1();
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse1Child0()),
+        //switch case?
+        MaterialPageRoute(builder: (context) => route),
       );
     },
     style: ElevatedButton.styleFrom(

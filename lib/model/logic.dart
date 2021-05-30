@@ -18,6 +18,7 @@ RateOperator(int rank1, int rank2, double rate1, double rate2,
     hiddenRate2 = 0.5;
   }
 
+//Bir saniye kulaklık alıp geliyorum
   if (rank1 == 0 && rank2 == 2) {
     //Spouse and parent
     rate1 = 0.5;

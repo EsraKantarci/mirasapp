@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
 
@@ -50,6 +51,7 @@ class _ChildFormState extends State<ChildForm> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
+                      onChanged: (a)=>GlobalState.instance.childs[0].parentName = a,
                       initialValue: widget.child.parentName,
                       onSaved: (val) => widget.child.parentName = val,
                       validator: (val) =>
