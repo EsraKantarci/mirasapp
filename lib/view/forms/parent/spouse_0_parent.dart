@@ -143,9 +143,7 @@ Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       var route;
-      if (answer1 == 1) {
-        route = Spouse0Grandparent1();
-      } else if (answer2 == 1) {
+      if (answer1 == 1 || answer2 == 1) {
         route = Spouse0Grandparent1();
       } else {
         route = ResultPage();
