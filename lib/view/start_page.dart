@@ -19,7 +19,6 @@ class _StartPageState extends State<StartPage> {
   //in second sprint we will get them inside the Answer list.
   int tester1 = -1;
   int tester2 = -1;
-  int tester3 = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -42,15 +41,11 @@ class _StartPageState extends State<StartPage> {
             buildRadioButton1("Hayır", 0, tester1),
             buildSpace(),
             buildQuestion(
-                "Miras bırakanın altsoyu (çocukları, torunları vb.) bulunuyor muydu?"),
+                "Miras bırakanın altsoyu (çocukları, torunları, evlatlığı vb.) bulunuyor muydu?"),
             buildRadioButton2("Evet", 1, tester2),
             buildRadioButton2("Hayır", 0, tester2),
             buildSpace(),
-            //sometimes people tend to forget
-            //adopted child is also a child
-            // buildQuestion("Miras bırakanın evlatlığı var mıydı?"),
-            //buildRadioButton3("Evet", 1, tester3),
-            //buildRadioButton3("Hayır", 0, tester3),
+
             buildSpace(),
             Align(
               alignment: Alignment.bottomCenter,
@@ -58,7 +53,7 @@ class _StartPageState extends State<StartPage> {
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
-                  child: buildElevatedButton(context),
+                  child: buildElevatedButton(context, tester1, tester2),
                 ),
               ),
             ),
@@ -101,28 +96,6 @@ class _StartPageState extends State<StartPage> {
               onChanged: (value) {
                 tester2 = value;
                 GlobalState.instance.answers.hasChild = value;
-                setState(() {});
-              }),
-          Text(
-            text,
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container buildRadioButton3(String text, int val, int group) {
-    return Container(
-      width: 150,
-      child: Row(
-        children: <Widget>[
-          Radio(
-              value: val,
-              groupValue: group,
-              onChanged: (value) {
-                tester3 = value;
-                // GlobalState.instance.answers.hasChild = value;
                 setState(() {});
               }),
           Text(
@@ -190,13 +163,25 @@ class _StartPageState extends State<StartPage> {
   }
 }
 
-Widget buildElevatedButton(BuildContext context) {
+Widget buildElevatedButton(BuildContext context, int tester1, int tester2) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       var route;
-      // navigate edilecek şeye eşitle
-      route = Spouse1Child1();
+      if(tester1 == 1 && tester2 == 1){
+        route = Spouse1Child1();
+      }
+      else if(tester1 == 1 && tester2 == 0){
+        route = Spouse1Child0();
+      }
+
+      else if(tester1 == 0 && tester2 == 1){
+        route = Spouse0Child1();
+      }
+      else{
+        route = Spouse0Child0();
+      }
+
       Navigator.push(
         context,
         //switch case?

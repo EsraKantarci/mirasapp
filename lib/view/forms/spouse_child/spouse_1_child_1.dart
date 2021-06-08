@@ -44,7 +44,8 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(GlobalState.instance.answers.toString()),
+              //To check if answer list is accessed
+              //Text(GlobalState.instance.answers.toString()),
               buildSpace(),
               buildQuestion("Miras bırakanın eşinin ismi:"),
               buildSpace(),

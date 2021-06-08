@@ -25,6 +25,7 @@ class Answers {
       this.hasParent = -1,
       this.hasGrandparent = -1});
 
+  //in order to show inside app
   @override
   String toString() {
     return 'Answers{name: $name, answers: $answers, hasSpouse: $hasSpouse, hasChild: $hasChild, hasParent: $hasParent, hasGrandparent: $hasGrandparent, spouseName: $spouseName, motherName: $motherName, fatherName: $fatherName}';
