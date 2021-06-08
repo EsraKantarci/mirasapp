@@ -13,9 +13,6 @@ class ResultPage extends StatefulWidget {
 
 class _ResultPageState extends State<ResultPage> {
   //in second sprint we will get them inside the Answer list.
-  int tester1 = -1;
-  int tester2 = -1;
-  int tester3 = -1;
 
   @override
   Widget build(BuildContext context) {

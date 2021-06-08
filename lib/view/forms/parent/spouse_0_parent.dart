@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
+import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
 import 'package:miras/view/forms/grandparent/spouse_0_grandparent.dart';
 import 'package:miras/view/forms/grandparent/spouse_0_grandparent_1.dart';
-import 'package:miras/view/forms/grandparent/spouse_0_grandparent_0.dart';
 
 class Spouse0Parent extends StatefulWidget {
   Spouse0Parent({Key key}) : super(key: key);
@@ -146,9 +146,9 @@ Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
       if (answer1 == 1) {
         route = Spouse0Grandparent1();
       } else if (answer2 == 1) {
-        route = Spouse0Grandparent0();
+        route = Spouse0Grandparent1();
       } else {
-        route = Spouse0Parent();
+        route = ResultPage();
       }
       Navigator.push(
         context,
