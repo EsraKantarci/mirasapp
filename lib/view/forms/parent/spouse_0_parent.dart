@@ -2,9 +2,13 @@
 // spouse=0, parent=0, check other ranks.
 
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/start_page.dart';
+import 'package:miras/view/forms/grandparent/spouse_0_grandparent.dart';
+import 'package:miras/view/forms/grandparent/spouse_0_grandparent_1.dart';
+import 'package:miras/view/forms/grandparent/spouse_0_grandparent_0.dart';
 
 class Spouse0Parent extends StatefulWidget {
   Spouse0Parent({Key key}) : super(key: key);
@@ -15,8 +19,8 @@ class Spouse0Parent extends StatefulWidget {
 
 class _Spouse0ParentState extends State<Spouse0Parent> {
   //in second sprint we will get them inside the Answer list.
-  int tester1 = -1;
-  int tester2 = -1;
+  int answer1 = -1;
+  int answer2 = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +33,13 @@ class _Spouse0ParentState extends State<Spouse0Parent> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: (<Widget>[
             buildQuestion("Miras bırakanın büyükannesinden ya da büyükbabasından en az biri sağ mı?"),
-            buildRadioButton1("Evet", 1, tester1),
-            buildRadioButton1("Hayır", 0, tester1),
+            buildRadioButton1("Evet", 1, answer1),
+            buildRadioButton1("Hayır", 0, answer1),
             buildSpace(),
             buildQuestion(
                 "Miras bırakanın büyükanne/büyükbabasının altsoyu (miras bırakanın amcası, dayısı, halası, teyzesi, kuzenleri vb.) bulunuyor mu?"),
-            buildRadioButton2("Evet", 1, tester2),
-            buildRadioButton2("Hayır", 0, tester2),
+            buildRadioButton2("Evet", 1, answer2),
+            buildRadioButton2("Hayır", 0, answer2),
             buildSpace(),
 
             Align(
@@ -44,7 +48,7 @@ class _Spouse0ParentState extends State<Spouse0Parent> {
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
-                  child: buildElevatedButton(context),
+                  child: buildElevatedButton(context, answer1, answer2),
                 ),
               ),
             ),
@@ -63,7 +67,8 @@ class _Spouse0ParentState extends State<Spouse0Parent> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                tester1 = value;
+                answer1 = value;
+                GlobalState.instance.answers.hasGrandparent = value;
                 setState(() {});
               }),
           Text(
@@ -84,7 +89,8 @@ class _Spouse0ParentState extends State<Spouse0Parent> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                tester2 = value;
+                answer2 = value;
+                GlobalState.instance.answers.hasThirdRank = value;
                 setState(() {});
               }),
           Text(
@@ -132,14 +138,22 @@ class _Spouse0ParentState extends State<Spouse0Parent> {
   }
 }
 
-Widget buildElevatedButton(BuildContext context) {
+Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      var route;
+      if (answer1 == 1) {
+        route = Spouse0Grandparent1();
+      } else if (answer2 == 1) {
+        route = Spouse0Grandparent0();
+      } else {
+        route = Spouse0Parent();
+      }
       Navigator.push(
         context,
         //depends on the answer
-        MaterialPageRoute(builder: (context) => StartPage()),
+        MaterialPageRoute(builder: (context) => route),
       );
     },
     style: ElevatedButton.styleFrom(

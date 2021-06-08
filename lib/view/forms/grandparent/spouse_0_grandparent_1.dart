@@ -8,14 +8,14 @@ import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/child_form.dart';
 import 'package:miras/view/start_page.dart';
 
-class Spouse1Child1 extends StatefulWidget {
-  const Spouse1Child1({Key key}) : super(key: key);
+class Spouse0Grandparent1 extends StatefulWidget {
+  const Spouse0Grandparent1({Key key}) : super(key: key);
 
   @override
-  _Spouse1Child1State createState() => _Spouse1Child1State();
+  _Spouse0Grandparent1State createState() => _Spouse0Grandparent1State();
 }
 
-class _Spouse1Child1State extends State<Spouse1Child1> {
+class _Spouse0Grandparent1State extends State<Spouse0Grandparent1> {
   List<Child> children = [];
   List<ChildForm> forms = [];
 
