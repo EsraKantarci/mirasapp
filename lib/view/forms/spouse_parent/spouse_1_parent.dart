@@ -5,9 +5,12 @@
 //if 1 of them alive --> go spouse_1_parent 1
 
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent_0.dart';
+import 'package:miras/view/forms/spouse_parent/spouse_1_parent_1.dart';
+import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
 
 class Spouse1Parent extends StatefulWidget {
@@ -19,8 +22,8 @@ class Spouse1Parent extends StatefulWidget {
 
 class _Spouse1ParentState extends State<Spouse1Parent> {
   //in second sprint we will get them inside the Answer list.
-  int tester1 = -1;
-  int tester2 = -1;
+  int answer1 = -1;
+  int answer2 = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -36,24 +39,24 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
             children: (<Widget>[
               buildQuestion("Miras bırakanın annesinin ismi:"),
               buildSpace(),
-              buildTextInput(context),
+              buildTextInputMother(context),
               buildSpace(),
 
               buildQuestion("Miras bırakanın annesi sağ mı?"),
-              buildRadioButton1("Evet", 1, tester1),
-              buildRadioButton1("Hayır", 0, tester1),
+              buildRadioButton1("Evet", 1, answer1),
+              buildRadioButton1("Hayır", 0, answer1),
               buildSpace(),
 
 
               buildQuestion("Miras bırakanın babasının ismi:"),
               buildSpace(),
-              buildTextInput(context),
+              buildTextInputFather(context),
               buildSpace(),
 
 
-              buildQuestion("Miras bırakanın anne babası sağ mı?"),
-              buildRadioButton1("Evet", 1, tester2),
-              buildRadioButton1("Hayır", 0, tester2),
+              buildQuestion("Miras bırakanın  babası sağ mı?"),
+              buildRadioButton1("Evet", 1, answer2),
+              buildRadioButton1("Hayır", 0, answer2),
               buildSpace(),
 
 
@@ -63,7 +66,7 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * 0.1,
                     width: MediaQuery.of(context).size.width,
-                    child: buildElevatedButton(context),
+                    child: buildElevatedButton(context, answer1, answer2),
                   ),
                 ),
               ),
@@ -83,7 +86,7 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                tester1 = value;
+                answer1 = value;
                 setState(() {});
               }),
           Text(
@@ -104,7 +107,7 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                tester2 = value;
+                answer2 = value;
                 setState(() {});
               }),
           Text(
@@ -151,13 +154,23 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
   }
 }
 
-Widget buildElevatedButton(BuildContext context) {
+Widget buildElevatedButton(BuildContext context, answer1, answer2) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      var route;
+      if(answer1 == 1 && answer2 == 1){
+        route = ResultPage();
+      }
+      else if(answer1 == 0 && answer2 == 0){
+        route = Spouse1Parent0();
+      }
+      else{
+        route = Spouse1Parent1();
+      }
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse1Child1()),
+        MaterialPageRoute(builder: (context) => route),
       );
     },
     style: ElevatedButton.styleFrom(
@@ -176,13 +189,60 @@ Widget buildElevatedButton(BuildContext context) {
   );
 }
 
-Container buildTextInput(BuildContext context) {
+Container buildTextInputSpouse(BuildContext context) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.1,
     child: TextField(
-      onChanged: (text) {},
+      onChanged: (text) {
+        GlobalState.instance.answers.spouseName = text;
+      },
       decoration: InputDecoration(
         hintText: "Miras bırakanın eşinin ismini giriniz...",
+        hintStyle: TextStyle(fontWeight: FontWeight.normal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    ),
+  );
+}
+
+
+Container buildTextInputMother(BuildContext context) {
+  return Container(
+    height: MediaQuery.of(context).size.height * 0.1,
+    child: TextField(
+      onChanged: (text) {
+        GlobalState.instance.answers.motherName = text;
+      },
+      decoration: InputDecoration(
+        hintText: "Miras bırakanın annesinin ismini giriniz...",
+        hintStyle: TextStyle(fontWeight: FontWeight.normal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    ),
+  );
+}
+
+
+
+Container buildTextInputFather(BuildContext context) {
+  return Container(
+    height: MediaQuery.of(context).size.height * 0.1,
+    child: TextField(
+      onChanged: (text) {
+        GlobalState.instance.answers.fatherName = text;
+      },
+      decoration: InputDecoration(
+        hintText: "Miras bırakanın babasının ismini giriniz...",
         hintStyle: TextStyle(fontWeight: FontWeight.normal),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
