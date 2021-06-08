@@ -83,7 +83,7 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
   }
 
   void onAdd() {
-    GlobalState.instance.childs.add(Child());
+    GlobalState.instance.children.add(Child());
     setState(() {
       children.add(Child());
     });

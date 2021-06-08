@@ -3,5 +3,8 @@ class Parent {
   int id;
   bool isAlive;
 
-//TO-DO: Add constructor
+  Parent({this.name = "",
+    this.id = -1,
+    this.isAlive = true
+  });
 }

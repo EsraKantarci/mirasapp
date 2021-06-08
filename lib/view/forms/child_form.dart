@@ -51,7 +51,7 @@ class _ChildFormState extends State<ChildForm> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
-                      onChanged: (a)=>GlobalState.instance.childs[0].parentName = a,
+                      onChanged: (a)=>GlobalState.instance.children[0].parentName = a,
                       initialValue: widget.child.parentName,
                       onSaved: (val) => widget.child.parentName = val,
                       validator: (val) =>
