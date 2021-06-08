@@ -17,8 +17,8 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   //in second sprint we will get them inside the Answer list.
-  int tester1 = -1;
-  int tester2 = -1;
+  int answer1 = -1;
+  int answer2 = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +37,14 @@ class _StartPageState extends State<StartPage> {
             buildTextInput(context),
             buildSpace(),
             buildQuestion("Miras bırakan öldüğünde evli miydi?"),
-            buildRadioButton1("Evet", 1, tester1),
-            buildRadioButton1("Hayır", 0, tester1),
+            buildRadioButton1("Evet", 1, answer1),
+            buildRadioButton1("Hayır", 0, answer1),
             buildSpace(),
             buildQuestion(
                 "Miras bırakanın altsoyu (çocukları, torunları, evlatlığı vb.) bulunuyor muydu?"),
-            buildRadioButton2("Evet", 1, tester2),
-            buildRadioButton2("Hayır", 0, tester2),
+            buildRadioButton2("Evet", 1, answer2),
+            buildRadioButton2("Hayır", 0, answer2),
             buildSpace(),
-
             buildSpace(),
             Align(
               alignment: Alignment.bottomCenter,
@@ -53,7 +52,7 @@ class _StartPageState extends State<StartPage> {
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
-                  child: buildElevatedButton(context, tester1, tester2),
+                  child: buildElevatedButton(context, answer1, answer2),
                 ),
               ),
             ),
@@ -72,7 +71,7 @@ class _StartPageState extends State<StartPage> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                tester1 = value;
+                answer1 = value;
                 GlobalState.instance.answers.hasSpouse = value;
                 setState(() {});
               }),
@@ -94,7 +93,7 @@ class _StartPageState extends State<StartPage> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                tester2 = value;
+                answer2 = value;
                 GlobalState.instance.answers.hasChild = value;
                 setState(() {});
               }),
@@ -116,8 +115,8 @@ class _StartPageState extends State<StartPage> {
       height: MediaQuery.of(context).size.height * 0.1,
       child: TextField(
         onChanged: (text) {
-                         GlobalState.instance.answers.name = text;
-                         },
+          GlobalState.instance.answers.name = text;
+        },
         decoration: InputDecoration(
           hintText: "Miras bırakanın ismini giriniz...",
           hintStyle: TextStyle(fontWeight: FontWeight.normal),
@@ -168,17 +167,13 @@ Widget buildElevatedButton(BuildContext context, int tester1, int tester2) {
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       var route;
-      if(tester1 == 1 && tester2 == 1){
+      if (tester1 == 1 && tester2 == 1) {
         route = Spouse1Child1();
-      }
-      else if(tester1 == 1 && tester2 == 0){
+      } else if (tester1 == 1 && tester2 == 0) {
         route = Spouse1Child0();
-      }
-
-      else if(tester1 == 0 && tester2 == 1){
+      } else if (tester1 == 0 && tester2 == 1) {
         route = Spouse0Child1();
-      }
-      else{
+      } else {
         route = Spouse0Child0();
       }
 
