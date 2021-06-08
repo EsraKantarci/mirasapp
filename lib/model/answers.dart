@@ -6,7 +6,9 @@ class Answers {
   int hasSpouse;
   int hasChild;
   int hasParent;
+  int hasSecondRank;
   int hasGrandparent;
+  int hasThirdRank;
 
   //only one names:
   String spouseName;
@@ -23,7 +25,9 @@ class Answers {
       this.hasSpouse = -1,
       this.hasChild = -1,
       this.hasParent = -1,
-      this.hasGrandparent = -1});
+      this.hasSecondRank = -1,
+      this.hasGrandparent = -1,
+      this.hasThirdRank});
 
   //in order to show inside app
   @override

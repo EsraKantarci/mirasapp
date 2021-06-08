@@ -162,16 +162,16 @@ class _StartPageState extends State<StartPage> {
   }
 }
 
-Widget buildElevatedButton(BuildContext context, int tester1, int tester2) {
+Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       var route;
-      if (tester1 == 1 && tester2 == 1) {
+      if (answer1 == 1 && answer2 == 1) {
         route = Spouse1Child1();
-      } else if (tester1 == 1 && tester2 == 0) {
+      } else if (answer1 == 1 && answer2 == 0) {
         route = Spouse1Child0();
-      } else if (tester1 == 0 && tester2 == 1) {
+      } else if (answer1 == 0 && answer2 == 1) {
         route = Spouse0Child1();
       } else {
         route = Spouse0Child0();
