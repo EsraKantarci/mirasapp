@@ -38,45 +38,27 @@ class _Spouse1Grandparent1State extends State<Spouse1Grandparent1> {
         appBar: buildAppBar(),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              buildSpace(),
-              buildQuestion("Miras bırakanın anne tarafından büyükannesinin ismi:"),
-              buildSpace(),
-              buildTextInputMotherOfMother(context),
-              buildSpace(),
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
 
-              buildQuestion("Miras bırakanın anne tarafından büyükbabasının ismi:"),
-              buildSpace(),
-              buildTextInputFatherOfMother(context),
-              buildSpace(),
-
-              buildQuestion("Miras bırakanın baba tarafından büyükannesinin ismi:"),
-              buildSpace(),
-              buildTextInputMotherOfFather(context),
-              buildSpace(),
-
-              buildQuestion("Miras bırakanın baba tarafından büyükbabasının ismi:"),
-              buildSpace(),
-              buildTextInputFatherOfFather(context),
-              buildSpace(),
-
-              Expanded(
-                child: children.length <= 0
-                    ? Center(
-                  child: Text(
-                      "[+] butonuna tıklayarak çocuk ekleyebilirsiniz."),
-                )
-                    : ListView.builder(
-                  itemCount: children.length,
-                  itemBuilder: (_, i) => ChildForm(
-                    child: children[i],
-                    onDelete: () => onDelete(i),
+                Expanded(
+                  child: children.length <= 0
+                      ? Center(
+                    child: Text(
+                        "[+] butonuna tıklayarak kişi ekleyebilirsiniz."),
+                  )
+                      : ListView.builder(
+                    itemCount: children.length,
+                    itemBuilder: (_, i) => ChildForm(
+                      child: children[i],
+                      onDelete: () => onDelete(i),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -130,80 +112,6 @@ class _Spouse1Grandparent1State extends State<Spouse1Grandparent1> {
           },
         )
       ],
-    );
-  }
-
-  Container buildTextInputMotherOfMother(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın anne tarafından büyükannesinin ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Container buildTextInputFatherOfMother(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın anne tarafından büyükbabasının ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-    );
-  }
-  Container buildTextInputMotherOfFather(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın baba tarafından büyükannesinin ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-    );
-  }
-  Container buildTextInputFatherOfFather(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın baba tarafından büyükbabasının ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
     );
   }
 
