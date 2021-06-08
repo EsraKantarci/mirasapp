@@ -1,4 +1,7 @@
-// TODO:
+// only 1 grandparent alive
+// add children then calculate
+
+// TODO: GRANDPARENT NAMES INPUT WRITER
 // TODO: Add "Sonraki adım" button at the bottom.
 
 import 'package:flutter/material.dart';
@@ -41,22 +44,22 @@ class _Spouse0Grandparent1State extends State<Spouse0Grandparent1> {
               buildSpace(),
               buildQuestion("Miras bırakanın anne tarafından büyükannesinin ismi:"),
               buildSpace(),
-              buildTextInput(context),
+              buildTextInputMotherOfMother(context),
               buildSpace(),
 
               buildQuestion("Miras bırakanın anne tarafından büyükbabasının ismi:"),
               buildSpace(),
-              buildTextInput(context),
+              buildTextInputFatherOfMother(context),
               buildSpace(),
 
               buildQuestion("Miras bırakanın baba tarafından büyükannesinin ismi:"),
               buildSpace(),
-              buildTextInput(context),
+              buildTextInputMotherOfFather(context),
               buildSpace(),
 
               buildQuestion("Miras bırakanın baba tarafından büyükbabasının ismi:"),
               buildSpace(),
-              buildTextInput(context),
+              buildTextInputFatherOfFather(context),
               buildSpace(),
 
               Expanded(
@@ -130,13 +133,68 @@ class _Spouse0Grandparent1State extends State<Spouse0Grandparent1> {
     );
   }
 
-  Container buildTextInput(BuildContext context) {
+  Container buildTextInputMotherOfMother(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       child: TextField(
         onChanged: (text) {},
         decoration: InputDecoration(
-          hintText: "Miras bırakanın eşinin ismini giriniz...",
+          hintText: "Miras bırakanın anne tarafından büyükannesinin ismini giriniz...",
+          hintStyle: TextStyle(fontWeight: FontWeight.normal),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Container buildTextInputFatherOfMother(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      child: TextField(
+        onChanged: (text) {},
+        decoration: InputDecoration(
+          hintText: "Miras bırakanın anne tarafından büyükbabasının ismini giriniz...",
+          hintStyle: TextStyle(fontWeight: FontWeight.normal),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    );
+  }
+  Container buildTextInputMotherOfFather(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      child: TextField(
+        onChanged: (text) {},
+        decoration: InputDecoration(
+          hintText: "Miras bırakanın baba tarafından büyükannesinin ismini giriniz...",
+          hintStyle: TextStyle(fontWeight: FontWeight.normal),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    );
+  }
+  Container buildTextInputFatherOfFather(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      child: TextField(
+        onChanged: (text) {},
+        decoration: InputDecoration(
+          hintText: "Miras bırakanın baba tarafından büyükbabasının ismini giriniz...",
           hintStyle: TextStyle(fontWeight: FontWeight.normal),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
