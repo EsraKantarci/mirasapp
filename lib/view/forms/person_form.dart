@@ -4,15 +4,16 @@ import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
 
+// TODO: Altsoy, üstsoy ekleme, kabul etme. Yaşıyor mu? Kaç çocuğu var?
 
 typedef OnDelete(); //will be defined in another page
 
 class PersonForm extends StatefulWidget {
-  final Child child;
+  final Person person;
   final state = _PersonFormState();
   final OnDelete onDelete;
 
-  PersonForm({this.child, this.onDelete});
+  PersonForm({this.person, this.onDelete});
 
   @override
   _PersonFormState createState() => state;
@@ -36,7 +37,7 @@ class _PersonFormState extends State<PersonForm> {
             children: <Widget>[
               AppBar(
                 leading: Icon(Icons.people_alt),
-                title: Text("Çocuk Formu "),
+                title: Text("Kişi Ekleme Formu "),
                 centerTitle: true,
                 backgroundColor: AppColors.mainColor.withOpacity(0.8),
                 actions: <Widget>[
@@ -52,8 +53,8 @@ class _PersonFormState extends State<PersonForm> {
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
                       onChanged: (a)=>GlobalState.instance.children[0].parentName = a,
-                      initialValue: widget.child.parentName,
-                      onSaved: (val) => widget.child.parentName = val,
+                      initialValue: widget.person.parentName,
+                      onSaved: (val) => widget.person.parentName = val,
                       validator: (val) =>
                       val.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(
@@ -65,8 +66,8 @@ class _PersonFormState extends State<PersonForm> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
-                      initialValue: widget.child.childName,
-                      onSaved: (val) => widget.child.childName = val,
+                      initialValue: widget.person.childName,
+                      onSaved: (val) => widget.person.childName = val,
                       validator: (val) =>
                       val.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(

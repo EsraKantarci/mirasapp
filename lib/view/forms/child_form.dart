@@ -7,20 +7,20 @@ import 'package:miras/model/constants.dart';
 
 typedef OnDelete(); //will be defined in another page
 
-class ChildForm extends StatefulWidget {
-  final Child child;
-  final state = _ChildFormState();
+class PersonForm extends StatefulWidget {
+  final Person child;
+  final state = _PersonFormState();
   final OnDelete onDelete;
 
-  ChildForm({this.child, this.onDelete});
+  PersonForm({this.child, this.onDelete});
 
   @override
-  _ChildFormState createState() => state;
+  _PersonFormState createState() => state;
 
   bool isValid() => state.validate();
 }
 
-class _ChildFormState extends State<ChildForm> {
+class _PersonFormState extends State<PersonForm> {
   final form = GlobalKey<FormState>();
   int count = 0;
   int tester1 = -1;

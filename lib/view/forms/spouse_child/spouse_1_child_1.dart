@@ -22,14 +22,14 @@ class Spouse1Child1 extends StatefulWidget {
 }
 
 class _Spouse1Child1State extends State<Spouse1Child1> {
-  List<Child> children = [];
-  List<ChildForm> forms = [];
+  List<Person> children = [];
+  List<PersonForm> forms = [];
 
   @override
   Widget build(BuildContext context) {
     forms.clear();
     for (int i = 0; i < children.length; i++) {
-      forms.add(ChildForm(
+      forms.add(PersonForm(
         child: children[i],
         onDelete: () => onDelete(i),
       ));
@@ -59,7 +59,7 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
                       )
                     : ListView.builder(
                         itemCount: children.length,
-                        itemBuilder: (_, i) => ChildForm(
+                        itemBuilder: (_, i) => PersonForm(
                           child: children[i],
                           onDelete: () => onDelete(i),
                         ),
@@ -84,9 +84,9 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
   }
 
   void onAdd() {
-    GlobalState.instance.children.add(Child());
+    GlobalState.instance.children.add(Person());
     setState(() {
-      children.add(Child());
+      children.add(Person());
     });
   }
 

@@ -10,13 +10,17 @@ class Person {
   bool hasParent;
   bool hasChild;
   int parentId;
-
+  int rank; // spouse: 0, descendent:1, parent/second: 2, gparent/third:3
+  int childCount;
 
   Person(
       {this.name = "",
         this.id = -1,
         this.parentId = -1,
         this.isAlive = true,
+        this.rank = -1,
         this.hasParent = false,
-        this.hasChild = false});
+        this.hasChild = false,
+        this.childCount = -1
+      });
 }

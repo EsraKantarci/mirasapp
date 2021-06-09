@@ -23,15 +23,15 @@ class Spouse1Parent1 extends StatefulWidget {
 }
 
 class _Spouse1Parent1State extends State<Spouse1Parent1> {
-  List<Child> children = [];
-  List<ChildForm> forms = [];
+  List<Person> persons = [];
+  List<PersonForm> forms = [];
 
   @override
   Widget build(BuildContext context) {
     forms.clear();
-    for (int i = 0; i < children.length; i++) {
-      forms.add(ChildForm(
-        child: children[i],
+    for (int i = 0; i < persons.length; i++) {
+      forms.add(PersonForm(
+        child: persons[i],
         onDelete: () => onDelete(i),
       ));
     }
@@ -40,14 +40,14 @@ class _Spouse1Parent1State extends State<Spouse1Parent1> {
       home: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: buildAppBar(),
-        body: children.length <= 0
+        body: persons.length <= 0
             ? Center(
           child: Text("[+] butonuna tıklayarak çocuk ekleyebilirsiniz."),
         )
             : ListView.builder(
-          itemCount: children.length,
-          itemBuilder: (_, i) => ChildForm(
-            child: children[i],
+          itemCount: persons.length,
+          itemBuilder: (_, i) => PersonForm(
+            child: persons[i],
             onDelete: () => onDelete(i),
           ),
         ),
@@ -63,13 +63,13 @@ class _Spouse1Parent1State extends State<Spouse1Parent1> {
 
   void onDelete(int index) {
     setState(() {
-      children.removeAt(index);
+      persons.removeAt(index);
     });
   }
 
   void onAdd() {
     setState(() {
-      children.add(Child());
+      persons.add(Person());
     });
   }
 

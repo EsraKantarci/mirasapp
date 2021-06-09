@@ -1,4 +1,4 @@
-class Child {
+class Person {
   String childName;
   String parentName;
   int parentId;
@@ -6,7 +6,7 @@ class Child {
   bool isAlive;
   bool hasChild;
 
-  Child(
+  Person(
       {this.childName = "",
       this.parentName = "",
       this.parentId = -1,
