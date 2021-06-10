@@ -27,6 +27,7 @@ class _PersonFormState extends State<PersonForm> {
   var count = 0;
   int answer1 = -1;
   var iconStatus = "?";
+  var savingText = "Bu kişiyi listeye kaydet";
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class _PersonFormState extends State<PersonForm> {
                       initialValue: widget.person.name,
                       onSaved: (val) => widget.person.name = val,
                       validator: (val) =>
-                      val.length > 1 ? null : "Lütfen isim giriniz.",
+                          val.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(
                           labelText: "Çocuğun İsmi: ",
                           hintText: "Çocuğun ismini giriniz"),
@@ -81,22 +82,22 @@ class _PersonFormState extends State<PersonForm> {
                       min: 0,
                       max: 40,
                       value: 0,
-                      onChanged: (value) => widget.person.childCount = value.toInt(),
+                      onChanged: (value) =>
+                          widget.person.childCount = value.toInt(),
 
                       // widget.person.childCount = value.toInt(),
-
                     ),
                   ),
-
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.1,
-                        width: MediaQuery.of(context).size.width*0.5,
+                        width: MediaQuery.of(context).size.width * 0.5,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: buildElevatedButton(context, answer1, count, "OK"),
+                          child: buildElevatedButton(
+                              context, answer1, count, "OK", "Bu kişi kaydedildi"),
                         ),
                       ),
                     ),
@@ -110,21 +111,20 @@ class _PersonFormState extends State<PersonForm> {
     );
   }
 
-
-  Widget buildElevatedButton(BuildContext context, int answer1, int count, String text) {
+  Widget buildElevatedButton(
+      BuildContext context, int answer1, int count, String text, String saveText) {
     return ElevatedButton(
-      child: Text('Bu kişiyi listeye kaydet.'),
+      child: Text(savingText),
       onPressed: () {
         setState(() {
           widget.person.id = count;
           widget.person.isAlive = answer1;
-          widget.person.parentId = 1; // Şimdilik
+          widget.person.parentId = 1; // Şimdilik miras bırakana bağlı olsun
           widget.person.rank = 1;
-          iconStatus = text;
-
+          iconStatus = text; // sonra bunu ikona çeviririz
+          savingText = saveText;
         });
       },
-
       style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -167,11 +167,10 @@ class _PersonFormState extends State<PersonForm> {
               groupValue: group,
               onChanged: (value) {
                 answer1 = value;
-               setState(() {
-                 GlobalState.instance.children[count].isAlive = value;
-               GlobalState.instance.children[count].id = count;
-               count = count + 1;
-               });
+                GlobalState.instance.children[count].isAlive = value;
+                setState(() {
+                  count = count + 1;
+                });
               }),
           Text(
             text,
@@ -191,6 +190,4 @@ class _PersonFormState extends State<PersonForm> {
     }
     return valid;
   }
-
 }
-
