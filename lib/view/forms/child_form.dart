@@ -36,7 +36,7 @@ class _PersonFormState extends State<PersonForm> {
             children: <Widget>[
               AppBar(
                 leading: Icon(Icons.people_alt),
-                title: Text("Çocuk Formu "),
+                title: Text("Kişi Formu"),
                 centerTitle: true,
                 backgroundColor: AppColors.mainColor.withOpacity(0.8),
                 actions: <Widget>[

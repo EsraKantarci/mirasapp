@@ -7,6 +7,7 @@
 // TODO: Add "Sonraki adım" button at the bottom.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/answers.dart';
@@ -24,16 +25,11 @@ class Spouse1Child1 extends StatefulWidget {
 class _Spouse1Child1State extends State<Spouse1Child1> {
   List<Person> children = [];
   List<PersonForm> forms = [];
+  double childCount = 0;
 
   @override
   Widget build(BuildContext context) {
-    forms.clear();
-    for (int i = 0; i < children.length; i++) {
-      forms.add(PersonForm(
-        child: children[i],
-        onDelete: () => onDelete(i),
-      ));
-    }
+
     return MaterialApp(
       // In the next sprint, children will be added to a bucket list.
       home: Scaffold(
@@ -51,64 +47,43 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
               buildSpace(),
               buildTextInput(context),
               buildSpace(),
-              Expanded(
-                child: children.length <= 0
-                    ? Center(
-                        child: Text(
-                            "[+] butonuna tıklayarak çocuk ekleyebilirsiniz."),
-                      )
-                    : ListView.builder(
-                        itemCount: children.length,
-                        itemBuilder: (_, i) => PersonForm(
-                          child: children[i],
-                          onDelete: () => onDelete(i),
-                        ),
-                      ),
+              buildQuestion("Miras bırakanın kaç çocuğu vardı?"),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: SpinBox(
+                  min: 0,
+                  max: 40,
+                  value: childCount,
+                  onChanged: (value) => childCount = value,
+                ),
               ),
+              buildSpace(),
+              buildSpace(),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width,
+                    child: buildElevatedButton(context, childCount),
+                  ),
+                ),
+              ),
+
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.mainColor,
-          child: Icon(Icons.add),
-          onPressed: onAdd,
-        ),
+
       ),
     );
   }
 
-  void onDelete(int index) {
-    setState(() {
-      children.removeAt(index);
-    });
-  }
-
-  void onAdd() {
-    GlobalState.instance.children.add(Person());
-    setState(() {
-      children.add(Person());
-    });
-  }
-
-  void onSave() {
-    forms.forEach((form) => form.isValid());
-  }
 
   AppBar buildAppBar() {
     return AppBar(
       title: Text("Miras Payı Hesaplayıcı"),
       backgroundColor: AppColors.mainColor,
       actions: <Widget>[
-        TextButton(
-          child: Text(
-            'Kaydet',
-            style: TextStyle(
-                color: AppColors.backgroundColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 16),
-          ),
-          onPressed: onSave,
-        ),
         IconButton(
           icon: Icon(
             //Step: 1
@@ -127,7 +102,9 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       child: TextField(
-        onChanged: (text) {},
+        onChanged: (text) {
+          GlobalState.instance.answers.spouseName = text;
+        },
         decoration: InputDecoration(
           hintText: "Miras bırakanın eşinin ismini giriniz...",
           hintStyle: TextStyle(fontWeight: FontWeight.normal),
@@ -159,10 +136,11 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
 }
 
 
-Widget buildElevatedButton(BuildContext context) {
+Widget buildElevatedButton(BuildContext context, double childCount) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      GlobalState.instance.answers.childCount = childCount.toInt();
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => StartPage()),
