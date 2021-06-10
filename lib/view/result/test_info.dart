@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
+import 'package:miras/model/answers.dart';
+
+import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/start_page.dart';
+import 'package:miras/view/forms/child/spouse_0_child_1.dart';
+import 'package:miras/view/result/result.dart';
 
 
-// TODO: 2 ListViews: PAY - SAKLIPAY
-class ResultPage extends StatefulWidget {
-  ResultPage({Key key}) : super(key: key);
+// TO-DO: "Lütfen isim giriniz" toaster
+class TestPage extends StatefulWidget {
+  TestPage({Key key}) : super(key: key);
 
   @override
-  _ResultPageState createState() => _ResultPageState();
+  _TestPageState createState() => _TestPageState();
 }
 
-class _ResultPageState extends State<ResultPage> {
+class _TestPageState extends State<TestPage> {
   //in second sprint we will get them inside the Answer list.
+  int answer1 = -1;
+  int answer2 = -1;
+
+  Answers testAnswer = Answers(name: "Ölen", hasSpouse: 1, spouseName: "Eşi", hasChild: 1, childCount: 2);
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +35,13 @@ class _ResultPageState extends State<ResultPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: (<Widget>[
-
-            Text(GlobalState.instance.answers.toString()),
-
-
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
-                  child: buildElevatedButton(context),
+                  child: buildElevatedButton(context, testAnswer),
                 ),
               ),
             ),
@@ -45,9 +51,25 @@ class _ResultPageState extends State<ResultPage> {
     );
   }
 
+  SizedBox buildSpace() => SizedBox(
+    height: 5,
+  );
+
+
+  Text buildQuestion(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: AppColors.mainColor,
+      ),
+    );
+  }
+
   AppBar buildAppBar() {
     return AppBar(
-      title: Text("Miras Payı Hesaplayıcı - Sonuçlar:"),
+      title: Text("Miras Payı Hesaplayıcı"),
       backgroundColor: AppColors.mainColor,
       actions: <Widget>[
         IconButton(
@@ -65,14 +87,15 @@ class _ResultPageState extends State<ResultPage> {
   }
 }
 
-// Save as png or pdf button, but first let's make listview in this result page
-Widget buildElevatedButton(BuildContext context) {
+Widget buildElevatedButton(BuildContext context, Answers testAnswer) {
   return ElevatedButton(
-    child: Text('KAYDET'),
+    child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      GlobalState.instance.answers = testAnswer;
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => StartPage()),
+        //switch case?
+        MaterialPageRoute(builder: (context) => ResultPage()),
       );
     },
     style: ElevatedButton.styleFrom(
@@ -90,3 +113,5 @@ Widget buildElevatedButton(BuildContext context) {
             fontWeight: FontWeight.bold)),
   );
 }
+
+

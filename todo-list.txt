@@ -9,20 +9,20 @@ UI-Modifications:
 -----
 
 1- Child CARD:
-a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view.
+a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view. -- done--
 b- Parental information should be added, drop-down should be possible.
-c- Dynamically changed card appbar title
+c- Dynamically changed card appbar title --done---
 
 2- Listing:
 a- Child + parental information should be listed on the top of the screen
-b- Count should be kept
+b- Count should be kept --done--
 
 3- Result Page:
 a- Listing shares / legal shares by name-parental info-rate
 b- Save as PDF or PNG
 
 4- Logic:
-a- Enumerated ranks
+a- Enumerated ranks --done---
 
 5- UI:
 a- Remember disclaimer page approval
