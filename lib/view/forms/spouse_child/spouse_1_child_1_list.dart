@@ -31,7 +31,10 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   @override
   Widget build(BuildContext context) {
     forms.clear();
-    for (int i = 0; i < children.length; i++) {
+    for (int i = 0; i < childCount.toInt(); i++) {
+      setState(() {
+        children.add(Person());
+      });
       forms.add(PersonForm(
         person: children[i],
         onDelete: () => onDelete(i),
@@ -54,11 +57,7 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
           ),
         ),
 
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.mainColor,
-          child: Icon(Icons.add),
-          onPressed: onAdd,
-        ),
+
       ),
     );
   }
@@ -69,11 +68,6 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
     });
   }
 
-  void onAdd() {
-    setState(() {
-      children.add(Person());
-    });
-  }
 
   void onSave() {
     forms.forEach((form) => form.isValid());
