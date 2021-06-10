@@ -36,3 +36,32 @@ c- User manual
 7- Test
 a- Unit test
 b- Stress test
+
+___
+
+Example dynamic builder
+
+
+  _addItem() {
+    setState(() {
+      value = value + 1;
+    });
+  }
+
+
+ListView.builder(
+          itemCount: this.value,
+          itemBuilder: (context, index) => this._buildRow(index)),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addItem,
+        child: Icon(Icons.add),
+      ),
+
+      ___
+
+        _buildRow(int index) {
+    return Text("Item " + index.toString());
+  }
+
+

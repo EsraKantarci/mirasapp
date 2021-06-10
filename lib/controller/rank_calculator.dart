@@ -1,10 +1,9 @@
 import 'dart:math';
 
 class Calculator {
-  Calculator({this.height, this.weight});
+  Calculator({this.answers});
 
-  final int height;
-  final int weight;
+  final List<String> answers;
 
   double _bmi;
 

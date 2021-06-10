@@ -14,14 +14,8 @@ class MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<MyList> {
-  int value = 2;
-  int childCount = 0;
-
-  _addItem() {
-    setState(() {
-      value = value + 1;
-    });
-  }
+  int value = 0;
+  double childCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +31,12 @@ class _MyListState extends State<MyList> {
 
           buildQuestion("Kaç çocuğu var?"),
           Padding(
-            padding: const EdgeInsets.all(40.0),
+            padding: const EdgeInsets.symmetric(horizontal: 80),
             child: SpinBox(
-              min: 1,
+              min: 0,
               max: 40,
               value: 0,
-              onChanged: (value) => childCount = value as int,
+              onChanged: (value) => childCount = value,
             ),
           ),
         ],
@@ -52,9 +46,6 @@ class _MyListState extends State<MyList> {
     );
   }
 
-  _buildRow(int index) {
-    return Text("Item " + index.toString());
-  }
 
   Container buildRadioButton1(String text, int val, int group) {
     return Container(
@@ -66,7 +57,7 @@ class _MyListState extends State<MyList> {
               groupValue: group,
               onChanged: (value) {
                 answer1 = value;
-                GlobalState.instance.answers.hasGrandparent = value;
+                GlobalState.instance.answers.hasChild = value;
                 setState(() {});
               }),
           Text(
@@ -78,18 +69,6 @@ class _MyListState extends State<MyList> {
     );
   }
 }
-
-/*
-ListView.builder(
-          itemCount: this.value,
-          itemBuilder: (context, index) => this._buildRow(index)),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _addItem,
-        child: Icon(Icons.add),
-      ),
- */
-
 
 SizedBox buildSpace() => SizedBox(
   height: 10,
