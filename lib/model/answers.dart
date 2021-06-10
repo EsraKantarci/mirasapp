@@ -15,7 +15,7 @@ class Answers {
   String motherName;
   String fatherName;
 
-
+  int childCount;
 
   //defaults:
   Answers(
@@ -23,17 +23,18 @@ class Answers {
       this.spouseName = "",
       this.motherName = "",
       this.fatherName = "",
-      this.answers, //cannot be blank
+      this.childCount = -1,
       this.hasSpouse = -1,
       this.hasChild = -1,
       this.hasParent = -1,
       this.hasSecondRank = -1,
       this.hasGrandparent = -1,
-      this.hasThirdRank});
+      this.hasThirdRank,
+        this.answers, });
 
   //in order to show inside app
   @override
   String toString() {
-    return 'Answers{name: $name, answers: $answers, hasSpouse: $hasSpouse, hasChild: $hasChild, hasParent: $hasParent, hasGrandparent: $hasGrandparent, spouseName: $spouseName, motherName: $motherName, fatherName: $fatherName}';
+    return 'Answers{name: $name, answers: $answers, hasSpouse: $hasSpouse, hasChild: $hasChild, childCount = $childCount, hasParent: $hasParent, hasGrandparent: $hasGrandparent, spouseName: $spouseName, motherName: $motherName, fatherName: $fatherName}';
   }
 }

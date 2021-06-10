@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/start_page.dart';
 
@@ -24,6 +25,8 @@ class _ResultPageState extends State<ResultPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: (<Widget>[
+
+            Text(GlobalState.instance.answers.toString()),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(

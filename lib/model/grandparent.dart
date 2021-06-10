@@ -4,6 +4,7 @@ class Grandparent {
   int id;
   int relation; // mother:0 - father:1
   bool isAlive;
+  int childCount;
 
   Grandparent({this.name = "",
     this.side = "",
