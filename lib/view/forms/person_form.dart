@@ -70,8 +70,8 @@ class _PersonFormState extends State<PersonForm> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        buildRadioButton1("Evet", 1, answer1, count),
-                        buildRadioButton1("Hayır", 0, answer1, count),
+                        buildRadioButton1("Evet", 1, answer1),
+                        buildRadioButton1("Hayır", 0, answer1),
                       ],
                     ),
                   ),
@@ -97,7 +97,7 @@ class _PersonFormState extends State<PersonForm> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: buildElevatedButton(
-                              context, answer1, count, "OK", "Bu kişi kaydedildi"),
+                              context, answer1, count, "OK", "Bu kişi kaydedildi", widget.person),
                         ),
                       ),
                     ),
@@ -112,15 +112,16 @@ class _PersonFormState extends State<PersonForm> {
   }
 
   Widget buildElevatedButton(
-      BuildContext context, int answer1, int count, String text, String saveText) {
+      BuildContext context, int answer1, int count, String text, String saveText, Person person) {
     return ElevatedButton(
       child: Text(savingText),
       onPressed: () {
         setState(() {
-          widget.person.id = count;
-          widget.person.isAlive = answer1;
-          widget.person.parentId = 1; // Şimdilik miras bırakana bağlı olsun
-          widget.person.rank = 1;
+          // parent id 1 şimdilik
+          person = Person(id: GlobalState.instance.idMatch.length + 1,
+              name: widget.person.name, isAlive: answer1, parentId: 1,
+              rank: 1, childCount: widget.person.childCount);
+          GlobalState.instance.idMatch.add(widget.person.name);
           iconStatus = text; // sonra bunu ikona çeviririz
           savingText = saveText;
         });
@@ -157,7 +158,7 @@ class _PersonFormState extends State<PersonForm> {
     );
   }
 
-  Container buildRadioButton1(String text, int val, int group, int count) {
+  Container buildRadioButton1(String text, int val, int group) {
     return Container(
       width: 150,
       child: Row(
@@ -167,9 +168,8 @@ class _PersonFormState extends State<PersonForm> {
               groupValue: group,
               onChanged: (value) {
                 answer1 = value;
-                GlobalState.instance.children[count].isAlive = value;
+                widget.person.isAlive = value;
                 setState(() {
-                  count = count + 1;
                 });
               }),
           Text(

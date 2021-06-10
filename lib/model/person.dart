@@ -8,7 +8,6 @@ class Person {
   int parentId;
   int rank; // spouse: 0, descendent:1, parent/second: 2, gparent/third:3
   int childCount;
-  double rate;
 
   Person(
   {this.name = "",
@@ -19,7 +18,6 @@ class Person {
   this.hasParent = -1,
   this.hasChild = -1,
   this.childCount = -1,
-  this.rate = -1
   });
   }
 

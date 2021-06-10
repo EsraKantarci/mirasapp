@@ -14,8 +14,8 @@ class GlobalState{
   Answers answers = Answers();
 
   List<Person> children = [];
-  List<Parent> parents = [];
   List<Person> persons= [];
+  List<String> idMatch = [];
 
   set(dynamic key , dynamic value ) => _data[key] = value;
   get(dynamic key) => _data[key];

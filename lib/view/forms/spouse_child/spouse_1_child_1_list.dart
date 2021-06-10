@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
+import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
 
 import '../person_form.dart';
@@ -45,17 +46,36 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
       home: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: buildAppBar(),
-        body: children.length <= 0
-            ? Center(
-          child: Text(childCount.toString()),
-        )
-            : ListView.builder(
-          itemCount: children.length,
-          itemBuilder: (_, i) => PersonForm(
-            person: children[i],
-            onDelete: () => onDelete(i),
+        body:
+          SingleChildScrollView(
+            physics: ScrollPhysics(),
+            child: Column(
+              children: <Widget>[
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: children.length,
+                itemBuilder: (_, i) => PersonForm(
+                  person: children[i],
+                ),
+              ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: buildElevatedButton(
+                            context),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
 
 
       ),
@@ -100,7 +120,7 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => StartPage()),
+          MaterialPageRoute(builder: (context) => ResultPage()),
         );
       },
       style: ElevatedButton.styleFrom(
