@@ -66,9 +66,9 @@ class _MyListState extends State<MyList> {
         var route;
         if (answer1 == 1 && answer2 == 1) {
           GlobalState.instance.answers.childCount = childCount.toInt();
-          route = ResultPage();
+          route = Spouse1Child1();
         } else {
-          route = ResultPage();
+          route = Spouse1Child1();
         }
         Navigator.push(
           context,
