@@ -69,8 +69,8 @@ class _PersonFormState extends State<PersonForm> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        buildRadioButton1("Evet", 1, answer1),
-                        buildRadioButton1("Hayır", 0, answer1),
+                        buildRadioButton1("Evet", 1, answer1, count),
+                        buildRadioButton1("Hayır", 0, answer1, count),
                       ],
                     ),
                   ),
@@ -82,16 +82,62 @@ class _PersonFormState extends State<PersonForm> {
                       max: 40,
                       value: 0,
                       onChanged: (value) => widget.person.childCount = value.toInt(),
+
+                      // widget.person.childCount = value.toInt(),
+
                     ),
                   ),
 
-
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width*0.5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: buildElevatedButton(context, answer1, count, "OK"),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+
+  Widget buildElevatedButton(BuildContext context, int answer1, int count, String text) {
+    return ElevatedButton(
+      child: Text('Bu kişiyi listeye kaydet.'),
+      onPressed: () {
+        setState(() {
+          widget.person.id = count;
+          widget.person.isAlive = answer1;
+          widget.person.parentId = 1; // Şimdilik
+          widget.person.rank = 1;
+          iconStatus = text;
+
+        });
+      },
+
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(100),
+            ),
+          ),
+          padding: EdgeInsets.all(5),
+          primary: AppColors.mainColor.withOpacity(0.8),
+          onPrimary: AppColors.backgroundColor,
+          textStyle: TextStyle(
+              color: AppColors.mainColor,
+              fontSize: 15,
+              fontWeight: FontWeight.bold)),
     );
   }
 
@@ -111,7 +157,7 @@ class _PersonFormState extends State<PersonForm> {
     );
   }
 
-  Container buildRadioButton1(String text, int val, int group) {
+  Container buildRadioButton1(String text, int val, int group, int count) {
     return Container(
       width: 150,
       child: Row(
@@ -121,7 +167,11 @@ class _PersonFormState extends State<PersonForm> {
               groupValue: group,
               onChanged: (value) {
                 answer1 = value;
-                setState(() {GlobalState.instance.children[0].isAlive = value;});
+               setState(() {
+                 GlobalState.instance.children[count].isAlive = value;
+               GlobalState.instance.children[count].id = count;
+               count = count + 1;
+               });
               }),
           Text(
             text,
