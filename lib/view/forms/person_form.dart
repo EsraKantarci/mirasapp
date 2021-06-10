@@ -60,7 +60,7 @@ class _PersonFormState extends State<PersonForm> {
                       decoration: InputDecoration(
                           labelText: "Ebeveynin İsmi: ",
                           hintText:
-                          "Miras bırakanın haricindeki ebeveynin ismini giriniz"),
+                          "Kişinin "),
                     ),
                   ),
                   Padding(

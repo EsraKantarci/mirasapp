@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/disclaimer_page.dart';
+import 'package:miras/view/dynamic_list.dart';
 import 'package:miras/view/start_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -218,7 +219,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => StartPage()),
+                MaterialPageRoute(builder: (context) => MyList()),
               );
             },
             style: ElevatedButton.styleFrom(
