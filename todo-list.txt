@@ -65,3 +65,16 @@ ListView.builder(
   }
 
 
+____________
+
+childlara validate ve form kaydı için:
+
+  void onAdd() {
+    setState(() {
+      children.add(Person());
+    });
+  }
+
+  void onSave() {
+    forms.forEach((form) => form.isValid());
+  }

@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
 
-// TODO: Altsoy, üstsoy ekleme, kabul etme. Yaşıyor mu? Kaç çocuğu var?
+// TODO: Sağ üstte id ya da countı yazdır
 
 typedef OnDelete(); //will be defined in another page
 
@@ -23,7 +24,7 @@ class PersonForm extends StatefulWidget {
 
 class _PersonFormState extends State<PersonForm> {
   final form = GlobalKey<FormState>();
-  int count = 0;
+  var count = 0;
   int answer1 = -1;
   @override
   Widget build(BuildContext context) {
@@ -42,8 +43,7 @@ class _PersonFormState extends State<PersonForm> {
                 backgroundColor: AppColors.mainColor.withOpacity(0.8),
                 actions: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: widget.onDelete,
+                    icon: Text("(Ç)"),
                   ),
                 ],
               ),
@@ -61,19 +61,7 @@ class _PersonFormState extends State<PersonForm> {
                           hintText: "Çocuğun ismini giriniz"),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          "Bu kişi hala hayatta mı?",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black87,
-                          ),
-                        )),
-                  ),
+                  buildQuestion("Bu kişi hala hayatta mı?"),
                   Align(
                     alignment: Alignment.topLeft,
                     child: Column(
@@ -84,6 +72,16 @@ class _PersonFormState extends State<PersonForm> {
                       ],
                     ),
                   ),
+                  buildQuestion("Bu kişinin kaç çocuğu var?"),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: SpinBox(
+                      min: 0,
+                      max: 40,
+                      value: 0,
+                      onChanged: (value) => count = value.toInt(),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -91,6 +89,22 @@ class _PersonFormState extends State<PersonForm> {
         ),
       ),
     );
+  }
+
+  Padding buildQuestion(String text) {
+    return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        text,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black87,
+                        ),
+                      )),
+                );
   }
 
   Container buildRadioButton1(String text, int val, int group) {
@@ -123,4 +137,6 @@ class _PersonFormState extends State<PersonForm> {
     }
     return valid;
   }
+
 }
+
