@@ -23,6 +23,6 @@ class Person {
         this.hasParent = false,
         this.hasChild = false,
         this.childCount = -1,
-        this. rate = -1
+        this.rate = -1
       });
 }
