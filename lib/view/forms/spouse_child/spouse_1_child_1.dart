@@ -55,7 +55,8 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
                   min: 0,
                   max: 40,
                   value: childCount,
-                  onChanged: (value) => childCount = value,
+                  onChanged: (value) =>
+                  GlobalState.instance.answers.childCount = value.toInt(),
                 ),
               ),
               buildSpace(),
@@ -141,7 +142,6 @@ Widget buildElevatedButton(BuildContext context, double childCount) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
-      GlobalState.instance.answers.childCount = childCount.toInt();
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Spouse1Child1List()),

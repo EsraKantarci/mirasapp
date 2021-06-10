@@ -7,10 +7,12 @@
 //go to calculation
 
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/child.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/child_form.dart';
 import 'package:miras/view/start_page.dart';
+
+import '../person_form.dart';
 
 // TODO: Add "Sonraki adım" button at the bottom.
 
@@ -24,13 +26,14 @@ class Spouse1Child1List extends StatefulWidget {
 class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   List<Person> children = [];
   List<PersonForm> forms = [];
+  int childCount = GlobalState.instance.answers.childCount;
 
   @override
   Widget build(BuildContext context) {
     forms.clear();
     for (int i = 0; i < children.length; i++) {
       forms.add(PersonForm(
-        child: children[i],
+        person: children[i],
         onDelete: () => onDelete(i),
       ));
     }
@@ -41,12 +44,12 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
         appBar: buildAppBar(),
         body: children.length <= 0
             ? Center(
-          child: Text("[+] butonuna tıklayarak çocuk ekleyebilirsiniz."),
+          child: Text(childCount.toString()),
         )
             : ListView.builder(
           itemCount: children.length,
           itemBuilder: (_, i) => PersonForm(
-            child: children[i],
+            person: children[i],
             onDelete: () => onDelete(i),
           ),
         ),

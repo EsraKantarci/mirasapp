@@ -24,7 +24,7 @@ class PersonForm extends StatefulWidget {
 class _PersonFormState extends State<PersonForm> {
   final form = GlobalKey<FormState>();
   int count = 0;
-  int tester1 = -1;
+  int answer1 = -1;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,7 +37,7 @@ class _PersonFormState extends State<PersonForm> {
             children: <Widget>[
               AppBar(
                 leading: Icon(Icons.people_alt),
-                title: Text("Kişi Ekleme Formu "),
+                title: Text("Kişi Ekleme Formu"),
                 centerTitle: true,
                 backgroundColor: AppColors.mainColor.withOpacity(0.8),
                 actions: <Widget>[
@@ -49,20 +49,6 @@ class _PersonFormState extends State<PersonForm> {
               ),
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      onChanged: (a)=>GlobalState.instance.children[0].parentName = a,
-                      initialValue: widget.person.parentName,
-                      onSaved: (val) => widget.person.parentName = val,
-                      validator: (val) =>
-                      val.length > 1 ? null : "Lütfen isim giriniz.",
-                      decoration: InputDecoration(
-                          labelText: "Ebeveynin İsmi: ",
-                          hintText:
-                          "Kişinin "),
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
@@ -80,7 +66,7 @@ class _PersonFormState extends State<PersonForm> {
                     child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Çocuk hala yaşıyor mu?",
+                          "Bu kişi hala hayatta mı?",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
@@ -93,8 +79,8 @@ class _PersonFormState extends State<PersonForm> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        buildRadioButton1("Evet", 1, tester1),
-                        buildRadioButton1("Hayır", 0, tester1),
+                        buildRadioButton1("Evet", 1, answer1),
+                        buildRadioButton1("Hayır", 0, answer1),
                       ],
                     ),
                   ),
@@ -116,7 +102,7 @@ class _PersonFormState extends State<PersonForm> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                tester1 = value;
+                answer1 = value;
                 setState(() {});
               }),
           Text(
