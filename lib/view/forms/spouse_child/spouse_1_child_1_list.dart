@@ -8,7 +8,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/child.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/start_page.dart';
 
@@ -27,7 +27,6 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   List<Person> children = [];
   List<PersonForm> forms = [];
   int childCount = GlobalState.instance.answers.childCount;
-  var count = 0;
 
   @override
   Widget build(BuildContext context) {

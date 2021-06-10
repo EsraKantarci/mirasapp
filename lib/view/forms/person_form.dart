@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/child.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
 
 // TODO: Sağ üstte id ya da countı yazdır
@@ -26,6 +26,8 @@ class _PersonFormState extends State<PersonForm> {
   final form = GlobalKey<FormState>();
   var count = 0;
   int answer1 = -1;
+  var iconStatus = "?";
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,7 +45,7 @@ class _PersonFormState extends State<PersonForm> {
                 backgroundColor: AppColors.mainColor.withOpacity(0.8),
                 actions: <Widget>[
                   IconButton(
-                    icon: Text("(Ç)"),
+                    icon: Text(iconStatus),
                   ),
                 ],
               ),
@@ -52,8 +54,8 @@ class _PersonFormState extends State<PersonForm> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
-                      initialValue: widget.person.childName,
-                      onSaved: (val) => widget.person.childName = val,
+                      initialValue: widget.person.name,
+                      onSaved: (val) => widget.person.name = val,
                       validator: (val) =>
                       val.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(
@@ -79,9 +81,11 @@ class _PersonFormState extends State<PersonForm> {
                       min: 0,
                       max: 40,
                       value: 0,
-                      onChanged: (value) => count = value.toInt(),
+                      onChanged: (value) => widget.person.childCount = value.toInt(),
                     ),
                   ),
+
+
                 ],
               ),
             ],
@@ -93,18 +97,18 @@ class _PersonFormState extends State<PersonForm> {
 
   Padding buildQuestion(String text) {
     return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        text,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black87,
-                        ),
-                      )),
-                );
+      padding: const EdgeInsets.all(8.0),
+      child: Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: Colors.black87,
+            ),
+          )),
+    );
   }
 
   Container buildRadioButton1(String text, int val, int group) {
@@ -117,7 +121,7 @@ class _PersonFormState extends State<PersonForm> {
               groupValue: group,
               onChanged: (value) {
                 answer1 = value;
-                setState(() {});
+                setState(() {GlobalState.instance.children[0].isAlive = value;});
               }),
           Text(
             text,

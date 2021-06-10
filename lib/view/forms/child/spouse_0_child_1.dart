@@ -7,9 +7,9 @@
 //go to calculation
 
 import 'package:flutter/material.dart';
-import 'package:miras/model/child.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/child_form.dart';
+import 'package:miras/view/forms/person_form.dart';
 import 'package:miras/view/start_page.dart';
 
 // TODO: Add "Sonraki adım" button at the bottom.
@@ -30,7 +30,7 @@ class _Spouse0Child1State extends State<Spouse0Child1> {
     forms.clear();
     for (int i = 0; i < children.length; i++) {
       forms.add(PersonForm(
-        child: children[i],
+        person: children[i],
         onDelete: () => onDelete(i),
       ));
     }
@@ -46,7 +46,7 @@ class _Spouse0Child1State extends State<Spouse0Child1> {
             : ListView.builder(
                 itemCount: children.length,
                 itemBuilder: (_, i) => PersonForm(
-                  child: children[i],
+                  person: children[i],
                   onDelete: () => onDelete(i),
                 ),
               ),

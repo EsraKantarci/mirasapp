@@ -9,10 +9,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/child.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/model/answers.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/child_form.dart';
+import 'package:miras/view/forms/person_form.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1_list.dart';
 import 'package:miras/view/start_page.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/answers.dart';
-import 'package:miras/model/child.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/model/parent.dart';
 
 //https://www.youtube.com/watch?v=XXScUShqlJc reference
