@@ -56,9 +56,9 @@ class _PersonFormState extends State<PersonForm> {
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
                       initialValue: widget.person.name,
-                      onSaved: (val) => widget.person.name = val,
-                      validator: (val) =>
-                          val.length > 1 ? null : "Lütfen isim giriniz.",
+                      onSaved: (value) => widget.person.name = value,
+                      validator: (value) =>
+                          value.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(
                           labelText: "Çocuğun İsmi: ",
                           hintText: "Çocuğun ismini giriniz"),
@@ -118,10 +118,10 @@ class _PersonFormState extends State<PersonForm> {
       onPressed: () {
         setState(() {
           // parent id 1 şimdilik
-          person = Person(id: GlobalState.instance.idMatch.length + 1,
-              name: widget.person.name, isAlive: answer1, parentId: 1,
-              rank: 1, childCount: widget.person.childCount);
-          GlobalState.instance.idMatch.add(widget.person.name);
+           GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
+              name: person.name, isAlive: answer1, parentId: 1,
+              rank: 1, childCount: person.childCount));
+          GlobalState.instance.idMatch.add(person.name);
           iconStatus = text; // sonra bunu ikona çeviririz
           savingText = saveText;
         });

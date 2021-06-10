@@ -26,7 +26,9 @@ class _ResultPageState extends State<ResultPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: (<Widget>[
 
-            Text(GlobalState.instance.answers.toString()),
+            Text(GlobalState.instance.people[0].toString()),
+
+
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(

@@ -4,6 +4,9 @@ UI-Modifications:
 -Grandparent screen should get better
 -Overflows: resizeToAvoidBottomPadding: false to scaffold
 
+------
+ÇOCUĞUN İSMİNİ ALAMIYORUM. widget.person.name işlemiyor. person_form'a tekrar bakmam lazım.
+-----
 
 1- Child CARD:
 a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view.

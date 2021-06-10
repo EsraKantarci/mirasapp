@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/answers.dart';
 import 'package:miras/model/person.dart';
-import 'package:miras/model/parent.dart';
 
 //https://www.youtube.com/watch?v=XXScUShqlJc reference
 
@@ -14,7 +13,7 @@ class GlobalState{
   Answers answers = Answers();
 
   List<Person> children = [];
-  List<Person> persons= [];
+  List<Person> people = [];
   List<String> idMatch = [];
 
   set(dynamic key , dynamic value ) => _data[key] = value;

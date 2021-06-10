@@ -19,5 +19,11 @@ class Person {
   this.hasChild = -1,
   this.childCount = -1,
   });
+
+
+  @override
+  String toString() {
+    return 'Person{id: $id, name: $name, isAlive: $isAlive, hasParent: $hasParent, hasChild: $hasChild, parentId: $parentId, rank: $rank, childCount: $childCount}';
+  }
   }
 
