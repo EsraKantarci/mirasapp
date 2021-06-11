@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
+import 'package:miras/controller/rank_calculator.dart';
 import 'package:miras/model/answers.dart';
 
 import 'package:flutter/material.dart';
@@ -96,10 +97,16 @@ Widget buildElevatedButton(BuildContext context, Answers testAnswer) {
       GlobalState.instance.people.add(Person(id: 1, name: testAnswer.spouseName, isAlive: 1, rank:0, childCount: 2));
       GlobalState.instance.people.add(Person(id: 2, name: "Çocuk1", isAlive: 1, rank:1, childCount: 1));
       GlobalState.instance.people.add(Person(id: 3, name: "Çocuk2", isAlive: 0, rank:1, childCount: 3));
+
+      Calculator calc = Calculator(answers: testAnswer, people: GlobalState.instance.people);
+
       Navigator.push(
         context,
         //switch case?
-        MaterialPageRoute(builder: (context) => ResultPage()),
+        MaterialPageRoute(builder: (context) => ResultPage(
+          calculatedResults: calc.calculateRates(GlobalState.instance.people),
+          resultText: calc.getResult(),
+        )),
       );
     },
     style: ElevatedButton.styleFrom(

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
+import 'package:miras/controller/rank_calculator.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/start_page.dart';
 
 
 // TODO: 2 ListViews: PAY - SAKLIPAY
-class ResultPage extends StatefulWidget {
-  ResultPage({Key key}) : super(key: key);
+class ResultPage extends StatelessWidget {
+  ResultPage(
+      {
+        @required this.calculatedResults,
+        @required this.resultText});
 
-  @override
-  _ResultPageState createState() => _ResultPageState();
-}
+  final String calculatedResults;
+  final String resultText;
 
-class _ResultPageState extends State<ResultPage> {
-  //in second sprint we will get them inside the Answer list.
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +27,11 @@ class _ResultPageState extends State<ResultPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: (<Widget>[
 
-            Text(GlobalState.instance.answers.toString()),
+            //Text(GlobalState.instance.answers.toString()),
 
-            Text(GlobalState.instance.people.toString()),
+            //Text(GlobalState.instance.people.toString()),
+
+            Text(calculatedResults.toString()),
 
 
             Align(

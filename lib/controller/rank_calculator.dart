@@ -1,32 +1,38 @@
 import 'dart:math';
+import 'package:miras/model/answers.dart';
+import 'package:miras/model/person.dart';
+
 import 'global_state.dart';
 
 class Calculator {
-  Calculator({this.answers});
+  Calculator({this.answers, this.people});
 
-  final List<String> answers;
+  final Answers answers;
+  final List<Person> people;
+
   String result = "";
 
-  double _bmi;
+  double rates;
 
-  String calculateBMI() {
-    //_bmi = weight / pow(height / 100, 2);
-    return _bmi.toStringAsFixed(1);
-  }
+  String calculateRates(List<Person> people) {
+    return people.length.toString();
 
-  String getResult() {
-    if (GlobalState.instance.answers.hasSpouse == 1){
-      result = "Evli,";
+    /*for (final i in people) {
+      return('$i' + "Bitti");
+      }*/
+      //rates =
+      // return rates.toStringAsFixed(1);
+    }
+
+    String getResult() {
+      if (GlobalState.instance.answers.hasSpouse == 1) {
+        result = "Evli,";
+      }
+    }
+
+    String getInterpretation() {
+      return "";
+      /*if (rates >= 25) {
+      return "";}*/
     }
   }
-
-  String getInterpretation() {
-    if (_bmi >= 25) {
-      return 'You have a higher than normal body weight. Try to exercise more.';
-    } else if (_bmi >= 18.5) {
-      return 'You have a normal body weight. Good job!';
-    } else {
-      return 'You have a lower than normal body weight. You can eat a bit more.';
-    }
-  }
-}
