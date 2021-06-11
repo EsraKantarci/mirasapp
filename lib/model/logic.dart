@@ -1,6 +1,10 @@
 RateOperator(int rank1, int rank2, double rate1, double rate2,
     double hiddenRate1, double hiddenRate2) {
 
+  // Bunlara return eklemem lazım, bu logici böyle kullanamam.
+  // hatta rank calculatorda yer alsa daha mantıklı.
+
+
   /*
   rank = 0 => spouse
   rank = 1 => child
