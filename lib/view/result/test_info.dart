@@ -93,6 +93,7 @@ Widget buildElevatedButton(BuildContext context, Answers testAnswer) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      GlobalState.instance.people.removeRange(0, GlobalState.instance.people.length);
       GlobalState.instance.answers = testAnswer;
       GlobalState.instance.people.add(Person(id: 1, name: testAnswer.spouseName, isAlive: 1, rank:0, childCount: 2));
       GlobalState.instance.people.add(Person(id: 2, name: "Çocuk1", isAlive: 1, rank:1, childCount: 1));
