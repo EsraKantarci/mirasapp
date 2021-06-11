@@ -5,6 +5,7 @@ import 'package:miras/model/answers.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/view/forms/child/spouse_0_child_1.dart';
 import 'package:miras/view/result/result.dart';
 
@@ -92,6 +93,9 @@ Widget buildElevatedButton(BuildContext context, Answers testAnswer) {
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       GlobalState.instance.answers = testAnswer;
+      GlobalState.instance.people.add(Person(id: 1, name: testAnswer.spouseName, isAlive: 1, rank:0, childCount: 2));
+      GlobalState.instance.people.add(Person(id: 2, name: "Çocuk1", isAlive: 1, rank:1, childCount: 1));
+      GlobalState.instance.people.add(Person(id: 3, name: "Çocuk2", isAlive: 0, rank:1, childCount: 3));
       Navigator.push(
         context,
         //switch case?

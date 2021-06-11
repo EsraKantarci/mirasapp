@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'global_state.dart';
 
 class Calculator {

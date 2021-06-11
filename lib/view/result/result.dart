@@ -28,6 +28,8 @@ class _ResultPageState extends State<ResultPage> {
 
             Text(GlobalState.instance.answers.toString()),
 
+            Text(GlobalState.instance.people.toString()),
+
 
             Align(
               alignment: Alignment.bottomCenter,
