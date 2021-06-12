@@ -98,6 +98,11 @@ Widget buildElevatedButton(BuildContext context, Answers testAnswer) {
       GlobalState.instance.people.add(Person(id: 1, name: testAnswer.spouseName, isAlive: 1, rank:0, childCount: 2));
       GlobalState.instance.people.add(Person(id: 2, name: "Çocuk1", isAlive: 1, rank:1, childCount: 1));
       GlobalState.instance.people.add(Person(id: 3, name: "Çocuk2", isAlive: 0, rank:1, childCount: 3));
+      GlobalState.instance.people.add(Person(id: 4, name: "Anne", isAlive: 1, rank:2, childCount: 2));
+      GlobalState.instance.people.add(Person(id: 5, name: "Baba", isAlive: 0, rank:2, childCount: 2));
+      GlobalState.instance.people.add(Person(id: 6, name: "Kardeş", isAlive: 0, rank:2, childCount: 0));
+      GlobalState.instance.people.add(Person(id: 7, name: "Dede", isAlive: 0, rank:3, childCount: 2));
+      GlobalState.instance.people.add(Person(id: 8, name: "Dayı", isAlive: 1, rank:3, childCount: 0));
 
       Calculator calc = Calculator(answers: testAnswer, people: GlobalState.instance.people);
 
