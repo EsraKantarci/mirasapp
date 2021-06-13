@@ -14,12 +14,19 @@ class Calculator {
 
   double rates;
 
-  String calculateRates(List<Person> people) {
-    return people.length.toString();
+  Iterable<Person> peopleIterable;
 
-    /*for (final i in people) {
-      return('$i' + "Bitti");
-      }*/
+  String calculateRates(List<Person> people) {
+    peopleIterable = people.toList();
+    var len = people.length.toString();
+    var lenIt = peopleIterable.length.toString();
+
+    for (String key in peopleIterable.) {
+      if (example[key] == 2 && key == 'B') {
+        break;
+      }
+    }
+
       //rates =
       // return rates.toStringAsFixed(1);
     }

@@ -15,14 +15,12 @@ c- Dynamically changed card appbar title --done---
 
 2- Listing:
 a- Child + parental information should be listed on the top of the screen
-b- Count should be kept --done--
 
 3- Result Page:
-a- Listing shares / legal shares by name-parental info-rate
 b- Save as PDF or PNG
 
 4- Logic:
-a- Enumerated ranks --done---
+a- List iterable choices
 
 5- UI:
 a- Remember disclaimer page approval
