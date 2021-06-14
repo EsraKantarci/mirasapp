@@ -1,3 +1,8 @@
+Problems:
+
+-Eyeglasses got broken, cannot stare to screen with current eyeglasses without getting migraine. A little off time is needed.
+
+
 
 TO-DO list:
 UI-Modifications:
