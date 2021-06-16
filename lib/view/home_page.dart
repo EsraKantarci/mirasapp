@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/disclaimer_page.dart';
-import 'package:miras/view/dynamic_list.dart';
+import 'package:miras/view/others/blog.dart';
+import 'package:miras/view/others/dynamic_list.dart';
 import 'package:miras/view/result/test_info.dart';
 import 'package:miras/view/start_page.dart';
 
@@ -150,19 +151,35 @@ class _HomePageState extends State<HomePage> {
 
   Container buildScrollable() {
     return Container(
-      height: 130,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(left: 30),
-        physics: BouncingScrollPhysics(),
-        children: <Widget>[
-          buildItem("assets/images/mid.png", "Vasiyetname"),
-          buildItem("assets/images/mid.png", "Reddi Miras"),
-          buildItem("assets/images/mid.png", "Miras Davası"),
-          buildItem("assets/images/mid.png", "Feragatname"),
-        ],
-      ),
-    );
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BlogPage(),
+              ),
+            );
+          },
+          child: Container(
+            height: 130,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.only(left: 30),
+              physics: BouncingScrollPhysics(),
+              children: <Widget>[
+                buildItem("assets/images/mid.png", "Vasiyetname"),
+                buildItem("assets/images/mid.png", "Reddi Miras"),
+                buildItem("assets/images/mid.png", "Miras Davası"),
+                buildItem("assets/images/mid.png", "Feragatname"),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ));
   }
 
   Column buildHeaderDetails() {
@@ -192,10 +209,10 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            // Feedback
-                  "KVKK'ya uygun olarak, uygulamada alınan bilgilerin hiçbiri tarafımızda saklanmamaktadır. "
-                  "Kullanım konusunda sorun yaşıyor iseniz, aşağıda yer alan Kullanım Kılavuzumuzu okumanızı"
-                  " tavsiye ederiz.",
+              // Feedback
+              "KVKK'ya uygun olarak, uygulamada alınan bilgilerin hiçbiri tarafımızda saklanmamaktadır. "
+              "Kullanım konusunda sorun yaşıyor iseniz, aşağıda yer alan Kullanım Kılavuzumuzu okumanızı"
+              " tavsiye ederiz.",
               style: TextStyle(
                 color: Colors.white,
               )),

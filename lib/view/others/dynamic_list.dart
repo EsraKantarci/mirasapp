@@ -5,7 +5,7 @@ import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/result/result.dart';
 
-import 'forms/spouse_grandparent/spouse_1_grandparent_1.dart';
+import '../forms/spouse_grandparent/spouse_1_grandparent_1.dart';
 
 void main() => runApp(new MaterialApp(home: MyList()));
 
