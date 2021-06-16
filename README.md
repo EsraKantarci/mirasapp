@@ -18,3 +18,5 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 - Calculation logic on recursive
 - Data access for ranks
 - File writing 
+- Github page
+- Web page for guide
