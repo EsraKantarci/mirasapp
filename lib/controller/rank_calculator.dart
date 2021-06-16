@@ -40,8 +40,35 @@ class Calculator {
         }
       }
         else{ //person is dead. let's check the ranks.
+
           if(person.hasChild == 1){
             int id = person.id;
+            for(int j=1; j<len; j++){
+              Person child = peopleIterable[j];
+              if(child.parentId == id){
+                if(child.isAlive == 1){
+                  inheritors[child.id] = child.rank;
+                }
+                else{
+
+
+
+
+
+                  /*
+                  // child is dead, but maybe child has child.
+                  if(child.hasChild == 1) {
+                    id = child.id;
+                  }
+                  else{
+                    // maybe parent had another child
+                    continue;
+                  }
+
+                   */
+                }
+              }
+            }
 
           }
       }
