@@ -115,7 +115,7 @@ Widget buildImage(BuildContext context) {
     child: Align(
       alignment: Alignment.center,
       child:
-      Image.asset("assets/images/ornek-vasiyetname.jpg", width: 100.0, height: 100.0)),
+      Image.asset("assets/images/vasiyet.png", fit: BoxFit.fitWidth)),
 
   );
 }
