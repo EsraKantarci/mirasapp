@@ -12,95 +12,59 @@ class Calculator {
 
   String result = "";
   Map<int, int> inheritors;
-  Map<String, int> deceaseds;
+  Map<int, int> deceaseds;
   double rates;
   int eligibleRank = 3;
 
   Map<int, Person> peopleIterable;
 
   String calculateRates(List<Person> people) {
-    peopleIterable= people.asMap();
+    peopleIterable = people.asMap();
     int len = peopleIterable.length;
     Person person;
     Person spouse = peopleIterable[0];
     //we need to add spouse in any case. Rates will change.
     inheritors[spouse.id] = spouse.rank;
 
-
     //besides spouse:
-    for(int i=1; i<len; i++){
+    for (int i = 1; i < len; i++) {
       person = peopleIterable[i];
-      if(person.isAlive == 1) {
+
+      if (person.isAlive == 1) {
         if (person.rank <= eligibleRank) {
           eligibleRank = person.rank;
           inheritors[person.id] = person.rank;
-        }
-        else {
+        } else {
+          //keep checking
           continue;
         }
-      }
-        else{ //person is dead. let's check the ranks.
-
-          if(person.hasChild == 1){
-            int id = person.id;
-            for(int j=1; j<len; j++){
-              Person child = peopleIterable[j];
-              if(child.parentId == id){
-                if(child.isAlive == 1){
-                  inheritors[child.id] = child.rank;
-                }
-                else{
-
-
-
-
-
-                  /*
-                  // child is dead, but maybe child has child.
-                  if(child.hasChild == 1) {
-                    id = child.id;
-                  }
-                  else{
-                    // maybe parent had another child
-                    continue;
-                  }
-
-                   */
-                }
-              }
-            }
-
-          }
-      }
-
+      } else {
+        //person is dead. let's check the other ranks and
+        // add the person into deceseads so we can check children then
+        deceaseds[person.id] = person.rank;
       }
     }
+  }
 
+  //rates =
+  // return rates.toStringAsFixed(1);
 
-
-      //rates =
-      // return rates.toStringAsFixed(1);
-
-
-    String getResult() {
-      if (GlobalState.instance.answers.hasSpouse == 1) {
-        result = "Evli,";
-      }
+  String getResult() {
+    if (GlobalState.instance.answers.hasSpouse == 1) {
+      result = "Evli,";
     }
+  }
 
-    String getInterpretation() {
-      return "";
-      /*if (rates >= 25) {
+  String getInterpretation() {
+    return "";
+    /*if (rates >= 25) {
       return "";}*/
-    }
-
+  }
 
   RateOperator(int rank1, int rank2, double rate1, double rate2,
       double hiddenRate1, double hiddenRate2) {
-
     // Bunlara return eklemem lazım, bu logici böyle kullanamam.
     // hatta rank calculatorda yer alsa daha mantıklı.
-
 
     /*
   rank = 0 => spouse
@@ -169,5 +133,4 @@ class Calculator {
       print("Log: Uygun mirasçı bulunamadı");
     }
   }
-
 }
