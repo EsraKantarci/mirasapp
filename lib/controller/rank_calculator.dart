@@ -4,6 +4,8 @@ import 'package:miras/model/person.dart';
 
 import 'global_state.dart';
 
+// TODO: inheritors cannot be appended.
+
 class Calculator {
   Calculator({this.answers, this.people});
 
@@ -11,8 +13,8 @@ class Calculator {
   final List<Person> people;
 
   String result = "";
-  Map<int, int> inheritors;
-  Map<int, int> deceaseds;
+  List<Map<int, int>> inheritors = [];
+  List<Map<int, int>> deceaseds = [];
   double rates;
   int eligibleRank = 3;
 
@@ -22,7 +24,16 @@ class Calculator {
     peopleIterable = people.asMap();
     int len = peopleIterable.length;
     Person person;
-    Person spouse = peopleIterable[0];
+    person = peopleIterable[0];
+    print("OK");
+    Map<int, int> mapPerson = new Map();
+    print("Map created");
+    mapPerson[person.id] = person.rank;
+    print("Mapped");
+    return "Şimdilik burada bir şeyler yazsın, blog kısmına girişelim";
+
+    /* Person spouse = peopleIterable[1];
+
     //we need to add spouse in any case. Rates will change.
     inheritors[spouse.id] = spouse.rank;
 
@@ -43,7 +54,8 @@ class Calculator {
         // add the person into deceseads so we can check children then
         deceaseds[person.id] = person.rank;
       }
-    }
+    }*/
+
   }
 
   //rates =
