@@ -20,6 +20,7 @@ class Calculator {
   List<Map<int, int>> grandchildren = [];
   double rates;
   int eligibleRank = 3;
+  int parentId = 100;
   bool isSpouseAlive = false;
 
   Map<int, Person> peopleIterable;
@@ -51,7 +52,12 @@ class Calculator {
       if (person.isAlive == 1) {
         if (person.rank <= eligibleRank) {
           eligibleRank = person.rank;
-          mapped[person.id] = person.parentId;
+          if(parentId > person.parentId){
+          parentId = person.parentId;
+          mapped[person.id] = person.parentId;}
+          else{
+            continue;
+          }
         }
 
         else {
@@ -64,7 +70,15 @@ class Calculator {
           //person is dead. let's check the other ranks and
           // add the person into deceseads so we can check children then
           //and also we add it to inheritors list so we can save his/her share
-          mapped[person.id] = person.parentId;
+          print(person.parentId);
+          print(parentId);
+
+          if(person.parentId == parentId){
+            print("ekledik " + person.toString());
+            mapped[person.id] = person.parentId;}
+          else{
+            print("eklemedik: " + person.toString());
+          }
           mappedDied[person.id] = person.parentId;
         } else {
           continue;
