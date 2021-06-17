@@ -30,7 +30,9 @@ class Calculator {
     print("Map created");
     mapPerson[person.id] = person.rank;
     print("Mapped");
-    return "Şimdilik burada bir şeyler yazsın, blog kısmına girişelim";
+    String spouse = mapPerson[1].toString();
+    return spouse;
+    // tamam çekebiliyorum.
 
     /* Person spouse = peopleIterable[1];
 
