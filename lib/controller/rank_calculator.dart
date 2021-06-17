@@ -21,17 +21,24 @@ class Calculator {
   Map<int, Person> peopleIterable;
 
   String calculateRates(List<Person> people) {
+    Map<int, int> mapPerson = new Map();
+
+    inheritors.removeRange(0, inheritors.length);
+
     peopleIterable = people.asMap();
     int len = peopleIterable.length;
     Person person;
     person = peopleIterable[0];
-    print("OK");
-    Map<int, int> mapPerson = new Map();
-    print("Map created");
+
     mapPerson[person.id] = person.rank;
-    print("Mapped");
     String spouse = mapPerson[1].toString();
-    return spouse;
+
+    inheritors.add(mapPerson);
+
+    return inheritors.toString();
+
+    // keys: mapPerson.keys.toString();
+    // List newList = mapPerson.keys.toList();
     // tamam çekebiliyorum.
 
     /* Person spouse = peopleIterable[1];
