@@ -19,16 +19,17 @@ class Calculator {
   List<Map<int, int>> deceaseds = [];
   List<Map<int, int>> grandchildren = [];
 
-  List<int> children = [];
 
   double rates;
   int eligibleRank = 3;
-  int parentId = 100;
   bool isSpouseAlive = false;
 
   Map<int, Person> peopleIterable;
 
   String calculateRates(List<Person> people) {
+
+    int parentId = 100;
+
     Map<int, int> mapped = new Map();
     Map<int, int> mappedDied = new Map();
     Map<int, int> mappedChildren = new Map();
@@ -79,11 +80,15 @@ class Calculator {
           print(parentId);
 
           if(person.parentId <= parentId){
+            // initial inheritor to get even share
             print("ekledik " + person.toString());
             mapped[person.id] = person.parentId;}
           else{
+            // secondary inheritor, actually this is because of testinfo.
+            //we will not get that kind of data
             print("eklemedik: " + person.toString());
           }
+
           mappedDied[person.id] = person.parentId;
         } else {
           continue;
@@ -111,14 +116,27 @@ class Calculator {
 
         list.add(people.where((item) =>
             matchingParentId.toString().contains(item.parentId.toString())));
-        print(list.toString());
+        print("list: " + list.toString());
 
-        for (int j = 0; j < list.length; j++) {
-          mappedChildren[person.id] = person.parentId;
-        }
+
+
+
+
+       /* for (int j = 0; j < list[0].length; j++) {
+          for(int k = 0; k < mappedDied.length; k++){
+            if(list[0]){
+
+            }
+          }
+          // children.add(1);
+          // mappedChildren[person.id] = person.parentId;
+        }*/
+
       } else {
         continue;
       }
+      var children = list.asMap();
+      print("children: " + children.toString());
     }
     inheritors.add(mapped);
     deceaseds.add(mappedDied);
