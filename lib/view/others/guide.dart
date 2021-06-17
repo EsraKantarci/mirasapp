@@ -114,41 +114,13 @@ class GuidePage extends StatelessWidget {
 
   AppBar buildAppBar() {
     return AppBar(
-      title: Text("Vasiyetname"),
+      title: Text("Kullanım Kılavuzu"),
       backgroundColor: AppColors.mainColor,
       actions: <Widget>[
       ],
     );
   }
 }
-
-// Save as png or pdf button, but first let's make listview in this result page
-Widget buildElevatedButton(BuildContext context) {
-  return ElevatedButton(
-    child: Text('Örneği İndir'),
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => StartPage()),
-      );
-    },
-    style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(50),
-          ),
-        ),
-        padding: EdgeInsets.symmetric(vertical: 5),
-        primary: Colors.white,
-        onPrimary: AppColors.mainColor,
-        textStyle: TextStyle(
-            color: AppColors.mainColor,
-            fontSize: 20,
-            fontWeight: FontWeight.bold)),
-  );
-}
-
-
 
 Widget buildImage(BuildContext context) {
   return   Padding(
