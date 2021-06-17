@@ -19,6 +19,7 @@ class Calculator {
   List<Map<int, int>> deceaseds = [];
   double rates;
   int eligibleRank = 3;
+  bool isSpouseAlive = false;
 
   Map<int, Person> peopleIterable;
 
@@ -33,15 +34,11 @@ class Calculator {
     Person person;
 
     //spouse:
-    person = peopleIterable[0];
+    Person spouse = peopleIterable[0];
     //we need to add spouse in any case. Rates will change.
-    mapped[person.id] = person.rank;
-
-
-    // keys:
-    // mapPerson.keys.toString();
-    // List newList = mapPerson.keys.toList();
-
+    if(spouse.isAlive == 1){
+      isSpouseAlive = true;
+    }
 
     //besides spouse:
     for (int i = 1; i < len; i++) {
@@ -61,38 +58,62 @@ class Calculator {
           //person is dead. let's check the other ranks and
           // add the person into deceseads so we can check children then
           mappedDied[person.id] = person.childCount;
-        }
-        else {
+        } else {
           continue;
         }
       }
     }
 
     List keyList = mappedDied.keys.toList();
+    var list = [];
 
-
-
-
-    for(int i=0; i<keyList.length; i++) {
+    for (int i = 0; i < keyList.length; i++) {
       //key is also id and index of people list
-            int key = keyList[i];
-            print("key is: " + key.toString());
+      int key = keyList[i];
+      print("key is: " + key.toString());
       print("childcount: " + mappedDied[key].toString());
-      //-1 because indexing starts from 0
-      Person person = peopleIterable[key-1];
+      //key-1 because indexing starts from 0
+      Person person = peopleIterable[key - 1];
 
       if (person.childCount > 0) {
         //şimdi parent id'si keyle eşlenenlere bakmamız lazım.
         var matchingParentId = key;
-
         print("matchingParentId:" + matchingParentId.toString());
 
-        print(people.where((item) =>
+        list.add(people.where((item) =>
             matchingParentId.toString().contains(item.parentId.toString())));
+        print(list.toString());
+
+        for(int j=0; j<list.length; j++){
+          mapped[person.id] = person.rank;
+        }
 
       }
+      else{
+        continue;
+      }
+
     }
-    return keyList.toString();
+    inheritors.add(mapped);
+
+    var rateList = getRates(isSpouseAlive, inheritors, eligibleRank);
+
+    return rateList.toString();
+  }
+
+  Map<String, double> getRates(bool isSpouseAlive, List<Map<int, int>> inheritors, int eligibleRank){
+    int len = inheritors.length;
+    //spouse rank is 0
+    int rank1 = 0;
+    if(!isSpouseAlive){
+      rank1 = -1;
+    }
+    int rank2 = eligibleRank;
+
+    var rateList = rateOperator(rank1, rank2);
+    return rateList;
+
+
   }
 
   //rates =
@@ -110,8 +131,7 @@ class Calculator {
       return "";}*/
   }
 
-  RateOperator(int rank1, int rank2, double rate1, double rate2,
-      double hiddenRate1, double hiddenRate2) {
+  Map<String, double> rateOperator(int rank1, int rank2) {
     // Bunlara return eklemem lazım, bu logici böyle kullanamam.
     // hatta rank calculatorda yer alsa daha mantıklı.
 
@@ -124,63 +144,76 @@ class Calculator {
 
  rate = -1 => no rate
   */
+  double rate1;
+  double rate2;
+  double hiddenRate1;
+  double hiddenRate2;
+
+  Map<String, double> rates = new Map();
+  print("rank1: " + rank1.toString());
+  print("rank2: " + rank2.toString());
 
     if (rank1 == 0 && rank2 == 1) {
       //Spouse and children
-      rate1 = 0.25;
-      rate2 = 0.75;
-      hiddenRate1 = 1;
-      hiddenRate2 = 0.5;
+      rates["rate1"] = 0.25;
+      rates["rate2"] = 0.75;
+      rates["hiddenRate1"] = 1;
+      rates["hiddenRate2"] = 0.5;
     }
 
-    if (rank1 == 0 && rank2 == 2) {
+    else if (rank1 == 0 && rank2 == 2) {
       //Spouse and parent
-      rate1 = 0.5;
-      rate2 = 0.5;
-      hiddenRate1 = 1;
-      hiddenRate2 = 0.25;
+      rates["rate1"] = 0.5;
+      rates["rate2"]  = 0.5;
+      rates["hiddenRate1"] = 1;
+      rates["hiddenRate2"] = 0.25;
     }
-    if (rank1 == 0 && rank2 == 3) {
+    else if (rank1 == 0 && rank2 == 3) {
       //Spouse and third degree
-      rate1 = 0.75;
-      rate2 = 0.25;
-      hiddenRate1 = 0.75;
-      hiddenRate2 = -1;
+      rates["rate1"]= 0.75;
+      rates["rate2"]  = 0.25;
+      rates["hiddenRate1"] = 0.75;
+      rates["hiddenRate2"] = -1;
     }
 
-    if (rank1 == 1 && rank2 == -1) {
+    else if (rank1 == 1 && rank2 == -1) {
       //Only spouse
-      rate1 = 1;
-      rate2 = -1;
-      hiddenRate1 = 0.75;
-      hiddenRate2 = 1;
+      rates["rate1"]= 1;
+      rates["rate2"]  = -1;
+      rates["hiddenRate1"] = 0.75;
+      rates["hiddenRate2"] = 1;
     }
 
-    if (rank1 == -1 && rank2 == 1) {
+    else if (rank1 == -1 && rank2 == 1) {
       //No spouse and children
-      rate1 = -1;
-      rate2 = 1;
-      hiddenRate1 = 1;
-      hiddenRate2 = 0.5;
+      rates["rate1"]= -1;
+      rates["rate2"]  = 1;
+      rates["hiddenRate1"] = 1;
+      rates["hiddenRate2"] = 0.5;
     }
 
-    if (rank1 == -1 && rank2 == 2) {
+    else if (rank1 == -1 && rank2 == 2) {
       //No spouse and parents
-      rate1 = -1;
-      rate2 = 1;
-      hiddenRate1 = 1;
-      hiddenRate2 = 0.25;
+      rates["rate1"] = -1;
+      rates["rate2"]  = 1;
+      rates["hiddenRate1"] = 1;
+      rates["hiddenRate2"] = 0.25;
     }
 
-    if (rank1 == -1 && rank2 == 3) {
+    else if (rank1 == -1 && rank2 == 3) {
       //No spouse and third degree
-      rate1 = -1;
-      rate2 = 1;
-      hiddenRate1 = 1;
-      hiddenRate2 = -1;
-    } else {
+      rates["rate1"] = -1;
+      rates["rate2"]  = 1;
+      rates["hiddenRate1"] = 1;
+      rates["hiddenRate2"] = -1;
+    }
+
+    else {
+      // rates will return null
       print("Log: Uygun mirasçı bulunamadı");
     }
+
+    print(rates);
+    return rates;
   }
 }
-
