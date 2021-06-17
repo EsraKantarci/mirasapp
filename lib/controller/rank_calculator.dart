@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:miras/model/answers.dart';
 import 'package:miras/model/person.dart';
 
@@ -21,30 +22,25 @@ class Calculator {
   Map<int, Person> peopleIterable;
 
   String calculateRates(List<Person> people) {
-    Map<int, int> mapPerson = new Map();
-
+    Map<int, int> mapped = new Map();
+    Map<int, int> mappedDied = new Map();
     inheritors.removeRange(0, inheritors.length);
+    deceaseds.removeRange(0, deceaseds.length);
 
     peopleIterable = people.asMap();
     int len = peopleIterable.length;
     Person person;
+
+    //spouse:
     person = peopleIterable[0];
-
-    mapPerson[person.id] = person.rank;
-    String spouse = mapPerson[1].toString();
-
-    inheritors.add(mapPerson);
-
-    return inheritors.toString();
-
-    // keys: mapPerson.keys.toString();
-    // List newList = mapPerson.keys.toList();
-    // tamam çekebiliyorum.
-
-    /* Person spouse = peopleIterable[1];
-
     //we need to add spouse in any case. Rates will change.
-    inheritors[spouse.id] = spouse.rank;
+    mapped[person.id] = person.rank;
+
+
+    // keys:
+    // mapPerson.keys.toString();
+    // List newList = mapPerson.keys.toList();
+
 
     //besides spouse:
     for (int i = 1; i < len; i++) {
@@ -53,18 +49,30 @@ class Calculator {
       if (person.isAlive == 1) {
         if (person.rank <= eligibleRank) {
           eligibleRank = person.rank;
-          inheritors[person.id] = person.rank;
+          mapped[person.id] = person.rank;
         } else {
           //keep checking
           continue;
         }
       } else {
-        //person is dead. let's check the other ranks and
-        // add the person into deceseads so we can check children then
-        deceaseds[person.id] = person.rank;
+        if (person.rank <= eligibleRank) {
+          print(person.toString());
+          //person is dead. let's check the other ranks and
+          // add the person into deceseads so we can check children then
+          mappedDied[person.id] = person.rank;
+        }
+        else {
+          continue;
+        }
       }
-    }*/
+    }
 
+    List keyList = mappedDied.keys.toList();
+    for(int i=0; i<keyList.length; i++){
+      int key = keyList[i];
+      mappedDied
+    }
+    return newList.toString();
   }
 
   //rates =
