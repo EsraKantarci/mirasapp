@@ -52,7 +52,7 @@ class Calculator {
       if (person.isAlive == 1) {
         if (person.rank <= eligibleRank) {
           eligibleRank = person.rank;
-          if(parentId > person.parentId){
+          if(parentId >= person.parentId){
           parentId = person.parentId;
           mapped[person.id] = person.parentId;}
           else{
@@ -64,7 +64,9 @@ class Calculator {
           //keep checking
           continue;
         }
-      } else {
+      }
+
+      else {
         if (person.rank <= eligibleRank && person.childCount>0) {
           print(person.toString());
           //person is dead. let's check the other ranks and
@@ -85,6 +87,8 @@ class Calculator {
         }
       }
     }
+
+    // ölenler için:
 
     List keyList = mappedDied.keys.toList();
     var list = [];
