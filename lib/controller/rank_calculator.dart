@@ -34,6 +34,8 @@ class Calculator {
     Map<int, int> mappedDied = new Map();
     Map<int, int> mappedChildren = new Map();
 
+    Map <int, List<dynamic> > mappedPersonChildren = new Map();
+
     inheritors.removeRange(0, inheritors.length);
     deceaseds.removeRange(0, deceaseds.length);
     grandchildren.removeRange(0, deceaseds.length);
@@ -117,6 +119,14 @@ class Calculator {
         list.add(people.where((item) =>
             matchingParentId.toString().contains(item.parentId.toString())));
         print("list: " + list.toString());
+
+        // TODO: BURASI HATALI
+        list[0];
+        print("mapped person child for " + matchingParentId.toString() + " is: " + mappedPersonChildren.toString());
+
+
+        print("key " + key.toString());
+
 
 
 
