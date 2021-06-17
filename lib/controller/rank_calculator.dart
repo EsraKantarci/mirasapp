@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:miras/model/answers.dart';
@@ -59,7 +60,7 @@ class Calculator {
           print(person.toString());
           //person is dead. let's check the other ranks and
           // add the person into deceseads so we can check children then
-          mappedDied[person.id] = person.rank;
+          mappedDied[person.id] = person.childCount;
         }
         else {
           continue;
@@ -68,11 +69,30 @@ class Calculator {
     }
 
     List keyList = mappedDied.keys.toList();
-    for(int i=0; i<keyList.length; i++){
-      int key = keyList[i];
-      mappedDied
+
+
+
+
+    for(int i=0; i<keyList.length; i++) {
+      //key is also id and index of people list
+            int key = keyList[i];
+            print("key is: " + key.toString());
+      print("childcount: " + mappedDied[key].toString());
+      //-1 because indexing starts from 0
+      Person person = peopleIterable[key-1];
+
+      if (person.childCount > 0) {
+        //şimdi parent id'si keyle eşlenenlere bakmamız lazım.
+        var matchingParentId = key;
+
+        print("matchingParentId:" + matchingParentId.toString());
+
+        print(people.where((item) =>
+            matchingParentId.toString().contains(item.parentId.toString())));
+
+      }
     }
-    return newList.toString();
+    return keyList.toString();
   }
 
   //rates =
@@ -163,3 +183,4 @@ class Calculator {
     }
   }
 }
+
