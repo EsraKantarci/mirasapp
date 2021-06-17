@@ -18,6 +18,9 @@ class Calculator {
   List<Map<int, int>> inheritors = [];
   List<Map<int, int>> deceaseds = [];
   List<Map<int, int>> grandchildren = [];
+
+  List<int> children = [];
+
   double rates;
   int eligibleRank = 3;
   int parentId = 100;
@@ -75,7 +78,7 @@ class Calculator {
           print(person.parentId);
           print(parentId);
 
-          if(person.parentId == parentId){
+          if(person.parentId <= parentId){
             print("ekledik " + person.toString());
             mapped[person.id] = person.parentId;}
           else{
@@ -159,6 +162,9 @@ class Calculator {
     var hiddenRate2 = rateList["hiddenRate2"];
 
     int count = lenInheritors;
+    var keys = inheritorsIterable.keys.toList();
+    var list = [];
+
 
     while(count>0){
       count--;
