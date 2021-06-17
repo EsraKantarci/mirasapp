@@ -7,111 +7,154 @@ import 'package:miras/model/constants.dart';
 import 'package:miras/view/home_page.dart';
 import 'package:miras/view/start_page.dart';
 
-class BlogPage extends StatefulWidget {
-  @override
-  _BlogPageState createState() => _BlogPageState();
-}
+import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
+import 'package:miras/controller/rank_calculator.dart';
+import 'package:miras/model/constants.dart';
+import 'package:miras/view/start_page.dart';
 
-class _BlogPageState extends State<BlogPage> {
+class BlogPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        // in order not to use constants like pixels,
-        // we decided to use MediaQuery for responsiveness.
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              AppColors.mainColor.withOpacity(0.5),
-              AppColors.backgroundColor
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Stack(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Text(
-                  "Vasiyetname Örneği",
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white,
+      backgroundColor: AppColors.backgroundColor,
+      appBar: buildAppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: (<Widget>[
+
+            new Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Text(
+                "Vasiyetname Hakkında Bilinmesi Gerekenler",
+                style: new TextStyle(
+                    fontSize: 20.0,
+                    color: AppColors.mainColor.withOpacity(0.8),
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+
+            new Expanded(
+              flex: 2,
+              child: new SingleChildScrollView(
+                scrollDirection: Axis.vertical,//.horizontal
+                child: new Text(
+                  "Vasiyetname ile sahip olduğu malvarlığı hakkında tasarrufta "
+          "bulunmak isteyen kimsenin el yazılı vasiyetname, resmi vasiyetname, "
+              "sözlü vasiyetname türlerinden birini tercih etmesi ve Türk Medeni "
+              "Kanunu’nda sayılan şartları sağlaması gerekmektedir. \n\n"
+          "El yazılı vasiyetnamenin şartlarını yerine getirmek daha basit"
+              "olsa da bu tür vasiyetnameyi bulan ve kendi aleyhine bazı"
+          "tasarrufların varlığını gören bir kişi ya da mirasçı vasiyetnameyi "
+          "kolaylıkla yok edebilir.\n\n"
+          "Bu nedenle ispat bakımından kuvvetli delil niteliği "
+          "taşıdığından resmi vasiyetname daha çok tercih edilmektedir. "
+          "Ayrıca resmi vasiyetnameyi düzenleyen resmi memur, vasiyetnamenin aslını "
+          "saklamakla yükümlü olduğundan vasiyetnamenin kolayca ortadan kaldırılması "
+              "mümkün değildir.\n\n"
+
+          "Resmi vasiyetnameyi resmi bir memur "
+              "(noter veya sulh hakimi) düzenlediğinden vasiyetnamenin kapsamı da "
+              "kesinlik ve açıklık kazanmaktadır. Vasiyetçinin son arzularındaki "
+          "belirsizlikler resmi memurun soracağı sorularla anlaşılır hale gelmektedir.\n\n"
+
+          "Resmi vasiyetname, miras bırakanın arzularına uygun olarak resmi memur "
+          "tarafından yazılabileceği gibi, bizzat vasiyetçi tarafından da yazılmış olabilir. "
+          "Bizzat vasiyetçi yazmışsa tasdik ve imza resmi memur tarafından yapılmak zorundadır."
+                      "Alıntı: http://www.mirashakki.com/index.php?option=com_content&view=article&id=30:resmi-vasiyetname&catid=13&Itemid=104",
+                  style: new TextStyle(
+                    fontSize: 16.0, color: AppColors.mainColor.withOpacity(0.7),
                   ),
                 ),
               ),
             ),
-           buildImage(context),
-            Positioned(
-              bottom: 50,
-              child: buildBottom(context),
+
+            new Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                child: new Text(
+                  "Vasiyetname Örneği",
+                  style: new TextStyle(
+                      fontSize: 20.0,
+                      color: AppColors.mainColor.withOpacity(0.8),
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
             ),
-          ],
+            Expanded(
+              flex:2,
+              child: buildImage(context),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width,
+                  child: buildElevatedButton(context),
+                ),
+              ),
+            ),
+          ]),
         ),
       ),
     );
   }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      title: Text("Vasiyetname"),
+      backgroundColor: AppColors.mainColor,
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(
+            //Step: 1
+            Icons.looks_one,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            //maybe toasting "Adım: 1'desiniz" is a good idea.
+          },
+        )
+      ],
+    );
+  }
 }
 
-// Adding bottom container here for readability
-Widget buildBottom(BuildContext context) {
-  return Container(
-    width: MediaQuery.of(context).size.width,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-        GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => HomePage(),
-              ),
-            );
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black38,
-                  offset: Offset(1, 1),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                ),
-              ],
-            ),
-            width: MediaQuery.of(context).size.width * 0.8,
-            //bunu direkt pixel olarak versek daha iyi oluyor ama
-            //biraz kontrol edelim şimdilik responsiveness için
-            height: MediaQuery.of(context).size.height * 0.05,
-            child: Center(
-                child: Text("DİLEKÇEYİ İNDİR",
-                    style: TextStyle(
-                      color: AppColors.mainColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ))),
+// Save as png or pdf button, but first let's make listview in this result page
+Widget buildElevatedButton(BuildContext context) {
+  return ElevatedButton(
+    child: Text('Örneği İndir'),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => StartPage()),
+      );
+    },
+    style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(50),
           ),
         ),
-      ],
-    ),
+        padding: EdgeInsets.symmetric(vertical: 5),
+        primary: Colors.white,
+        onPrimary: AppColors.mainColor,
+        textStyle: TextStyle(
+            color: AppColors.mainColor,
+            fontSize: 20,
+            fontWeight: FontWeight.bold)),
   );
 }
 
 
+
 Widget buildImage(BuildContext context) {
   return   Padding(
-    padding: const EdgeInsets.only(bottom: 100),
+    padding: const EdgeInsets.only(bottom: 5 ),
     child: Align(
       alignment: Alignment.center,
       child:

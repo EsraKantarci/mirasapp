@@ -1,8 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/disclaimer_page.dart';
 import 'package:miras/view/others/blog.dart';
 import 'package:miras/view/others/dynamic_list.dart';
+import 'package:miras/view/others/guide.dart';
 import 'package:miras/view/result/test_info.dart';
 import 'package:miras/view/start_page.dart';
 
@@ -88,7 +90,7 @@ class _HomePageState extends State<HomePage> {
         Navigator.of(context).push(
           MaterialPageRoute(
             //Blog layout will be prepared
-            builder: (_) => DisclaimerPage(),
+            builder: (_) => GuidePage(),
           ),
         );
       },
@@ -122,6 +124,7 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
                 ),
+
                 children: [
                   TextSpan(
                     text: "Uygulamanın kullanımına ilişkin bilgiler\n",
