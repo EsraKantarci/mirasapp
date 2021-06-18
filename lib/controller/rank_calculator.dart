@@ -70,7 +70,12 @@ class Calculator {
           }
           }
           else{
-            mappedChildren[person.id] = person.parentId;
+            if(peopleIterable[person.parentId - 1].isAlive == 0) {
+              mappedChildren[person.id] = person.parentId;
+            }
+            else{
+              continue;
+            }
           }
         }
 
@@ -181,8 +186,9 @@ class Calculator {
     return rateList;
   }
 
-  List<Person> getChildrenList(int parentId,  List<Map<int, int>> grandchildren, Map<int, Person> peopleIterable){
+  Map<String, List<int>> getChildrenList(int parentId,  List<Map<int, int>> grandchildren, Map<int, Person> peopleIterable){
     List<Person> childrenList = [];
+    Map<String, List<int>> listData = new Map();
     List<int> deadKeyList = [];
     List<int> keyList = grandchildren[0].keys.toList();
     Map<int, int> grandchildrenIterable = grandchildren[0];
@@ -225,7 +231,9 @@ class Calculator {
 
     print("bitti");
     print(childrenList.toString());
-    return childrenList;
+
+
+    return listData;
   }
 
 
