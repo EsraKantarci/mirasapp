@@ -123,6 +123,18 @@ class Calculator {
     return rateList.toString();
   }
 
+  // TODO:
+  // Sorular:
+  // 1- parent'ın payı ne?
+  // 2-çarpılacak oran ne?
+  // 3- kaç eşit paya bölünecek?
+
+  //rate1'i hesaplamaya gerek yok, spouse'un ya var ya yok.
+  //parentId eğer -1 ise, pay: 1
+  Map<int, double> getRateMap(double rate2, Map<int, Person> peopleIterable) {
+
+
+  }
 
 
   List getDataParameters(List dataList, int numberOfFields) {
@@ -212,7 +224,7 @@ class Calculator {
     print("child count list: " + childCountList.toString());
 
     print("bitti");
-
+    print(childrenList.toString());
     return childrenList;
   }
 
