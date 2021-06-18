@@ -55,8 +55,6 @@ class Calculator {
     for (int i = 1; i < len; i++) {
       person = peopleIterable[i];
 
-      /*if (person.isAlive == 1 || (person.isAlive == 0 && person.childCount > 0)) {
-        if (person.rank <= eligibleRank) {*/
 
       if(person.rank <= eligibleRank){
         if(person.isAlive==1 || (person.isAlive == 0 && person.childCount > 0)){
