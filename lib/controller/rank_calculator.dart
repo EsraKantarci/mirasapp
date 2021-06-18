@@ -18,6 +18,14 @@ class Calculator {
   List<Map<int, int>> deceaseds = [];
   List<Map<int, int>> grandchildren = [];
 
+  List<int> deadList = [];
+  Map<int, int> descendents = new Map();
+
+  // id and rate
+  Map<int, double> rankRateMap = {-1: 1};
+
+  Map<String, double> rateListResult = new Map();
+  Map<String, double> hiddenRateListResult = new Map();
 
   double rates;
   int eligibleRank = 3;
@@ -26,6 +34,7 @@ class Calculator {
   Map<int, Person> peopleIterable;
 
   String calculateRates(List<Person> people) {
+    deadList.removeRange(0, deadList.length);
 
     int parentId = 100;
 
@@ -33,7 +42,7 @@ class Calculator {
     Map<int, int> mappedDied = new Map();
     Map<int, int> mappedChildren = new Map();
 
-    Map <int, List<int> > mappedPersonChildren = new Map();
+    Map<int, List<int>> mappedPersonChildren = new Map();
 
     inheritors.removeRange(0, inheritors.length);
     deceaseds.removeRange(0, deceaseds.length);
@@ -54,40 +63,32 @@ class Calculator {
     for (int i = 1; i < len; i++) {
       person = peopleIterable[i];
 
-
-      if(person.rank <= eligibleRank){
-        if(person.isAlive==1 || (person.isAlive == 0 && person.childCount > 0)){
+      if (person.rank <= eligibleRank) {
+        if (person.isAlive == 1 ||
+            (person.isAlive == 0 && person.childCount > 0)) {
           eligibleRank = person.rank;
-          if(person.parentId <= parentId){
-          parentId = person.parentId;
-          mapped[person.id] = person.parentId;
-          if(person.isAlive == 0){
-            print("ölü: " + person.toString());
-            mappedDied[person.id] = person.parentId;
-          }
-          else{
-            print("geç, yaşıyo");
-          }
-          }
-          else{
-            if(peopleIterable[person.parentId - 1].isAlive == 0) {
-              mappedChildren[person.id] = person.parentId;
+          if (person.parentId <= parentId) {
+            parentId = person.parentId;
+            mapped[person.id] = person.parentId;
+            if (person.isAlive == 0) {
+              print("ölü: " + person.toString());
+              mappedDied[person.id] = person.parentId;
+            } else {
+              print("geç, yaşıyo");
             }
-            else{
+          } else {
+            if (peopleIterable[person.parentId - 1].isAlive == 0) {
+              mappedChildren[person.id] = person.parentId;
+            } else {
               continue;
             }
           }
-        }
-
-        else {
+        } else {
           //keep checking, rank is not lower
           continue;
         }
-      }
-
-      else {
-          continue;
-
+      } else {
+        continue;
       }
     }
 
@@ -109,11 +110,12 @@ class Calculator {
         //şimdi parent id'si keyle eşlenenlere bakmamız lazım.
         var matchingParentId = key;
         print("matchingParentId:" + matchingParentId.toString());
-
       } else {
         continue;
       }
     }
+
+    print("mappedDied --> " + mappedDied.toString());
 
     inheritors.add(mapped);
     deceaseds.add(mappedDied);
@@ -145,6 +147,8 @@ class Calculator {
     var rateList = getRates(
         isSpouseAlive, inheritors, deceaseds, grandchildren, eligibleRank);
 
+    getRateMap(peopleIterable, rateList["rate2"], mapped);
+
     return rateList.toString();
   }
 
@@ -156,17 +160,45 @@ class Calculator {
 
   //rate1'i hesaplamaya gerek yok, spouse'un ya var ya yok.
   //parentId eğer -1 ise, pay: 1
-  Map<String, double> getRateMap(Map<int, Person> peopleIterable, double rate2) {
 
+  Map<String, double> getRateMap(
+      Map<int, Person> peopleIterable, double rate2, Map<int, int> mapped) {
+    Map<String, double> result = new Map();
 
+    Person person;
+    Person parent;
+    int parentId;
 
+    print(rate2);
+
+    print(deadList.toString());
+    print(mapped.toString());
+
+    double rate = 1 / mapped.length;
+
+    for (int i in mapped.keys) {
+      person = peopleIterable[i - 1];
+      parentId = person.parentId;
+      print(parentId);
+
+      if (person.isAlive == 0) {
+        deadList.add(person.id);
+        print(parentId);
+        rankRateMap[person.id] = rankRateMap[parentId] * rate * rate2;
+        print(rankRateMap);
+      } else {
+        result[person.name] = rankRateMap[parentId] * rate * rate2;
+        print(result);
+      }
+    }
+
+    return result;
   }
-
 
   List getDataParameters(List dataList, int numberOfFields) {
     var result = [];
     int i = 0;
-    while(dataList.length > i) {
+    while (dataList.length > i) {
       result.add(dataList.sublist(i, min(i + numberOfFields, dataList.length)));
       i += numberOfFields;
     }
@@ -179,7 +211,6 @@ class Calculator {
       List<Map<int, int>> deceaseds,
       List<Map<int, int>> grandchildren,
       int eligibleRank) {
-
     var inheritorsIterable = inheritors[0];
     var deceasedsIterable = deceaseds[0];
     var grandchildrenIterable = grandchildren[0];
@@ -187,7 +218,6 @@ class Calculator {
     int lenInheritors = inheritorsIterable.length;
     int lenDeads = deceasedsIterable.length;
     int lenGrandchildren = grandchildrenIterable.length;
-
 
     print("Inheritors " + inheritorsIterable.toString());
     print("Ölüler " + deceasedsIterable.toString());
@@ -207,7 +237,8 @@ class Calculator {
     return rateList;
   }
 
-  Map<String, List<int>> getChildrenList(int parentId,  List<Map<int, int>> grandchildren, Map<int, Person> peopleIterable){
+  Map<String, List<int>> getChildrenList(int parentId,
+      List<Map<int, int>> grandchildren, Map<int, Person> peopleIterable) {
     List<Person> childrenList = [];
     Map<String, List<int>> listData = new Map();
     List<int> deadKeyList = [];
@@ -215,22 +246,15 @@ class Calculator {
     Map<int, int> grandchildrenIterable = grandchildren[0];
     print("keylist for children: " + keyList.toString());
 
-
     int childCount = 0;
     Map<int, int> childCountList = new Map();
 
     //for each eklemek lazım şuraya:
 
-    for (int i in grandchildrenIterable.values) {
-
-
-      }
-
+    for (int i in grandchildrenIterable.values) {}
 
     return listData;
   }
-
-
 
   String getResult() {
     if (GlobalState.instance.answers.hasSpouse == 1) {
@@ -243,7 +267,6 @@ class Calculator {
   }
 
   Map<String, double> rateOperator(int rank1, int rank2) {
-
     /*
   rank = 0 => spouse
   rank = 1 => child
