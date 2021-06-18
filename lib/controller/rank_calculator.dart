@@ -55,46 +55,37 @@ class Calculator {
     for (int i = 1; i < len; i++) {
       person = peopleIterable[i];
 
-      if (person.isAlive == 1) {
-        if (person.rank <= eligibleRank) {
+      /*if (person.isAlive == 1 || (person.isAlive == 0 && person.childCount > 0)) {
+        if (person.rank <= eligibleRank) {*/
+
+      if(person.rank <= eligibleRank){
+        if(person.isAlive==1 || (person.isAlive == 0 && person.childCount > 0)){
           eligibleRank = person.rank;
           if(person.parentId <= parentId){
           parentId = person.parentId;
-          mapped[person.id] = person.parentId;}
+          mapped[person.id] = person.parentId;
+          if(person.isAlive == 0){
+            print("ölü: " + person.toString());
+            mappedDied[person.id] = person.parentId;
+          }
+          else{
+            print("geç, yaşıyo");
+          }
+          }
           else{
             mappedChildren[person.id] = person.parentId;
           }
         }
 
         else {
-          //keep checking
+          //keep checking, rank is not lower
           continue;
         }
       }
 
       else {
-        if (person.rank <= eligibleRank && person.childCount>0) {
-          print(person.toString());
-          //person is dead. let's check the other ranks and
-          // add the person into deceseads so we can check children then
-          //and also we add it to inheritors list so we can save his/her share
-          print(person.parentId);
-          print(parentId);
-
-          if(person.parentId <= parentId){
-            // initial inheritor to get even share
-            print("ekledik " + person.toString());
-            mapped[person.id] = person.parentId;}
-          else{
-            // secondary inheritor, actually this is because of testinfo.
-            //we will not get that kind of data
-            print("eklemedik: " + person.toString());
-          }
-
-          mappedDied[person.id] = person.parentId;
-        } else {
           continue;
-        }
+
       }
     }
 
@@ -117,6 +108,8 @@ class Calculator {
         var matchingParentId = key;
         print("matchingParentId:" + matchingParentId.toString());
         print(getChildrenList(key, people).toString());
+
+
 
         /*int count = 0;
         while(count<peopleIterable.length){
@@ -217,10 +210,6 @@ class Calculator {
     var keys = inheritorsIterable.keys.toList();
     var list = [];
 
-
-    while(count>0){
-      count--;
-    }
     return rateList;
   }
 
