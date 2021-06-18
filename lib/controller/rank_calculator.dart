@@ -120,6 +120,23 @@ class Calculator {
     grandchildren.add(mappedChildren);
 
     // TODO: recursion:
+    /*
+    Önce yapmak istediğim şeyi yazayım ki aklımda şematik olarak canlansın.
+
+   inheritorları ekledik. her inheritor başına eşit pay düşecek.
+   ama bu inheritorlar ölü olabilir.
+
+   dolayısıyla ölü olanlar deceaseds içinde yer alıyor.
+
+   bu ölü olanların çocukları var demek oluyor.
+   mirasa hak kazanan tüm bir alt soylar grandchildren içerisinde yer alıyor.
+
+   aynı parentId işlenmiş olanları (yani map'teki valueları) tek bir grup yapmalıyız.
+   oradan gelen pay bilgisi ile recursive biçimde deadlar için aratmalıyız.
+
+   hadi bunu düşüneyim.
+
+     */
     getChildrenList(2, grandchildren, peopleIterable);
 
     var rateList = getRates(
@@ -136,7 +153,8 @@ class Calculator {
 
   //rate1'i hesaplamaya gerek yok, spouse'un ya var ya yok.
   //parentId eğer -1 ise, pay: 1
-  Map<int, double> getRateMap(double rate2, Map<int, Person> peopleIterable) {
+  Map<String, double> getRateMap(Map<int, Person> peopleIterable, double rate2) {
+
 
 
   }
@@ -194,43 +212,16 @@ class Calculator {
     Map<int, int> grandchildrenIterable = grandchildren[0];
     print("keylist for children: " + keyList.toString());
 
+
     int childCount = 0;
     Map<int, int> childCountList = new Map();
 
     //for each eklemek lazım şuraya:
 
+    for (int i in grandchildrenIterable.values) {
 
-    for (int i in grandchildrenIterable.keys) {
-        print("g i:" + i.toString());
-        if (parentId == grandchildrenIterable[i]) {
-          if (peopleIterable[i - 1].isAlive == 0 && peopleIterable[i-1].childCount>0) {
-            deadKeyList.add(peopleIterable[i - 1].id);
-            print("i: " + i.toString());
-            keyList.remove(i);
-            print("keylist after removal:" + keyList.toString());
-            childCount++;
-          }
-          else {
-            childCount++;
-            childrenList.add(peopleIterable[i - 1]);
-            print("çocuk eklendi: " + childrenList.toString());
-            keyList.remove(i);
-            print("çocuk eklendi removalı: " + keyList.toString());
-          }
-        }
-        else {
-          continue;
-        }
 
-        print("Deadkey list: " + deadKeyList.toString());
-        print("keyList list: " + keyList.toString());
       }
-
-    childCountList[parentId] = childCount;
-    print("child count list: " + childCountList.toString());
-
-    print("bitti");
-    print(childrenList.toString());
 
 
     return listData;
