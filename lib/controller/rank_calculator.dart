@@ -174,21 +174,83 @@ class Calculator {
     var rateList = getRates(
         isSpouseAlive, inheritors, deceaseds, grandchildren, eligibleRank);
 
-    rateListResult;
+    if(spouse.isAlive == 1){
+      rateListResult[spouse.name] = rateList["rate1"];
+      hiddenRateListResult[spouse.name] = rateList["rate1"]*rateList["hiddenRate1"];
+    }
 
+    GlobalState.instance.rates = rateList;
     //parent id -1 for the start, then it will return to a recursion
 
+    mapRatesToPeople(-1, inheritors[0].keys.toList());
+    mapRatesToPeople(2, mappedPersonChildren[2]);
+    print("VE ÖLÜLERİN RATELERİ:");
+    print(rankRateMap.toString());
+    print("VEEE SONUÇLAR:");
+    print(rateListResult.toString());
     return rateList.toString();
   }
 
   // TODO:
   // Sorular:
   // 1- parent'ın payı ne? --> rankRateMap içinde yer alıyor
-  // 2- çarpılacak oran ne? --> rate2 içinde yer alıyor
+  // 2- çarpılacak oran ne? --> rate2 içinde yer alıyor --> bu ilk sefer için geçerli.
+  // devamında çarpmıyoruz. sadece rootparent'ın ilk mirasçıları için çarpıcaz.
   // 3- kaç eşit paya bölünecek? --> listenin uzunluğuna bölünecek
 
   //rate1'i hesaplamaya gerek yok, spouse'un ya var ya yok.
   //parentId eğer -1 ise, pay: 1
+
+
+  void mapRatesToPeople(int parentId, List<int> inheritorsList){
+    //şimdi bize ne geldi? parentID ve parent'ın çocuklarının listesi.
+    //ayrıca ölüler de geldi çünkü neden? ölü çocukların paydaşı olabilir.
+    //ama ben çok ikna değilim, bence bu deadsList'i çıkartalım,
+    //zaten mappedPersonChildren içinde ölülerin çocukları eşlenecek.
+
+    double parentRate = rankRateMap[parentId];
+    int personCount = inheritorsList.length;
+
+    for(int i in inheritorsList){
+      double rate;
+      Person person = peopleIterable[i-1];
+      if(parentId == -1){
+        double rate2 = GlobalState.instance.rates["rate2"];
+
+        rate = rate2*(1/personCount);
+
+        if(person.isAlive == 1) {
+          rateListResult[person.name] = rate;
+        }
+        else{
+          rankRateMap[person.id] = rate;
+        }
+      }
+      else{
+        rate = parentRate*(1/personCount);
+        if(person.isAlive == 1) {
+          rateListResult[person.name] = rate;
+        }
+        else{
+          rankRateMap[person.id] = rate;
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+
 
 
 

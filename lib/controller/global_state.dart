@@ -16,6 +16,8 @@ class GlobalState{
   List<Person> people = [];
   List<String> idMatch = [];
 
+  Map<String, double> rates = new Map();
+
   set(dynamic key , dynamic value ) => _data[key] = value;
   get(dynamic key) => _data[key];
 
