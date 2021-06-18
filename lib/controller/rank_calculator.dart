@@ -171,12 +171,27 @@ class Calculator {
 
   List<Person> getChildrenList(int parentId,  List<Map<int, int>> grandchildren, Map<int, Person> peopleIterable){
     List<Person> childrenList = [];
+    List<int> deadKeyList = [];
     List<int> keyList = grandchildren[0].keys.toList();
     Map<int, int> grandchildrenIterable = grandchildren[0];
     print("keylist for children: " + keyList.toString());
+
     //for each eklemek lazım şuraya:
-    for(int i in grandchildrenIterable.values)
-      if(grandchildrenIterable[i] == parentId) print("eşlendi: " + peopleIterable[i-1].toString());
+    for(int i in grandchildrenIterable.values){
+      if(parentId == grandchildrenIterable[i]) {
+        if (peopleIterable[i - 1].isAlive == 0) {
+          deadKeyList.add(peopleIterable[i - 1].id);
+        }
+        else {
+          childrenList.add(peopleIterable[i - 1]);
+        }
+      }
+        else{
+          continue;
+      }
+        print("Deadkey list: " + deadKeyList.toString());
+
+      }
     print("bitti");
 
     return childrenList;
