@@ -169,11 +169,12 @@ class Calculator {
    hadi bunu düşüneyim.
 
      */
-    getChildrenList(2, grandchildren, peopleIterable);
+  //  getChildrenList(2, grandchildren, peopleIterable);
 
     var rateList = getRates(
         isSpouseAlive, inheritors, deceaseds, grandchildren, eligibleRank);
 
+    rateListResult;
 
     //parent id -1 for the start, then it will return to a recursion
 
@@ -182,9 +183,9 @@ class Calculator {
 
   // TODO:
   // Sorular:
-  // 1- parent'ın payı ne?
-  // 2- çarpılacak oran ne?
-  // 3- kaç eşit paya bölünecek?
+  // 1- parent'ın payı ne? --> rankRateMap içinde yer alıyor
+  // 2- çarpılacak oran ne? --> rate2 içinde yer alıyor
+  // 3- kaç eşit paya bölünecek? --> listenin uzunluğuna bölünecek
 
   //rate1'i hesaplamaya gerek yok, spouse'un ya var ya yok.
   //parentId eğer -1 ise, pay: 1
@@ -202,10 +203,6 @@ class Calculator {
     var inheritorsIterable = inheritors[0];
     var deceasedsIterable = deceaseds[0];
     var grandchildrenIterable = grandchildren[0];
-
-    int lenInheritors = inheritorsIterable.length;
-    int lenDeads = deceasedsIterable.length;
-    int lenGrandchildren = grandchildrenIterable.length;
 
     print("Inheritors " + inheritorsIterable.toString());
     print("Ölüler " + deceasedsIterable.toString());
@@ -225,7 +222,7 @@ class Calculator {
     return rateList;
   }
 
-  Map<String, List<int>> getChildrenList(int parentId,
+ /* Map<String, List<int>> getChildrenList(int parentId,
       List<Map<int, int>> grandchildren, Map<int, Person> peopleIterable) {
     List<Person> childrenList = [];
     Map<String, List<int>> listData = new Map();
@@ -242,7 +239,7 @@ class Calculator {
     for (int i in grandchildrenIterable.values) {}
 
     return listData;
-  }
+  }*/
 
   String getResult() {
     if (GlobalState.instance.answers.hasSpouse == 1) {
