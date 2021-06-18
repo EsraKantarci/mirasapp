@@ -105,47 +105,6 @@ class Calculator {
         //şimdi parent id'si keyle eşlenenlere bakmamız lazım.
         var matchingParentId = key;
         print("matchingParentId:" + matchingParentId.toString());
-        print(getChildrenList(key, people).toString());
-
-
-
-        /*int count = 0;
-        while(count<peopleIterable.length){
-          Person p = peopleIterable[count];
-          if(p.isAlive == 1 && p.parentId == matchingParentId){
-            list.add(p.id);
-            print("count: " + count.toString());
-            count++;
-          }
-          else{
-            count++;
-            continue;
-          }
-        }
-        mappedPersonChildren[key] = list;
-        list.removeRange(0, list.length);
-        print("mapped for key " + key.toString() + " is :" + mappedPersonChildren[key].toString());
-
-
-         */
-
-       /* list.add(people.where((item) =>
-            matchingParentId.toString().contains(item.parentId.toString())));
-
-        print("list: " + list[0].toString());*/
-
-        // List<int> intList = list.map((s) => s as int).toList();
-        // print("intlist: " + intList.toString());
-
-       /* for (int j = 0; j < list[0].length; j++) {
-          for(int k = 0; k < mappedDied.length; k++){
-            if(list[0]){
-
-            }
-          }
-          // children.add(1);
-          // mappedChildren[person.id] = person.parentId;
-        }*/
 
       } else {
         continue;
@@ -211,33 +170,6 @@ class Calculator {
     return rateList;
   }
 
-  Map<int, List<int>> getChildrenList(int parentId, List<Person> people){
-    int count = 0;
-    int len = people.length;
-    Map<int, List<int>> mapped = new Map();
-    List<int> childList = [];
-    if(count <= len){
-      return mapped;
-    }
-    else{
-      Person person = people[count];
-      if(person.parentId == parentId && person.isAlive == 1){
-        childList.add(person.id);
-        print("hop içerideyim: " + count.toString() + "liste şu: " + childList.toString());
-
-        count++;
-
-      }
-      else if(person.parentId == parentId && person.childCount > 0 ){
-        getChildrenList(person.id, people);
-        count++;
-      }
-      else{
-        count++;
-      }
-    }
-
-  }
 
 
   String getResult() {
@@ -248,13 +180,9 @@ class Calculator {
 
   String getInterpretation() {
     return "";
-    /*if (rates >= 25) {
-      return "";}*/
   }
 
   Map<String, double> rateOperator(int rank1, int rank2) {
-    // Bunlara return eklemem lazım, bu logici böyle kullanamam.
-    // hatta rank calculatorda yer alsa daha mantıklı.
 
     /*
   rank = 0 => spouse
