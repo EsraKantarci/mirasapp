@@ -134,6 +134,9 @@ class Calculator {
    aynı parentId işlenmiş olanları (yani map'teki valueları) tek bir grup yapmalıyız.
    oradan gelen pay bilgisi ile recursive biçimde deadlar için aratmalıyız.
 
+   yani deadlar yeni inheritor listimiz olacak. onu gönderip sonuç alıcaz.
+   base case de deadlist.isempty ise
+
    hadi bunu düşüneyim.
 
      */
