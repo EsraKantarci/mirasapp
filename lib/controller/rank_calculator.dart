@@ -176,22 +176,41 @@ class Calculator {
     Map<int, int> grandchildrenIterable = grandchildren[0];
     print("keylist for children: " + keyList.toString());
 
+    int childCount = 0;
+    Map<int, int> childCountList = new Map();
+
     //for each eklemek lazım şuraya:
-    for(int i in grandchildrenIterable.values){
-      if(parentId == grandchildrenIterable[i]) {
-        if (peopleIterable[i - 1].isAlive == 0) {
-          deadKeyList.add(peopleIterable[i - 1].id);
+
+
+    for (int i in grandchildrenIterable.keys) {
+        print("g i:" + i.toString());
+        if (parentId == grandchildrenIterable[i]) {
+          if (peopleIterable[i - 1].isAlive == 0 && peopleIterable[i-1].childCount>0) {
+            deadKeyList.add(peopleIterable[i - 1].id);
+            print("i: " + i.toString());
+            keyList.remove(i);
+            print("keylist after removal:" + keyList.toString());
+            childCount++;
+          }
+          else {
+            childCount++;
+            childrenList.add(peopleIterable[i - 1]);
+            print("çocuk eklendi: " + childrenList.toString());
+            keyList.remove(i);
+            print("çocuk eklendi removalı: " + keyList.toString());
+          }
         }
         else {
-          childrenList.add(peopleIterable[i - 1]);
-        }
-      }
-        else{
           continue;
-      }
-        print("Deadkey list: " + deadKeyList.toString());
+        }
 
+        print("Deadkey list: " + deadKeyList.toString());
+        print("keyList list: " + keyList.toString());
       }
+
+    childCountList[parentId] = childCount;
+    print("child count list: " + childCountList.toString());
+
     print("bitti");
 
     return childrenList;
