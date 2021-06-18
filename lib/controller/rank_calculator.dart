@@ -1,6 +1,5 @@
 import 'dart:collection';
 import 'dart:math';
-import 'package:flutter/cupertino.dart';
 import 'package:miras/model/answers.dart';
 import 'package:miras/model/person.dart';
 
@@ -110,9 +109,13 @@ class Calculator {
         continue;
       }
     }
+
     inheritors.add(mapped);
     deceaseds.add(mappedDied);
     grandchildren.add(mappedChildren);
+
+    // TODO: recursion:
+    getChildrenList(2, grandchildren, peopleIterable);
 
     var rateList = getRates(
         isSpouseAlive, inheritors, deceaseds, grandchildren, eligibleRank);
@@ -163,11 +166,20 @@ class Calculator {
     var rate2 = rateList["rate2"];
     var hiddenRate2 = rateList["hiddenRate2"];
 
-    int count = lenInheritors;
-    var keys = inheritorsIterable.keys.toList();
-    var list = [];
-
     return rateList;
+  }
+
+  List<Person> getChildrenList(int parentId,  List<Map<int, int>> grandchildren, Map<int, Person> peopleIterable){
+    List<Person> childrenList = [];
+    List<int> keyList = grandchildren[0].keys.toList();
+    Map<int, int> grandchildrenIterable = grandchildren[0];
+    print("keylist for children: " + keyList.toString());
+    //for each eklemek lazım şuraya:
+    for(int i in grandchildrenIterable.values)
+      if(grandchildrenIterable[i] == parentId) print("eşlendi: " + peopleIterable[i-1].toString());
+    print("bitti");
+
+    return childrenList;
   }
 
 
