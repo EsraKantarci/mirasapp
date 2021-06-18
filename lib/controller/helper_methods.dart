@@ -53,3 +53,53 @@ Map<String, List<int>> getChildrenList(int parentId,  List<Map<int, int>> grandc
   return listData;
 }
 
+/*
+
+
+
+
+
+
+
+Map<String, double> getRateMap(
+    Map<int, Person> peopleIterable, double rate2, Map<int, int> inheritors, int parentId) {
+  Map<String, double> result = new Map();
+
+  Person person;
+
+  print(rate2);
+
+  print(deadList.toString());
+  print(inheritors.toString());
+
+  double rate = 1 / inheritors.length;
+
+  for (int i in inheritors.keys) {
+    person = peopleIterable[i - 1];
+    parentId = person.parentId;
+    print(parentId);
+    double theRate = rankRateMap[parentId] * rate * rate2;
+
+    if (person.isAlive == 0 && person.childCount > 0) {
+      deadList.add(person.id);
+      print(parentId);
+      rankRateMap[person.id] = theRate;
+      print(rankRateMap);
+    }
+
+    else {
+      result[person.name] = theRate;
+      print(result);
+    }
+  }
+  List<int> valueList = grandchildren[0].values.toList();
+  parentId = deadList.last;
+  deadList.removeLast();
+  print(parentId);
+
+  return result;
+}
+
+
+
+ */
