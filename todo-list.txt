@@ -3,9 +3,6 @@ TO-DO list:
 UI-Modifications:
 -Grandparent screen should get better --done--
 -Overflows: resizeToAvoidBottomPadding: false to scaffold --done--
-
-------
-ÇOCUĞUN İSMİNİ ALAMIYORUM. widget.person.name işlemiyor. person_form'a tekrar bakmam lazım.
 -----
 
 1- Child CARD:

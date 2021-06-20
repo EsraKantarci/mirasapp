@@ -27,6 +27,7 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
   List<Person> children = [];
   List<PersonForm> forms = [];
   double childCount = 0;
+  String name = "";
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +107,7 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
       child: TextField(
         onChanged: (text) {
           GlobalState.instance.answers.spouseName = text;
+          name = text;
         },
         decoration: InputDecoration(
           hintText: "Miras bırakanın eşinin ismini giriniz...",
@@ -142,6 +144,10 @@ Widget buildElevatedButton(BuildContext context, double childCount) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
+          name: GlobalState.instance.answers.spouseName, isAlive: 1, parentId: -1,
+          rank: 0));
+      GlobalState.instance.idMatch.add(GlobalState.instance.answers.spouseName);
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Spouse1Child1List()),

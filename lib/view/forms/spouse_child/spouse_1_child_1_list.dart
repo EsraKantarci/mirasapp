@@ -8,6 +8,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
+import 'package:miras/controller/rank_calculator.dart';
 import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/result/result.dart';
@@ -121,6 +122,17 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
     return ElevatedButton(
       child: Text('SONRAKİ ADIM'),
       onPressed: () {
+        Calculator calc = Calculator(answers: GlobalState.instance.answers, people: GlobalState.instance.people);
+
+        Navigator.push(
+          context,
+          //switch case?
+          MaterialPageRoute(builder: (context) => ResultPage(
+            calculatedResults: calc.calculateRates(GlobalState.instance.people),
+            resultText: calc.getResult().toString(),
+            resultRatesText: calc.getInheritorsRates().toString(),
+          )),
+        );
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => ResultPage()),

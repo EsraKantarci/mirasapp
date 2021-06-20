@@ -44,3 +44,22 @@ Expanded ayarı:
                 ),
               ),
             ),
+
+
+
+
+____________________________________
+
+Result page'e göndermelik component:
+
+      Calculator calc = Calculator(answers: testAnswer, people: GlobalState.instance.people);
+
+      Navigator.push(
+        context,
+        //switch case?
+        MaterialPageRoute(builder: (context) => ResultPage(
+          calculatedResults: calc.calculateRates(GlobalState.instance.people),
+          resultText: calc.getResult().toString(),
+          resultRatesText: calc.getInheritorsRates().toString(),
+        )),
+      );
