@@ -16,8 +16,11 @@ class GlobalState{
   List<Person> people = [];
   List<String> idMatch = [];
 
+  Map<String, int> deads = new Map();
+
   Map<String, double> rates = new Map();
   Map<String, double> hiddenRates = new Map();
+
 
   set(dynamic key , dynamic value ) => _data[key] = value;
   get(dynamic key) => _data[key];
