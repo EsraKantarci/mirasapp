@@ -35,12 +35,14 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
     print(childCount);
     for (int i = 0; i < childCount.toInt(); i++) {
       setState(() {
+        print("çocuk ekledim");
         children.add(Person());
       });
+
       forms.add(PersonForm(
         person: children[i],
-        onDelete: () => onDelete(i),
       ));
+      childCount--;
     }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
