@@ -1,8 +1,8 @@
 
 TO-DO list:
 UI-Modifications:
--Grandparent screen should get better
--Overflows: resizeToAvoidBottomPadding: false to scaffold
+-Grandparent screen should get better --done--
+-Overflows: resizeToAvoidBottomPadding: false to scaffold --done--
 
 ------
 ÇOCUĞUN İSMİNİ ALAMIYORUM. widget.person.name işlemiyor. person_form'a tekrar bakmam lazım.
@@ -12,7 +12,7 @@ UI-Modifications:
 a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view. -- done--
 b- Parental information should be added, drop-down should be possible.
 c- Dynamically changed card appbar title --done---
-d- remove after you enter homepage
+d- remove after you enter homepage --done--
 
 2- Listing:
 a- Child + parental information should be listed on the top of the screen
@@ -21,14 +21,14 @@ a- Child + parental information should be listed on the top of the screen
 b- Save as PDF or PNG
 
 4- Logic:
-a- List iterable choices
+a- List iterable choices --done--
 
 5- UI:
 a- Remember disclaimer page approval
 b- Create splash screen
 c- Show splash screen as welcome screen after first fly
-d- Make petitions clickable
-e- Make blog UI
+d- Make petitions clickable --done--
+e- Make blog UI --done--
 
 6- Knowledgebase
 a- Blog
@@ -36,7 +36,7 @@ b- Petitions
 c- User manual
 
 7- Test
-a- Unit test
+a- Unit test --done--
 b- Stress test
 
 ___
