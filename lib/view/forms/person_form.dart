@@ -97,7 +97,7 @@ class _PersonFormState extends State<PersonForm> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: buildElevatedButton(
-                              context, answer1, count, "OK", "Bu kişi kaydedildi", widget.person),
+                              context, answer1, count, "✓", "Bu kişi kaydedildi", widget.person),
                         ),
                       ),
                     ),
@@ -117,9 +117,10 @@ class _PersonFormState extends State<PersonForm> {
       child: Text(savingText),
       onPressed: () {
         setState(() {
-          // parent id 1 şimdilik
+          // parent id -1 şimdilik
+          print("ID MATCH: " + GlobalState.instance.idMatch.toString());
            GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
-              name: person.name, isAlive: answer1, parentId: 1,
+              name: person.name, isAlive: answer1, parentId: -1,
               rank: 1, childCount: person.childCount));
           GlobalState.instance.idMatch.add(person.name);
           iconStatus = text; // sonra bunu ikona çeviririz

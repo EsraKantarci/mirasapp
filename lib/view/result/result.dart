@@ -25,16 +25,33 @@ class ResultPage extends StatelessWidget {
     List<String> inheritorsName = rates.keys.toList();
 
     return Scaffold(
+
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
       body: inheritorsName.length <= 0
           ? Center(
               child: Column(
-                children: [
-                  Text(
-                      "Uygun mirasçı bulunamadığı için, miras devlete kalmıştır."),
-                  buildAlign(context, "ANASAYFAYA DÖN"),
-                ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: (<Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Text(
+                          "\n\nUygun mirasçı bulunamadığı için, miras devlete kalmıştır.",
+                          style: TextStyle(color: Colors.blueGrey, fontSize: 25, fontWeight: FontWeight.w400)),
+                    ),
+                  ),
+                 Expanded(
+                 child: Padding(
+                    padding: const EdgeInsets.only(bottom: 50),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child:
+                      Image.asset("assets/images/independence.png", fit: BoxFit.fitWidth),
+                    ),
+                  ),
+                 ),
+                ]),
               ),
             )
           : Padding(

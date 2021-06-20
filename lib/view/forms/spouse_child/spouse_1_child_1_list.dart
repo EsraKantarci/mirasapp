@@ -27,11 +27,13 @@ class Spouse1Child1List extends StatefulWidget {
 class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   List<Person> children = [];
   List<PersonForm> forms = [];
-  int childCount = GlobalState.instance.answers.childCount;
+  //TODO: bug--> child count'ı duplicate alıyor nedense
+  int childCount = (GlobalState.instance.answers.childCount*0.5).toInt();
 
   @override
   Widget build(BuildContext context) {
     forms.clear();
+    print(childCount);
     for (int i = 0; i < childCount.toInt(); i++) {
       setState(() {
         children.add(Person());
@@ -42,10 +44,12 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
       ));
     }
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // In the next sprint, children will be added to a bucket list.
       home: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: buildAppBar(),
+
         body:
           SingleChildScrollView(
             physics: ScrollPhysics(),
