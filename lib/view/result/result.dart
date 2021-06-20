@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/controller/rank_calculator.dart';
@@ -47,9 +48,11 @@ class ResultPage extends StatelessWidget {
                         Icons.account_circle,
                         color: AppColors.mainColor,
                       ),
-                      trailing: Text("Gerçek Pay: " +
-                        rates[inheritorsName[i]].toString() +
-                          "\n Saklı Pay: " + hiddenRates[inheritorsName[i]].toString() ,
+                      trailing: Text(
+                        "Gerçek Pay: " +
+                            rates[inheritorsName[i]].toString() +
+                            "\n Saklı Pay: " +
+                            hiddenRates[inheritorsName[i]].toString(),
                         style: TextStyle(color: Colors.indigo, fontSize: 15),
                       ),
                       title: Text(inheritorsName[i].toString() + ": ",
@@ -82,6 +85,36 @@ class ResultPage extends StatelessWidget {
           ]),
         ),
       ),*/
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+
+              TextButton(
+                child: Text("YENİDEN HESAPLA", style: TextStyle(color: AppColors.mainColor, fontWeight: FontWeight.bold),),
+
+                onPressed: () {},
+              ),
+
+            SizedBox(width: 48.0),
+            TextButton(
+                child: Text("ANASAYFAYA DÖN", style: TextStyle(color: AppColors.mainColor, fontWeight: FontWeight.bold)),
+
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.mainColor,
+        child: Icon(Icons.save),
+        onPressed: () {},
+      ),
+
     );
   }
 
