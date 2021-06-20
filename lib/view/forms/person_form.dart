@@ -30,14 +30,6 @@ class _PersonFormState extends State<PersonForm> {
   var savingText = "Bu kişiyi listeye kaydet";
   List<String> parentNameList = GlobalState.instance.deads.keys.toList();
 
-  int id;
-  String name;
-  int isAlive;
-  int hasParent;
-  int hasChild;
-  int parentId;
-  int rank; // spouse: 0, descendent:1, parent/second: 2, gparent/third:3
-  int childCount;
 
   @override
   Widget build(BuildContext context) {
@@ -138,12 +130,18 @@ class _PersonFormState extends State<PersonForm> {
            GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
               name: person.name, isAlive: answer1, parentId: -1,
               rank: 1, childCount: person.childCount));
-          GlobalState.instance.idMatch.add(person.name);
+
+            GlobalState.instance.idMatch.add(person.name);
+            if(person.isAlive == 0){
+              GlobalState.instance.deadsWithChildren[GlobalState.instance.idMatch.length] = person.childCount;
+            }
+
           print("son id: " + GlobalState.instance.idMatch.last);
           iconStatus = text; // sonra bunu ikona çeviririz
           savingText = saveText;
 
           print("Anlık insanlar: "+GlobalState.instance.people.toString());
+          print("Anlık ölülerin çocuk sayısı: " + GlobalState.instance.deadsWithChildren.toString());
         });
       },
       style: ElevatedButton.styleFrom(

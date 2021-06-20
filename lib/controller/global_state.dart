@@ -16,6 +16,8 @@ class GlobalState{
   List<Person> people = [];
   List<String> idMatch = [];
 
+  //parent id, children count
+  Map<int, int> deadsWithChildren = new Map();
   Map<String, int> deads = new Map();
 
   Map<String, double> rates = new Map();

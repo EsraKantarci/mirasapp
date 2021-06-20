@@ -29,12 +29,17 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   List<Person> children = [];
   List<PersonForm> forms = [];
   int childCount = GlobalState.instance.answers.childCount;
+  List<int> descendentsList = GlobalState.instance.deadsWithChildren.keys.toList();
+  int count = 0;
+
 
 
   @override
   Widget build(BuildContext context) {
     forms.clear();
     print(childCount);
+
+
     for (int i = 0; i < childCount.toInt(); i++) {
       setState(() {
         print("çocuk ekledim");
@@ -44,6 +49,7 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
       forms.add(PersonForm(
         person: children[i],
       ));
+
       childCount--;
     }
     return MaterialApp(
@@ -122,11 +128,18 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
     return ElevatedButton(
       child: Text('SONRAKİ ADIM'),
       onPressed: () {
+
+        if(descendentsList.isNotEmpty){
+          for(int i in descendentsList){
+
+          }
+
+        }
+        else{
         Calculator calc = Calculator(answers: GlobalState.instance.answers, people: GlobalState.instance.people);
 
         Navigator.push(
           context,
-          //switch case?
           MaterialPageRoute(builder: (context) => ResultPage(
             calculatedResults: calc.calculateRates(GlobalState.instance.people),
             resultText: calc.getResult().toString(),
@@ -137,7 +150,7 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
           context,
           MaterialPageRoute(builder: (context) => ResultPage()),
         );
-      },
+      }},
       style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
