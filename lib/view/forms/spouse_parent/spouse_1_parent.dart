@@ -236,25 +236,29 @@ Widget buildElevatedButton(BuildContext context, answer1, answer2) {
 
         route = Spouse1Parent0();
       }
-      Calculator calc = Calculator(
-          answers: GlobalState.instance.answers,
-          people: GlobalState.instance.people);
+      if (answer1 == 1 && answer2 == 1) {
+        Calculator calc = Calculator(
+            answers: GlobalState.instance.answers,
+            people: GlobalState.instance.people);
 
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  ResultPage(
+                    calculatedResults:
+                    calc.calculateRates(GlobalState.instance.people),
+                    resultText: calc.getResult().toString(),
+                    resultRatesText: calc.getInheritorsRates().toString(),
+                  )),
+        );
+      }
+      else{
       Navigator.push(
         context,
-        MaterialPageRoute(
-            builder: (context) => ResultPage(
-                  calculatedResults:
-                      calc.calculateRates(GlobalState.instance.people),
-                  resultText: calc.getResult().toString(),
-                  resultRatesText: calc.getInheritorsRates().toString(),
-                )),
+        MaterialPageRoute(builder: (context) => route),
       );
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ResultPage()),
-      );
-    },
+    }},
     style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
