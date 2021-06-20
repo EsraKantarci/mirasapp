@@ -195,6 +195,8 @@ class Calculator {
     print(rankRateMap.toString());
     print("VEEE SONUÇLAR:");
     print(rateListResult.toString());
+
+    GlobalState.instance.rates = rateListResult;
     return rateListResult.toString();
   }
 

@@ -20,10 +20,34 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Map<String, double> rates = GlobalState.instance.rates;
+    List<String> inheritorsName = rates.keys.toList();
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
-      body: Padding(
+      body: inheritorsName.length <= 0
+          ? Center(
+        child: Text("Uygun mirasçı bulunamadığı için, miras devlete kalmıştır."),
+      )
+          : ListView.builder(
+        itemCount: inheritorsName.length,
+        itemBuilder: (_, i) => ListTile(
+          leading: Icon(Icons.account_circle, color: AppColors.mainColor,),
+            trailing: Text(rates[inheritorsName[i]].toString(),
+              style: TextStyle(color: Colors.indigo, fontSize: 20),),
+          title: Text( inheritorsName[i].toString()+": ",
+            style: TextStyle(color: AppColors.mainColor, fontSize: 18, fontWeight: FontWeight.bold, // light
+ // italic),),
+        )
+        ),
+    ),
+      ),
+
+
+
+      /*body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,20 +60,25 @@ class ResultPage extends StatelessWidget {
             Text(calculatedResults.toString()),
 
 
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  width: MediaQuery.of(context).size.width,
-                  child: buildElevatedButton(context),
-                ),
-              ),
-            ),
+
+            buildAlign(context),
           ]),
         ),
-      ),
+      ),*/
     );
+  }
+
+  Align buildAlign(BuildContext context) {
+    return Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width,
+                child: buildElevatedButton(context),
+              ),
+            ),
+          );
   }
 
   AppBar buildAppBar() {
