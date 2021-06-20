@@ -28,9 +28,11 @@ class _PersonFormState extends State<PersonForm> {
   int answer1 = -1;
   var iconStatus = "?";
   var savingText = "Bu kişiyi listeye kaydet";
+  List<String> parentNameList = GlobalState.instance.deads.keys.toList();
 
   @override
   Widget build(BuildContext context) {
+    String parentName = parentNameList.first;
     return Padding(
       padding: EdgeInsets.all(8),
       child: Card(
@@ -40,10 +42,11 @@ class _PersonFormState extends State<PersonForm> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               AppBar(
+
                 leading: Icon(Icons.people_alt),
                 title: Text("Kişi Ekleme Formu"),
                 centerTitle: true,
-                backgroundColor: AppColors.mainColor.withOpacity(0.8),
+                backgroundColor: AppColors.mainColor.withOpacity(0.9),
                 actions: <Widget>[
                   IconButton(
                     icon: Text(iconStatus),
@@ -52,6 +55,7 @@ class _PersonFormState extends State<PersonForm> {
               ),
               Column(
                 children: [
+                  buildInfo("Ebeveyn İsmi: " + parentName),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
@@ -154,6 +158,21 @@ class _PersonFormState extends State<PersonForm> {
               fontSize: 16,
               fontWeight: FontWeight.normal,
               color: Colors.black87,
+            ),
+          )),
+    );
+  }
+
+  Padding buildInfo(String text) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
             ),
           )),
     );

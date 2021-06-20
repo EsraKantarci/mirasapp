@@ -167,6 +167,8 @@ Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
   return ElevatedButton(
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
+      GlobalState.instance.deads[GlobalState.instance.answers.name] =
+          GlobalState.instance.answers.childCount;
       var route;
       if (answer1 == 1 && answer2 == 1) {
         route = Spouse1Child1();
