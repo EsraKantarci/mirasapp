@@ -12,6 +12,7 @@ import 'package:miras/model/person.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent_0.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent_1.dart';
+import 'package:miras/view/model/descendent_adder.dart';
 import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
 
@@ -214,7 +215,7 @@ Widget buildElevatedButton(BuildContext context, answer1, answer2) {
         GlobalState.instance.idMatch
             .add(GlobalState.instance.answers.fatherName);
       } else {
-        route = Spouse1Parent1();
+        route = DescendentList();
 
         GlobalState.instance.people.add(Person(
             id: GlobalState.instance.idMatch.length + 1,
@@ -225,6 +226,7 @@ Widget buildElevatedButton(BuildContext context, answer1, answer2) {
         GlobalState.instance.idMatch
             .add(GlobalState.instance.answers.motherName);
 
+
         GlobalState.instance.people.add(Person(
             id: GlobalState.instance.idMatch.length + 1,
             name: GlobalState.instance.answers.fatherName,
@@ -233,6 +235,8 @@ Widget buildElevatedButton(BuildContext context, answer1, answer2) {
             rank: 2));
         GlobalState.instance.idMatch
             .add(GlobalState.instance.answers.fatherName);
+
+
 
         route = Spouse1Parent0();
       }
