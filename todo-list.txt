@@ -10,9 +10,10 @@ UI-Modifications:
 
 1- Child CARD:
 a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view. -- done--
-b- Parental information should be added, drop-down should be possible.
+b- Parental information should be added, drop-down should be possible. --changed the logic--
 c- Dynamically changed card appbar title --done---
 d- remove after you enter homepage --done--
+e- name validation
 
 2- Listing:
 a- Child + parental information should be listed on the top of the screen

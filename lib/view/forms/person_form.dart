@@ -30,6 +30,15 @@ class _PersonFormState extends State<PersonForm> {
   var savingText = "Bu kişiyi listeye kaydet";
   List<String> parentNameList = GlobalState.instance.deads.keys.toList();
 
+  int id;
+  String name;
+  int isAlive;
+  int hasParent;
+  int hasChild;
+  int parentId;
+  int rank; // spouse: 0, descendent:1, parent/second: 2, gparent/third:3
+  int childCount;
+
   @override
   Widget build(BuildContext context) {
     String parentName = parentNameList.first;
@@ -59,8 +68,12 @@ class _PersonFormState extends State<PersonForm> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
-                      initialValue: widget.person.name,
-                      onSaved: (value) => widget.person.name = value,
+
+                      onChanged: (value) {
+                        print("isim şu---"+ widget.person.name);
+                        widget.person.name = value.toString();
+                      },
+
                       validator: (value) =>
                           value.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(
@@ -88,7 +101,6 @@ class _PersonFormState extends State<PersonForm> {
                       value: 0,
                       onChanged: (value) =>
                           widget.person.childCount = value.toInt(),
-
                       // widget.person.childCount = value.toInt(),
                     ),
                   ),
@@ -127,8 +139,11 @@ class _PersonFormState extends State<PersonForm> {
               name: person.name, isAlive: answer1, parentId: -1,
               rank: 1, childCount: person.childCount));
           GlobalState.instance.idMatch.add(person.name);
+          print("son id: " + GlobalState.instance.idMatch.last);
           iconStatus = text; // sonra bunu ikona çeviririz
           savingText = saveText;
+
+          print("Anlık insanlar: "+GlobalState.instance.people.toString());
         });
       },
       style: ElevatedButton.styleFrom(

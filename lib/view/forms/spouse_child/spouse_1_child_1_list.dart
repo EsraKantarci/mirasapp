@@ -29,6 +29,7 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   List<PersonForm> forms = [];
   int childCount = GlobalState.instance.answers.childCount;
 
+
   @override
   Widget build(BuildContext context) {
     forms.clear();
@@ -76,6 +77,7 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
                             context),
                       ),
                     ),
+
                   ),
                 ),
               ],
