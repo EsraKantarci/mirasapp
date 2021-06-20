@@ -113,14 +113,18 @@ class ResultPage extends StatelessWidget {
               TextButton(
                 child: Text("YENİDEN HESAPLA", style: TextStyle(color: AppColors.mainColor, fontWeight: FontWeight.bold),),
 
-                onPressed: () {},
+                onPressed: () {
+                  print(GlobalState.instance.people.toString());
+                },
               ),
 
             SizedBox(width: 48.0),
             TextButton(
                 child: Text("ANASAYFAYA DÖN", style: TextStyle(color: AppColors.mainColor, fontWeight: FontWeight.bold)),
 
-              onPressed: () {},
+              onPressed: () {
+                  print(GlobalState.instance.deadsWithChildren.toString());
+              },
             ),
           ],
         ),

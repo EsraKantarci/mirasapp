@@ -32,13 +32,12 @@ class _PersonFormState extends State<PersonForm> {
   List<int> parentsIdList =  GlobalState.instance.parentalInfo;
   Person parent;
   var peopleIterable;
-  int parentId;
-
+  int parentId = -1;
 
   @override
   Widget build(BuildContext context) {
     if(parentsIdList.isEmpty){
-      print("boş döndü ya");
+      print("boş döndü");
       Answers answer = GlobalState.instance.answers;
       parent = Person(name: answer.name, id: -1);
     }
@@ -47,7 +46,6 @@ class _PersonFormState extends State<PersonForm> {
       peopleIterable = GlobalState.instance.people.asMap();
       parentId = parentsIdList.first;
       parent = peopleIterable[parentId - 1];
-      GlobalState.instance.parentalInfo.remove(parent.id);
     }
       String parentName = parent.name;
 
@@ -143,21 +141,24 @@ class _PersonFormState extends State<PersonForm> {
       child: Text(savingText),
       onPressed: () {
         setState(() {
-
+int personId = GlobalState.instance.idMatch.length + 1;
           print("-------------------------- SONUÇ LİSTE:"+GlobalState.instance.people.toString() );
           print("ID MATCH: " + GlobalState.instance.idMatch.toString());
-           GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
-              name: person.name, isAlive: answer1, parentId: -1,
+           GlobalState.instance.people.add(Person(id: personId,
+              name: person.name, isAlive: answer1, parentId: parentId,
               rank: 1, childCount: person.childCount));
 
             GlobalState.instance.idMatch.add(person.name);
+
             if(person.isAlive == 0){
-              GlobalState.instance.deadsWithChildren[GlobalState.instance.idMatch.length] = person.childCount;
+              GlobalState.instance.deadsWithChildren[personId] = person.childCount;
             }
 
           print("son id: " + GlobalState.instance.idMatch.last);
           iconStatus = text; // sonra bunu ikona çeviririz
           savingText = saveText;
+
+          GlobalState.instance.parentalInfo.remove(parent.id);
 
           print("Anlık insanlar: "+GlobalState.instance.people.toString());
           print("Anlık ölülerin çocuk sayısı: " + GlobalState.instance.deadsWithChildren.toString());
