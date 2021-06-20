@@ -27,8 +27,7 @@ class Spouse1Child1List extends StatefulWidget {
 class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   List<Person> children = [];
   List<PersonForm> forms = [];
-  //TODO: bug--> child count'ı duplicate alıyor nedense
-  int childCount = (GlobalState.instance.answers.childCount*0.5).toInt();
+  int childCount = GlobalState.instance.answers.childCount;
 
   @override
   Widget build(BuildContext context) {
@@ -92,10 +91,6 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
     });
   }
 
-
-  void onSave() {
-    forms.forEach((form) => form.isValid());
-  }
 
   AppBar buildAppBar() {
     return AppBar(
