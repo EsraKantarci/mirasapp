@@ -40,6 +40,7 @@ class _DescendentListState extends State<DescendentList> {
   Widget build(BuildContext context) {
     forms.clear();
     print("içerideyim");
+    print(GlobalState.instance.deadsWithChildren.toString());
     if(GlobalState.instance.deadsWithChildren.containsValue(-1)){
       print("parent mirası bırakan görünüyor: " + GlobalState.instance.deadsWithChildren.keys.toString());
     }
@@ -58,6 +59,7 @@ class _DescendentListState extends State<DescendentList> {
 
 
     for (int i = 0; i < childCount.toInt(); i++) {
+      print("anlık liste: " + GlobalState.instance.deadsWithChildren.toString());
       descendentCount = GlobalState.instance.deadsWithChildren[parents.first];
       peopleIterable = GlobalState.instance.people.asMap();
       Person parent = peopleIterable[parents.first-1];
@@ -71,7 +73,8 @@ class _DescendentListState extends State<DescendentList> {
           GlobalState.instance.parentalInfo.add(parent.id);
           forms.add(PersonForm(
             person: children[j],
-          ));        });
+          ));
+        });
 
 
       }
@@ -182,7 +185,8 @@ class _DescendentListState extends State<DescendentList> {
               calculatedResults: calc.calculateRates(GlobalState.instance.people),
               resultText: calc.getResult().toString(),
               resultRatesText: calc.getInheritorsRates().toString(),
-            )),
+            ),
+            ),
           );
           Navigator.push(
             context,
