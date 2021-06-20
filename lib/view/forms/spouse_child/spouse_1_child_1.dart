@@ -13,7 +13,7 @@ import 'package:miras/model/person.dart';
 import 'package:miras/model/answers.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/forms/person_form.dart';
-import 'package:miras/view/forms/spouse_child/spouse_1_child_1_list.dart';
+import 'package:miras/view/model/child_adder.dart';
 import 'package:miras/view/start_page.dart';
 
 class Spouse1Child1 extends StatefulWidget {
@@ -150,7 +150,7 @@ Widget buildElevatedButton(BuildContext context, double childCount) {
       GlobalState.instance.idMatch.add(GlobalState.instance.answers.spouseName);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Spouse1Child1List()),
+        MaterialPageRoute(builder: (context) => ChildAdder()),
       );
     },
     style: ElevatedButton.styleFrom(

@@ -11,22 +11,22 @@ import 'package:miras/controller/global_state.dart';
 import 'package:miras/controller/rank_calculator.dart';
 import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/others/descendent_adder.dart';
+import 'package:miras/view/model/descendent_adder.dart';
 import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
 
-import '../person_form.dart';
+import '../forms/person_form.dart';
 
 // TODO: Add "Sonraki adım" button at the bottom.
 
-class Spouse1Child1List extends StatefulWidget {
-  const Spouse1Child1List({Key key}) : super(key: key);
+class ChildAdder extends StatefulWidget {
+  const ChildAdder({Key key}) : super(key: key);
 
   @override
-  _Spouse1Child1ListState createState() => _Spouse1Child1ListState();
+  _ChildAdderState createState() => _ChildAdderState();
 }
 
-class _Spouse1Child1ListState extends State<Spouse1Child1List> {
+class _ChildAdderState extends State<ChildAdder> {
   List<Person> children = [];
   List<PersonForm> forms = [];
   int childCount = GlobalState.instance.answers.childCount;
