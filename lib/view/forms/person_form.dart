@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:miras/controller/global_state.dart';
+import 'package:miras/model/answers.dart';
 import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
 
@@ -28,12 +29,29 @@ class _PersonFormState extends State<PersonForm> {
   int answer1 = -1;
   var iconStatus = "?";
   var savingText = "Bu kişiyi listeye kaydet";
-  List<String> parentNameList = GlobalState.instance.deads.keys.toList();
+  List<int> parentsIdList =  GlobalState.instance.parentalInfo;
+  Person parent;
+  var peopleIterable;
+  int parentId;
 
 
   @override
   Widget build(BuildContext context) {
-    String parentName = parentNameList.first;
+    if(parentsIdList.isEmpty){
+      print("boş döndü ya");
+      Answers answer = GlobalState.instance.answers;
+      parent = Person(name: answer.name, id: -1);
+    }
+    else {
+      print("parentIdList: " + parentsIdList.toString());
+      peopleIterable = GlobalState.instance.people.asMap();
+      parentId = parentsIdList.first;
+      parent = peopleIterable[parentId - 1];
+      GlobalState.instance.parentalInfo.remove(parent.id);
+    }
+      String parentName = parent.name;
+
+
     return Padding(
       padding: EdgeInsets.all(8),
       child: Card(
@@ -125,7 +143,8 @@ class _PersonFormState extends State<PersonForm> {
       child: Text(savingText),
       onPressed: () {
         setState(() {
-          // parent id -1 şimdilik
+
+          print("-------------------------- SONUÇ LİSTE:"+GlobalState.instance.people.toString() );
           print("ID MATCH: " + GlobalState.instance.idMatch.toString());
            GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
               name: person.name, isAlive: answer1, parentId: -1,

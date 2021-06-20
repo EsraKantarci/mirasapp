@@ -11,6 +11,7 @@ import 'package:miras/controller/global_state.dart';
 import 'package:miras/controller/rank_calculator.dart';
 import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
+import 'package:miras/view/others/descendent_adder.dart';
 import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
 
@@ -29,8 +30,6 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
   List<Person> children = [];
   List<PersonForm> forms = [];
   int childCount = GlobalState.instance.answers.childCount;
-  List<int> descendentsList = GlobalState.instance.deadsWithChildren.keys.toList();
-  int count = 0;
 
 
 
@@ -128,12 +127,12 @@ class _Spouse1Child1ListState extends State<Spouse1Child1List> {
     return ElevatedButton(
       child: Text('SONRAKİ ADIM'),
       onPressed: () {
-
+        List<int> descendentsList = GlobalState.instance.deadsWithChildren.keys.toList();
         if(descendentsList.isNotEmpty){
-          for(int i in descendentsList){
-
-          }
-
+          print("Gidiyorum:");
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DescendentList()));
         }
         else{
         Calculator calc = Calculator(answers: GlobalState.instance.answers, people: GlobalState.instance.people);
