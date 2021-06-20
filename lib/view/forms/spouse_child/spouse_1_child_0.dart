@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent_0.dart';
@@ -73,7 +74,6 @@ class _Spouse1Child0State extends State<Spouse1Child0> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-
                 GlobalState.instance.answers.hasParent = value;
                 answer1 = value;
                 setState(() {});
@@ -149,6 +149,11 @@ Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       var route;
+      GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
+          name: GlobalState.instance.answers.spouseName, isAlive: 1, parentId: -1,
+          rank: 0));
+      GlobalState.instance.idMatch.add(GlobalState.instance.answers.spouseName);
+
       if (answer1 == 1 || answer2 == 1){
         route = Spouse1Parent();
       }

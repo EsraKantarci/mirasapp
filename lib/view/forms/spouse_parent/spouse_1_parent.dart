@@ -6,7 +6,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
+import 'package:miras/controller/rank_calculator.dart';
 import 'package:miras/model/constants.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent_0.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent_1.dart';
@@ -41,25 +43,18 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
               buildSpace(),
               buildTextInputMother(context),
               buildSpace(),
-
               buildQuestion("Miras bırakanın annesi sağ mı?"),
               buildRadioButton1("Evet", 1, answer1),
               buildRadioButton1("Hayır", 0, answer1),
               buildSpace(),
-
-
               buildQuestion("Miras bırakanın babasının ismi:"),
               buildSpace(),
               buildTextInputFather(context),
               buildSpace(),
-
-
               buildQuestion("Miras bırakanın  babası sağ mı?"),
-              buildRadioButton1("Evet", 1, answer2),
-              buildRadioButton1("Hayır", 0, answer2),
+              buildRadioButton2("Evet", 1, answer2),
+              buildRadioButton2("Hayır", 0, answer2),
               buildSpace(),
-
-
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
@@ -120,8 +115,8 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
   }
 
   SizedBox buildSpace() => SizedBox(
-    height: 10,
-  );
+        height: 10,
+      );
 
   Text buildQuestion(String text) {
     return Text(
@@ -159,18 +154,105 @@ Widget buildElevatedButton(BuildContext context, answer1, answer2) {
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       var route;
-      if(answer1 == 1 && answer2 == 1){
+      if (answer1 == 1 && answer2 == 1) {
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.motherName,
+            isAlive: 1,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.motherName);
+
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.fatherName,
+            isAlive: 1,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.fatherName);
         route = ResultPage();
-      }
-      else if(answer1 == 0 && answer2 == 0){
+      } else if (answer1 == 1 && answer2 == 0) {
+        route = Spouse1Parent1();
+
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.motherName,
+            isAlive: 1,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.motherName);
+
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.fatherName,
+            isAlive: 0,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.fatherName);
+      } else if (answer1 == 0 && answer2 == 1) {
+        route = Spouse1Parent1();
+
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.motherName,
+            isAlive: 0,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.motherName);
+
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.fatherName,
+            isAlive: 1,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.fatherName);
+      } else {
+        route = Spouse1Parent1();
+
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.motherName,
+            isAlive: 0,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.motherName);
+
+        GlobalState.instance.people.add(Person(
+            id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.fatherName,
+            isAlive: 0,
+            parentId: -1,
+            rank: 2));
+        GlobalState.instance.idMatch
+            .add(GlobalState.instance.answers.fatherName);
+
         route = Spouse1Parent0();
       }
-      else{
-        route = Spouse1Parent1();
-      }
+      Calculator calc = Calculator(
+          answers: GlobalState.instance.answers,
+          people: GlobalState.instance.people);
+
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => route),
+        MaterialPageRoute(
+            builder: (context) => ResultPage(
+                  calculatedResults:
+                      calc.calculateRates(GlobalState.instance.people),
+                  resultText: calc.getResult().toString(),
+                  resultRatesText: calc.getInheritorsRates().toString(),
+                )),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ResultPage()),
       );
     },
     style: ElevatedButton.styleFrom(
@@ -210,7 +292,6 @@ Container buildTextInputSpouse(BuildContext context) {
   );
 }
 
-
 Container buildTextInputMother(BuildContext context) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.1,
@@ -231,8 +312,6 @@ Container buildTextInputMother(BuildContext context) {
     ),
   );
 }
-
-
 
 Container buildTextInputFather(BuildContext context) {
   return Container(
