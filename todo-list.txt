@@ -1,8 +1,3 @@
-Problems:
-
--Eyeglasses got broken, cannot stare to screen with current eyeglasses without getting migraine. A little off time is needed.
-
-
 
 TO-DO list:
 UI-Modifications:
@@ -17,6 +12,7 @@ UI-Modifications:
 a- Child card modification: Removal, adding child inside child-card. Make it single scrollable view. -- done--
 b- Parental information should be added, drop-down should be possible.
 c- Dynamically changed card appbar title --done---
+d- remove after you enter homepage
 
 2- Listing:
 a- Child + parental information should be listed on the top of the screen

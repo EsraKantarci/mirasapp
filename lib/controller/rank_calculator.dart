@@ -13,7 +13,9 @@ class Calculator {
   final Answers answers;
   final List<Person> people;
 
-  String result = "";
+  List<String> inheritorsNames = [];
+  List<double> inheritorsRates = [];
+
   List<Map<int, int>> inheritors = [];
   List<Map<int, int>> deceaseds = [];
   List<Map<int, int>> grandchildren = [];
@@ -193,7 +195,7 @@ class Calculator {
     print(rankRateMap.toString());
     print("VEEE SONUÇLAR:");
     print(rateListResult.toString());
-    return rateList.toString();
+    return rateListResult.toString();
   }
 
   // TODO:
@@ -288,14 +290,22 @@ class Calculator {
     return listData;
   }*/
 
-  String getResult() {
+  List<String> getResult() {
     if (GlobalState.instance.answers.hasSpouse == 1) {
-      result = "Evli,";
+      inheritorsNames = rateListResult.keys.toList();
     }
+    else{
+      rateListResult.remove(GlobalState.instance.answers.spouseName);
+      inheritorsNames = rateListResult.keys.toList();
+    }
+    print("Mirasçıların isimleri: " + inheritorsNames.toString());
+    return inheritorsNames;
   }
 
-  String getInterpretation() {
-    return "";
+  List<double> getInheritorsRates() {
+    inheritorsRates = rateListResult.values.toList();
+    print("Mirasçıların oranları: " + inheritorsRates.toString());
+    return inheritorsRates;
   }
 
   Map<String, double> rateOperator(int rank1, int rank2) {

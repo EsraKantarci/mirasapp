@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/disclaimer_page.dart';
 import 'package:miras/view/others/blog.dart';
@@ -16,6 +17,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+
+    if (GlobalState.instance.answers != null) {
+      print(GlobalState.instance.answers.toString());
+    };
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: Column(

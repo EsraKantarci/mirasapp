@@ -10,10 +10,12 @@ class ResultPage extends StatelessWidget {
   ResultPage(
       {
         @required this.calculatedResults,
-        @required this.resultText});
+        @required this.resultText,
+      @required this.resultRatesText,});
 
   final String calculatedResults;
   final String resultText;
+  final String resultRatesText;
 
 
   @override

@@ -117,7 +117,8 @@ Widget buildElevatedButton(BuildContext context, Answers testAnswer) {
         //switch case?
         MaterialPageRoute(builder: (context) => ResultPage(
           calculatedResults: calc.calculateRates(GlobalState.instance.people),
-          resultText: calc.getResult(),
+          resultText: calc.getResult().toString(),
+          resultRatesText: calc.getInheritorsRates().toString(),
         )),
       );
     },
