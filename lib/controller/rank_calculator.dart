@@ -178,6 +178,7 @@ class Calculator {
     }
 
     GlobalState.instance.rates = rateList;
+
     //parent id -1 for the start, then it will return to a recursion
 
     mapRatesToPeople(-1, inheritors[0].keys.toList());
@@ -196,8 +197,11 @@ class Calculator {
     print("VEEE SONUÇLAR:");
     print(rateListResult.toString());
 
+
     GlobalState.instance.rates = rateListResult;
-    return rateListResult.toString();
+    GlobalState.instance.hiddenRates = hiddenRateListResult;
+    print("Saklı Paylar: " + hiddenRateListResult.toString());
+    return rateList.toString();
   }
 
   // TODO:
@@ -228,6 +232,7 @@ class Calculator {
         rate = rate2 * (1 / personCount);
 
         if (person.isAlive == 1) {
+          hiddenRateListResult[person.name] = rate*GlobalState.instance.rates["hiddenRate2"];
           rateListResult[person.name] = rate;
         } else {
           rankRateMap[person.id] = rate;
@@ -237,6 +242,7 @@ class Calculator {
         rate = parentRate * (1 / personCount);
         if (person.isAlive == 1) {
           rateListResult[person.name] = rate;
+          hiddenRateListResult[person.name] = rate*GlobalState.instance.rates["hiddenRate2"];
         } else {
           rankRateMap[person.id] = rate;
           deadList.add(person.id);
