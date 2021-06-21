@@ -1,11 +1,20 @@
 //dilekçeler için layout
 // download feature will be added: https://www.youtube.com/watch?v=ardrERpmQDA
 
-
 import 'package:flutter/material.dart';
 import 'package:miras/model/constants.dart';
 import 'package:miras/view/home_page.dart';
+import 'package:miras/view/others/preview.dart';
 import 'package:miras/view/start_page.dart';
+
+import 'dart:async';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/basic.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
@@ -17,6 +26,7 @@ class BlogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
@@ -117,11 +127,13 @@ class BlogPage extends StatelessWidget {
 // Save as png or pdf button, but first let's make listview in this result page
 Widget buildElevatedButton(BuildContext context) {
   return ElevatedButton(
+
+
     child: Text('Örneği İndir'),
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => StartPage()),
+        MaterialPageRoute(builder: (context) => Preview()),
       );
     },
     style: ElevatedButton.styleFrom(
