@@ -115,6 +115,11 @@ class ResultPage extends StatelessWidget {
 
                 onPressed: () {
                   print(GlobalState.instance.people.toString());
+                  clearForms();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => StartPage()),
+                    );
                 },
               ),
 
@@ -123,7 +128,11 @@ class ResultPage extends StatelessWidget {
                 child: Text("ANASAYFAYA DÖN", style: TextStyle(color: AppColors.mainColor, fontWeight: FontWeight.bold)),
 
               onPressed: () {
-                  print(GlobalState.instance.deadsWithChildren.toString());
+                  clearForms();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
               },
             ),
           ],
@@ -202,4 +211,25 @@ Widget buildElevatedButton(BuildContext context, String text) {
             fontSize: 20,
             fontWeight: FontWeight.bold)),
   );
+}
+
+void clearForms(){
+  GlobalState.instance.children.removeRange(0, GlobalState.instance.children.length);
+  print("çocuklar: " + GlobalState.instance.children.toString());
+  GlobalState.instance.people.removeRange(0, GlobalState.instance.people.length);
+  print("kişiler: " + GlobalState.instance.people.toString());
+  GlobalState.instance.idMatch.removeRange(0, GlobalState.instance.idMatch.length);
+  print("idmatch: " + GlobalState.instance.children.toString());
+  GlobalState.instance.deadsWithChildren.clear();
+  print("deads with children: "+  GlobalState.instance.deadsWithChildren.toString());
+  GlobalState.instance.deads.clear();
+  print("deads: "+  GlobalState.instance.deads.toString());
+  GlobalState.instance.rates.clear();
+  print("rates: "+  GlobalState.instance.rates.toString());
+  GlobalState.instance.hiddenRates.clear();
+  print("hiddenrates: "+  GlobalState.instance.deads.toString());
+  GlobalState.instance.parentalInfo.removeRange(0, GlobalState.instance.hiddenRates.length);
+
+  GlobalState.instance.people.removeRange(0, GlobalState.instance.people.length);
+  print("temizlendi----");
 }
