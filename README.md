@@ -75,12 +75,12 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 More exclusive explanation will be given here.
 
 ## Screenshots
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/disclaimer.png" width="324" height="570"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/home.png" width="324" height="570">
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/blog.png" width="324" height="570">
- <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/1.png" width="324" height="570">
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/4.png" width="324" height="570"><img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/6.png" width="324" height="570">
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/11.png" width="324" height="570"> 
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/12.png" width="324" height="570"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/13.png" width="324" height="570">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/disclaimer.png" width="216" height="380"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/home.png" width="216" height="380">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/blog.png" width="216" height="380">
+ <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/1.png" width="216" height="380">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/4.png" width="216" height="380"><img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/6.png" width="216" height="380">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/11.png" width="216" height="380"> 
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/12.png" width="216" height="380"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/13.png" width="216" height="380">
 ### Built With
 
 * [Flutter SDK ^2.7.0](Flutter.dev)
