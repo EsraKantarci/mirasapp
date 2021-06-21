@@ -156,7 +156,7 @@ class ContactUs extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     height: 50.0,
-                    child: Text('WhatsApp'),
+                    child: Text('WhatsApp\'tan ulaşın'),
                   ),
                 ),
               ],

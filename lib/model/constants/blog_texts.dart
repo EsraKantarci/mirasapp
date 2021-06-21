@@ -2,7 +2,7 @@ List blogTexts = [
   {
     "name": "Vasiyetname Nedir?",
     "trailing": "Vasiyetname nedir? Çeşitleri nelerdir?",
-    "img": "assets/images/vasiyet.png",
+    "img": "assets/images/vasiyet_icon.png",
     "id": 1,
     "details": "Vasiyetname ile sahip olduğu malvarlığı hakkında tasarrufta "
         "bulunmak isteyen kimsenin el yazılı vasiyetname, resmi vasiyetname, "
