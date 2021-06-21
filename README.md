@@ -109,7 +109,7 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 [issues-shield]: https://img.shields.io/github/issues/esrakantarci/mirasapp.svg?style=for-the-badge
 [issues-url]: https://github.com/esrakantarci/mirasapp/issues
 [license-shield]: https://img.shields.io/github/license/esrakantarci/mirasapp.svg?style=for-the-badge
-[license-url]: https://github.com/esrakantarci/mirasapp/blob/master/LICENSE.txt
+[license-url]: https://github.com/EsraKantarci/mirasapp/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://tr.linkedin.com/in/esra-kantarc%C4%B1-%C3%A7ay%C4%B1r-b1948454
 
