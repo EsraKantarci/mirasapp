@@ -71,12 +71,16 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-### OUTDATED SCREENSHOTS:
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/screenshot/dislaimer.png" width="324" height="570"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/screenshot/home.png" width="324" height="570">
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/screenshot/start.png" width="324" height="570"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/screenshot/s1c1_2.png" width="324" height="570">
 
+More exclusive explanation will be given here.
 
-
+## Screenshots
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/disclaimer.png" width="324" height="570"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/home.png" width="324" height="570">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/blog.png" width="324" height="570">
+ <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/1.png" width="324" height="570">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/4.png" width="324" height="570"><img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/6.png" width="324" height="570">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/11.png" width="324" height="570"> 
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/12.png" width="324" height="570"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/13.png" width="324" height="570">
 ### Built With
 
 * [Flutter SDK ^2.7.0](Flutter.dev)
@@ -88,6 +92,24 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 
 <!-- GETTING STARTED -->
 ## Getting Started
+
+The contents will be given.
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Your Name - [@Ornitorenkus](https://instagram.com/ornitorenkus) - av.esrakantarci@gmail.com
+
+Project Link: [https://github.com/esrakantarci/mirasapp](https://github.com/esrakantarci/mirasapp)
+
 
 
 ## TO-DO: 
