@@ -85,8 +85,31 @@ More exclusive explanation will be given here.
 <!-- GETTING STARTED -->
 ## Getting Started
 
+### Why Flutter?
+
 The contents will be given.
 
+
+## Configuration Steps
+1. Cloning the repository:
+
+```
+$ git clone https://github.com/esrakantarci/mirasapp.git
+```
+
+2. Open the project and install dependencies (using terminal):
+
+```
+$ cd miras
+$ flutter pub get
+```
+This installs all the required dependencies like shared_preferences, cupertino_icons, flutter_spinbox, grouped_list, image_picker etc...
+
+3. Make sure you enable virtualization for AVD, follow the mentioned steps and you're good to go. You can also use Chrome or Edge as web browser. 
+
+4. Now run the app on your connected device (using terminal):
+
+`$ flutter run`
 
 ## Demo
 
