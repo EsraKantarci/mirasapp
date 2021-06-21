@@ -23,7 +23,6 @@ class GlobalState{
   //id list to keep parental info in person form
   List<int> parentalInfo = [];
 
-
   Map<String, double> rates = new Map();
   Map<String, double> hiddenRates = new Map();
 

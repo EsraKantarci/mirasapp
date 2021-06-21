@@ -34,7 +34,9 @@ class _Spouse0Parent0State extends State<Spouse0Parent0> {
       ));
     }
     return MaterialApp(
-      // In the next sprint, children will be added to a bucket list.
+
+      debugShowCheckedModeBanner: false,
+
       home: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: buildAppBar(),

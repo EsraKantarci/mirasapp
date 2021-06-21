@@ -1,2 +1,3 @@
-// goverment will inherit, go to calculation
+// goverment will inherit, this page is redundant.
+// it goes directly to resultpage.
 

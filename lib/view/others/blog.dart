@@ -28,6 +28,7 @@ class BlogPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
       body: Padding(
@@ -112,7 +113,7 @@ class BlogPage extends StatelessWidget {
         IconButton(
           icon: Icon(
             //Step: 1
-            Icons.looks_one,
+            Icons.lightbulb_outline,
             color: Colors.white,
           ),
           onPressed: () {

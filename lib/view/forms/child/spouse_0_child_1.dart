@@ -34,6 +34,8 @@ class _Spouse0Child1State extends State<Spouse0Child1> {
 
     GlobalState.instance.answers.spouseName = name;
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
       // In the next sprint, children will be added to a bucket list.
       home: Scaffold(
         backgroundColor: AppColors.backgroundColor,

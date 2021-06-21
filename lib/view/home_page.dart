@@ -23,27 +23,31 @@ class _HomePageState extends State<HomePage> {
     };
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: Column(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.mainColor,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView (
+        child: Column(
+
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                color: AppColors.mainColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
+              padding: EdgeInsets.only(top: 25),
+              child: Stack(
+                children: [
+                  //Background decoration:
+                  //Image.asset("assets/images/logo.png"),
+                  buildHeaderDetails(),
+                ],
               ),
             ),
-            padding: EdgeInsets.only(top: 25),
-            child: Stack(
-              children: [
-                //Background decoration:
-                //Image.asset("assets/images/logo.png"),
-                buildHeaderDetails(),
-              ],
-            ),
-          ),
-          buildBlogShowcase(context),
-        ],
+            buildBlogShowcase(context),
+          ],
+        ),
       ),
     );
   }

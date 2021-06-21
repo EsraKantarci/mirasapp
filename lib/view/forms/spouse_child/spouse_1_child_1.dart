@@ -33,8 +33,10 @@ class _Spouse1Child1State extends State<Spouse1Child1> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // In the next sprint, children will be added to a bucket list.
       home: Scaffold(
+
         backgroundColor: AppColors.backgroundColor,
         appBar: buildAppBar(),
         body: Padding(
