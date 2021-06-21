@@ -26,6 +26,11 @@ class BlogPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: (<Widget>[
 
+            Expanded(
+              flex:1,
+              child: buildImage(context),
+            ),
+
             new Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
@@ -38,7 +43,7 @@ class BlogPage extends StatelessWidget {
             ),
 
             new Expanded(
-              flex: 2,
+              flex: 5,
               child: new SingleChildScrollView(
                 scrollDirection: Axis.vertical,//.horizontal
                 child: new Text(
@@ -72,22 +77,7 @@ class BlogPage extends StatelessWidget {
               ),
             ),
 
-            new Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Center(
-                child: new Text(
-                  "Vasiyetname Örneği",
-                  style: new TextStyle(
-                      fontSize: 20.0,
-                      color: AppColors.mainColor.withOpacity(0.8),
-                      fontWeight: FontWeight.w600),
-                ),
-              ),
-            ),
-            Expanded(
-              flex:2,
-              child: buildImage(context),
-            ),
+
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -158,7 +148,7 @@ Widget buildImage(BuildContext context) {
     child: Align(
       alignment: Alignment.center,
       child:
-      Image.asset("assets/images/vasiyet.png", fit: BoxFit.fitWidth)),
+      Image.asset("assets/images/vasiyet_icon.png", fit: BoxFit.fitWidth)),
 
   );
 }

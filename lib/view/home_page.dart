@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
             child: Align(
               alignment: Alignment.topLeft,
               child: Text(
-                "Örnek Dilekçeler",
+                "Miras Hukuku Bilgi Bankası",
                 style: TextStyle(
                   color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
             child: Align(
               alignment: Alignment.topLeft,
               child: Text(
-                "Blog ve Diğer İçerikler",
+                "Uygulamaya Yönelik İçerikler",
                 style: TextStyle(
                   color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
