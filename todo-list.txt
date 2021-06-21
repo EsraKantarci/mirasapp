@@ -3,6 +3,7 @@ TO-DO list:
 UI-Modifications:
 -Grandparent screen should get better --done--
 -Overflows: resizeToAvoidBottomPadding: false to scaffold --done--
+-debug flags removal!!
 -----
 
 1- Child CARD:
@@ -13,10 +14,10 @@ d- remove after you enter homepage --done--
 e- name validation
 
 2- Listing:
-a- Child + parental information should be listed on the top of the screen
+a- Child + parental information should be listed on the top of the screen--done--
 
 3- Result Page:
-b- Save as PDF or PNG
+b- Save as PDF or PNG -future work-
 
 4- Logic:
 a- List iterable choices --done--
@@ -29,8 +30,8 @@ d- Make petitions clickable --done--
 e- Make blog UI --done--
 
 6- Knowledgebase
-a- Blog
-b- Petitions
+a- Blog --done--
+b- Petitions --done--
 c- User manual
 
 7- Test
