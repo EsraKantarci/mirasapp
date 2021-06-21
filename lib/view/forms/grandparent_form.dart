@@ -72,7 +72,7 @@ class _GrandparentFormState extends State<GrandparentForm> {
               ),
               Column(
                 children: [
-                  buildInfo("Çocuğun ismi: " + parentName),
+                  buildInfo("Torunun ismi: " + parentName),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: TextFormField(
@@ -85,8 +85,8 @@ class _GrandparentFormState extends State<GrandparentForm> {
                       validator: (value) =>
                           value.length > 1 ? null : "Lütfen isim giriniz.",
                       decoration: InputDecoration(
-                          labelText: "Ebeveynin İsmi: ",
-                          hintText: "Miras bırakanın anne ya da babasının ismini giriniz"),
+                          labelText: "Büyükebeveynin İsmi: ",
+                          hintText: "Miras bırakanın büyükebeveynlerinin ismini giriniz"),
                     ),
                   ),
                   buildQuestion("Bu kişi hala hayatta mı?"),
@@ -146,7 +146,7 @@ int personId = GlobalState.instance.idMatch.length + 1;
           print("ID MATCH: " + GlobalState.instance.idMatch.toString());
            GlobalState.instance.people.add(Person(id: personId,
               name: person.name, isAlive: answer1, parentId: parentId,
-              rank: 2, childCount: person.childCount));
+              rank: 3, childCount: person.childCount));
 
             GlobalState.instance.idMatch.add(person.name);
 

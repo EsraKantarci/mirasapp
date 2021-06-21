@@ -1,15 +1,30 @@
-// only 1 grandparent alive
-// add children then calculate
+// page after spouse_1_child_0
 
-// TODO: GRANDPARENT NAMES INPUT WRITER
-// TODO: Add "Sonraki adım" button at the bottom.
+//TODO: add child button dynamically if the answer value is no
+//if 2 of them alive --> go spouse_1_parent_2
+//if 1 of them alive --> go spouse_1_parent 1
+
+
+// first page after startpage if there is no spouse but has children
+//spouse may be divorced or dead.
+//there may be several spouses in a life-time.
+//therefore, let's get the parent name input for each child dynamically
+//so, the UI will be different than mockups.
+
+//go to calculation
 
 import 'package:flutter/material.dart';
+import 'package:miras/controller/global_state.dart';
+import 'package:miras/controller/rank_calculator.dart';
 import 'package:miras/model/person.dart';
-import 'package:miras/model/answers.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/person_form.dart';
+import 'package:miras/view/model/descendent_adder.dart';
+import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
+
+import '../grandparent_form.dart';
+
+// TODO: Add "Sonraki adım" button at the bottom.
 
 class Spouse0Grandparent1 extends StatefulWidget {
   const Spouse0Grandparent1({Key key}) : super(key: key);
@@ -20,70 +35,70 @@ class Spouse0Grandparent1 extends StatefulWidget {
 
 class _Spouse0Grandparent1State extends State<Spouse0Grandparent1> {
   List<Person> children = [];
-  List<PersonForm> forms = [];
+  List<GrandparentForm> forms = [];
+  int childCount = 4;
+  String name = "Eşi ölü";
 
   @override
   Widget build(BuildContext context) {
+
+    GlobalState.instance.answers.spouseName = name;
     forms.clear();
-    for (int i = 0; i < children.length; i++) {
-      forms.add(PersonForm(
+    print(childCount);
+
+
+    for (int i = 0; i < childCount.toInt(); i++) {
+      setState(() {
+        print("çocuk ekledim");
+        children.add(Person());
+      });
+
+      forms.add(GrandparentForm(
         person: children[i],
-        onDelete: () => onDelete(i),
       ));
+
+      childCount--;
     }
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // In the next sprint, children will be added to a bucket list.
       home: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: buildAppBar(),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
+
+        body:
+        SingleChildScrollView(
+          physics: ScrollPhysics(),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              buildSpace(),
-              buildQuestion("Miras bırakanın anne tarafından büyükannesinin ismi:"),
-              buildSpace(),
-              buildTextInputMotherOfMother(context),
-              buildSpace(),
-
-              buildQuestion("Miras bırakanın anne tarafından büyükbabasının ismi:"),
-              buildSpace(),
-              buildTextInputFatherOfMother(context),
-              buildSpace(),
-
-              buildQuestion("Miras bırakanın baba tarafından büyükannesinin ismi:"),
-              buildSpace(),
-              buildTextInputMotherOfFather(context),
-              buildSpace(),
-
-              buildQuestion("Miras bırakanın baba tarafından büyükbabasının ismi:"),
-              buildSpace(),
-              buildTextInputFatherOfFather(context),
-              buildSpace(),
-
-              Expanded(
-                child: children.length <= 0
-                    ? Center(
-                  child: Text(
-                      "[+] butonuna tıklayarak çocuk ekleyebilirsiniz."),
-                )
-                    : ListView.builder(
-                  itemCount: children.length,
-                  itemBuilder: (_, i) => PersonForm(
-                    person: children[i],
-                    onDelete: () => onDelete(i),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: children.length,
+                itemBuilder: (_, i) => GrandparentForm(
+                  person: children[i],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: buildElevatedButton(
+                          context),
+                    ),
                   ),
+
                 ),
               ),
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.mainColor,
-          child: Icon(Icons.add),
-          onPressed: onAdd,
-        ),
+
+
       ),
     );
   }
@@ -94,35 +109,17 @@ class _Spouse0Grandparent1State extends State<Spouse0Grandparent1> {
     });
   }
 
-  void onAdd() {
-    setState(() {
-      children.add(Person());
-    });
-  }
-
-  void onSave() {
-    forms.forEach((form) => form.isValid());
-  }
 
   AppBar buildAppBar() {
     return AppBar(
-      title: Text("Miras Payı Hesaplayıcı"),
+      title: Text("3. Derece Akrabalar"),
       backgroundColor: AppColors.mainColor,
       actions: <Widget>[
-        TextButton(
-          child: Text(
-            'Kaydet',
-            style: TextStyle(
-                color: AppColors.backgroundColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 16),
-          ),
-          onPressed: onSave,
-        ),
+
         IconButton(
           icon: Icon(
             //Step: 1
-            Icons.looks_two,
+            Icons.looks_3,
             color: Colors.white,
           ),
           onPressed: () {
@@ -133,119 +130,53 @@ class _Spouse0Grandparent1State extends State<Spouse0Grandparent1> {
     );
   }
 
-  Container buildTextInputMotherOfMother(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın anne tarafından büyükannesinin ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+
+  Widget buildElevatedButton(BuildContext context) {
+    return ElevatedButton(
+      child: Text('SONRAKİ ADIM'),
+      onPressed: () {
+        GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.spouseName, isAlive: 1, parentId: -1,
+            rank: 0));
+        GlobalState.instance.idMatch.add(GlobalState.instance.answers.spouseName);
+
+        List<int> descendentsList = GlobalState.instance.deadsWithChildren.keys.toList();
+        if(descendentsList.isNotEmpty){
+          print("Gidiyorum:");
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DescendentList()));
+        }
+        else{
+          Calculator calc = Calculator(answers: GlobalState.instance.answers, people: GlobalState.instance.people);
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ResultPage(
+              calculatedResults: calc.calculateRates(GlobalState.instance.people),
+              resultText: calc.getResult().toString(),
+              resultRatesText: calc.getInheritorsRates().toString(),
+            )),
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ResultPage()),
+          );
+        }},
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(50),
+            ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
+          padding: EdgeInsets.symmetric(vertical: 5),
+          primary: Colors.white,
+          onPrimary: AppColors.mainColor,
+          textStyle: TextStyle(
+              color: AppColors.mainColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold)),
     );
   }
 
-  Container buildTextInputFatherOfMother(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın anne tarafından büyükbabasının ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-    );
-  }
-  Container buildTextInputMotherOfFather(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın baba tarafından büyükannesinin ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-    );
-  }
-  Container buildTextInputFatherOfFather(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      child: TextField(
-        onChanged: (text) {},
-        decoration: InputDecoration(
-          hintText: "Miras bırakanın baba tarafından büyükbabasının ismini giriniz...",
-          hintStyle: TextStyle(fontWeight: FontWeight.normal),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Text buildQuestion(String text) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: AppColors.mainColor,
-      ),
-    );
-  }
-
-  SizedBox buildSpace() => SizedBox(
-    height: 10,
-  );
 }
-
-
-Widget buildElevatedButton(BuildContext context) {
-  return ElevatedButton(
-    child: Text('SONRAKİ ADIM'),
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => StartPage()),
-      );
-    },
-    style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(50),
-          ),
-        ),
-        padding: EdgeInsets.symmetric(vertical: 5),
-        primary: Colors.white,
-        onPrimary: AppColors.mainColor,
-        textStyle: TextStyle(
-            color: AppColors.mainColor,
-            fontSize: 20,
-            fontWeight: FontWeight.bold)),
-  );
-}
-

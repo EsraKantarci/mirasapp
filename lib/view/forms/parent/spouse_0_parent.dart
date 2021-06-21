@@ -1,128 +1,122 @@
-// go to grandparent
-// spouse=0, parent=0, check other ranks.
+// page after spouse_1_child_0
+
+//TODO: add child button dynamically if the answer value is no
+//if 2 of them alive --> go spouse_1_parent_2
+//if 1 of them alive --> go spouse_1_parent 1
+
+
+// first page after startpage if there is no spouse but has children
+//spouse may be divorced or dead.
+//there may be several spouses in a life-time.
+//therefore, let's get the parent name input for each child dynamically
+//so, the UI will be different than mockups.
+
+//go to calculation
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
+import 'package:miras/controller/rank_calculator.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
+import 'package:miras/view/forms/parent_form.dart';
+import 'package:miras/view/model/descendent_adder.dart';
 import 'package:miras/view/result/result.dart';
 import 'package:miras/view/start_page.dart';
-import 'package:miras/view/forms/grandparent/spouse_0_grandparent.dart';
-import 'package:miras/view/forms/grandparent/spouse_0_grandparent_1.dart';
+
+import '../parent_form.dart';
+
+// TODO: Add "Sonraki adım" button at the bottom.
 
 class Spouse0Parent extends StatefulWidget {
-  Spouse0Parent({Key key}) : super(key: key);
+  const Spouse0Parent({Key key}) : super(key: key);
 
   @override
   _Spouse0ParentState createState() => _Spouse0ParentState();
 }
 
 class _Spouse0ParentState extends State<Spouse0Parent> {
-  //in second sprint we will get them inside the Answer list.
-  int answer1 = -1;
-  int answer2 = -1;
+  List<Person> children = [];
+  List<GrandparentForm> forms = [];
+  int childCount = 2;
+  String name = "Eşi ölü";
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      appBar: buildAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: (<Widget>[
-            buildQuestion("Miras bırakanın büyükannesinden ya da büyükbabasından en az biri sağ mı?"),
-            buildRadioButton1("Evet", 1, answer1),
-            buildRadioButton1("Hayır", 0, answer1),
-            buildSpace(),
-            buildQuestion(
-                "Miras bırakanın büyükanne/büyükbabasının altsoyu (miras bırakanın amcası, dayısı, halası, teyzesi, kuzenleri vb.) bulunuyor mu?"),
-            buildRadioButton2("Evet", 1, answer2),
-            buildRadioButton2("Hayır", 0, answer2),
-            buildSpace(),
 
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  width: MediaQuery.of(context).size.width,
-                  child: buildElevatedButton(context, answer1, answer2),
+    GlobalState.instance.answers.spouseName = name;
+    forms.clear();
+    print(childCount);
+
+
+    for (int i = 0; i < childCount.toInt(); i++) {
+      setState(() {
+        print("çocuk ekledim");
+        children.add(Person());
+      });
+
+      forms.add(GrandparentForm(
+        person: children[i],
+      ));
+
+      childCount--;
+    }
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      // In the next sprint, children will be added to a bucket list.
+      home: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
+        appBar: buildAppBar(),
+
+        body:
+        SingleChildScrollView(
+          physics: ScrollPhysics(),
+          child: Column(
+            children: <Widget>[
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: children.length,
+                itemBuilder: (_, i) => GrandparentForm(
+                  person: children[i],
                 ),
               ),
-            ),
-          ]),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: buildElevatedButton(
+                          context),
+                    ),
+                  ),
+
+                ),
+              ),
+            ],
+          ),
         ),
+
+
       ),
     );
   }
 
-  Container buildRadioButton1(String text, int val, int group) {
-    return Container(
-      width: 150,
-      child: Row(
-        children: <Widget>[
-          Radio(
-              value: val,
-              groupValue: group,
-              onChanged: (value) {
-                answer1 = value;
-                GlobalState.instance.answers.hasGrandparent = value;
-                setState(() {});
-              }),
-          Text(
-            text,
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
-      ),
-    );
+  void onDelete(int index) {
+    setState(() {
+      children.removeAt(index);
+    });
   }
 
-  Container buildRadioButton2(String text, int val, int group) {
-    return Container(
-      width: 150,
-      child: Row(
-        children: <Widget>[
-          Radio(
-              value: val,
-              groupValue: group,
-              onChanged: (value) {
-                answer2 = value;
-                GlobalState.instance.answers.hasThirdRank = value;
-                setState(() {});
-              }),
-          Text(
-            text,
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
-      ),
-    );
-  }
-
-
-  SizedBox buildSpace() => SizedBox(
-    height: 10,
-  );
-
-  Text buildQuestion(String text) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: AppColors.mainColor,
-      ),
-    );
-  }
 
   AppBar buildAppBar() {
     return AppBar(
-      title: Text("Miras Payı Hesaplayıcı"),
+      title: Text("2. Derece Akrabalar"),
       backgroundColor: AppColors.mainColor,
       actions: <Widget>[
+
         IconButton(
           icon: Icon(
             //Step: 1
@@ -130,42 +124,59 @@ class _Spouse0ParentState extends State<Spouse0Parent> {
             color: Colors.white,
           ),
           onPressed: () {
-            //maybe toasting "Adım: 1'desiniz" is a good idea.
+            //maybe toasting "Adım: 2'desiniz" is a good idea.
           },
         )
       ],
     );
   }
-}
 
-Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
-  return ElevatedButton(
-    child: Text('SONRAKİ ADIM'),
-    onPressed: () {
-      var route;
-      if (answer1 == 1 || answer2 == 1) {
-        route = Spouse0Grandparent1();
-      } else {
-        route = ResultPage();
-      }
-      Navigator.push(
-        context,
-        //depends on the answer
-        MaterialPageRoute(builder: (context) => route),
-      );
-    },
-    style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(50),
+
+  Widget buildElevatedButton(BuildContext context) {
+    return ElevatedButton(
+      child: Text('SONRAKİ ADIM'),
+      onPressed: () {
+        GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
+            name: GlobalState.instance.answers.spouseName, isAlive: 1, parentId: -1,
+            rank: 0));
+        GlobalState.instance.idMatch.add(GlobalState.instance.answers.spouseName);
+        List<int> descendentsList = GlobalState.instance.deadsWithChildren.keys.toList();
+        if(descendentsList.isNotEmpty){
+          print("Gidiyorum:");
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DescendentList()));
+        }
+        else{
+          Calculator calc = Calculator(answers: GlobalState.instance.answers, people: GlobalState.instance.people);
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ResultPage(
+              calculatedResults: calc.calculateRates(GlobalState.instance.people),
+              resultText: calc.getResult().toString(),
+              resultRatesText: calc.getInheritorsRates().toString(),
+            )),
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ResultPage()),
+          );
+        }},
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(50),
+            ),
           ),
-        ),
-        padding: EdgeInsets.symmetric(vertical: 5),
-        primary: Colors.white,
-        onPrimary: AppColors.mainColor,
-        textStyle: TextStyle(
-            color: AppColors.mainColor,
-            fontSize: 20,
-            fontWeight: FontWeight.bold)),
-  );
+          padding: EdgeInsets.symmetric(vertical: 5),
+          primary: Colors.white,
+          onPrimary: AppColors.mainColor,
+          textStyle: TextStyle(
+              color: AppColors.mainColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold)),
+    );
+  }
+
 }

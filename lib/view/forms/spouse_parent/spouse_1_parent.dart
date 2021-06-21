@@ -36,7 +36,7 @@ class Spouse1Parent extends StatefulWidget {
 
 class _Spouse1ParentState extends State<Spouse1Parent> {
   List<Person> children = [];
-  List<ParentForm> forms = [];
+  List<GrandparentForm> forms = [];
   int childCount = 2;
 
   @override
@@ -51,7 +51,7 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
         children.add(Person());
       });
 
-      forms.add(ParentForm(
+      forms.add(GrandparentForm(
         person: children[i],
       ));
 
@@ -73,7 +73,7 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: children.length,
-                itemBuilder: (_, i) => ParentForm(
+                itemBuilder: (_, i) => GrandparentForm(
                   person: children[i],
                 ),
               ),
@@ -110,7 +110,7 @@ class _Spouse1ParentState extends State<Spouse1Parent> {
 
   AppBar buildAppBar() {
     return AppBar(
-      title: Text("Miras Payı Hesaplayıcı"),
+      title: Text("2. Derece Akrabalar"),
       backgroundColor: AppColors.mainColor,
       actions: <Widget>[
 

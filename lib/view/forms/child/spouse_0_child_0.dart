@@ -1,12 +1,12 @@
-// go to spouse_0_parent
+// go to spouse_1_parent page
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/constants.dart';
-import 'package:miras/view/forms/parent/spouse_0_parent.dart';
-import 'package:miras/view/forms/parent/spouse_0_parent_0.dart';
-import 'package:miras/view/forms/parent/spouse_0_parent_1.dart';
+import 'package:miras/model/person.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
+import 'package:miras/view/forms/spouse_parent/spouse_1_parent.dart';
+import 'package:miras/view/forms/spouse_parent/spouse_1_parent_0.dart';
 
 class Spouse0Child0 extends StatefulWidget {
   Spouse0Child0({Key key}) : super(key: key);
@@ -19,39 +19,50 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
   //in second sprint we will get them inside the Answer list.
   int answer1 = -1;
   int answer2 = -1;
+  String name = "Eşi ölü";
 
   @override
   Widget build(BuildContext context) {
+
+    GlobalState.instance.answers.spouseName = name;
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: (<Widget>[
+        //in order to debug overflow, we added scrollview
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: (<Widget>[
+              buildQuestion("Miras bırakanın eşinin ismi:"),
+              buildSpace(),
+              buildTextInput(context),
+              buildSpace(),
 
-            buildQuestion("Miras bırakanın annesinden ya da babasından en az biri sağ mı?"),
-            buildRadioButton1("Evet", 1, answer1),
-            buildRadioButton1("Hayır", 0, answer1),
-            buildSpace(),
-            buildQuestion(
-                "Miras bırakanın anne babasının altsoyu (miras bırakanın kardeşi, yeğenleri vb.) bulunuyor mu?"),
-            buildRadioButton2("Evet", 1, answer2),
-            buildRadioButton2("Hayır", 0, answer2),
-            buildSpace(),
+              buildQuestion("Miras bırakanın anne babasından en az biri sağ mı?"),
+              buildRadioButton1("Evet", 1, answer1),
+              buildRadioButton1("Hayır", 0, answer1),
+              buildSpace(),
 
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  width: MediaQuery.of(context).size.width,
-                  child: buildElevatedButton(context, answer1, answer2),
+              buildQuestion(
+                  "Miras bırakanın anne babasının altsoyu (miras bırakanın kardeşi, yeğenleri vb.) bulunuyor mu?"),
+              buildRadioButton2("Evet", 1, answer2),
+              buildRadioButton2("Hayır", 0, answer2),
+              buildSpace(),
+
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width,
+                    child: buildElevatedButton(context, answer1, answer2),
+                  ),
                 ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
       ),
     );
@@ -66,8 +77,8 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                answer1 = value;
                 GlobalState.instance.answers.hasParent = value;
+                answer1 = value;
                 setState(() {});
               }),
           Text(
@@ -88,8 +99,8 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
               value: val,
               groupValue: group,
               onChanged: (value) {
-                answer2 = value;
                 GlobalState.instance.answers.hasSecondRank = value;
+                answer2 = value;
                 setState(() {});
               }),
           Text(
@@ -100,7 +111,6 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
       ),
     );
   }
-
 
   SizedBox buildSpace() => SizedBox(
     height: 10,
@@ -125,7 +135,7 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
         IconButton(
           icon: Icon(
             //Step: 1
-            Icons.looks_3,
+            Icons.looks_two,
             color: Colors.white,
           ),
           onPressed: () {
@@ -142,13 +152,17 @@ Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
     child: Text('SONRAKİ ADIM'),
     onPressed: () {
       var route;
-      if (answer1 == 1 ) {
-        route = Spouse0Parent1();
+
+      GlobalState.instance.people.add(Person(id: GlobalState.instance.idMatch.length + 1,
+          name: GlobalState.instance.answers.spouseName, isAlive: 1, parentId: -1,
+          rank: 0));
+      GlobalState.instance.idMatch.add(GlobalState.instance.answers.spouseName);
+
+      if (answer1 == 1 || answer2 == 1){
+        route = Spouse1Parent();
       }
-      else if (answer1 == 0 && answer2 == 1) {
-        route = Spouse0Parent0();
-      } else {
-        route = Spouse0Parent();
+      else{
+        route = Spouse1Parent0();
       }
       Navigator.push(
         context,
@@ -168,5 +182,25 @@ Widget buildElevatedButton(BuildContext context, int answer1, int answer2) {
             color: AppColors.mainColor,
             fontSize: 20,
             fontWeight: FontWeight.bold)),
+  );
+}
+
+Container buildTextInput(BuildContext context) {
+  return Container(
+    height: MediaQuery.of(context).size.height * 0.1,
+    child: TextField(
+      onChanged: (text) {
+        GlobalState.instance.answers.spouseName = text;},
+      decoration: InputDecoration(
+        hintText: "Miras bırakanın eşinin ismini giriniz...",
+        hintStyle: TextStyle(fontWeight: FontWeight.normal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    ),
   );
 }
