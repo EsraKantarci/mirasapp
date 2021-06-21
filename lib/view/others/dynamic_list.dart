@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/material.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/result/result.dart';
 

@@ -6,7 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:miras/model/person.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/view/forms/person_form.dart';
 import 'package:miras/view/start_page.dart';
 

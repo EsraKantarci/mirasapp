@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:miras/view/home_page.dart';
 import 'package:miras/view/start_page.dart';
 
-import '../model/constants.dart';
+import '../model/constants/constants.dart';
 
 class DisclaimerPage extends StatefulWidget {
   @override

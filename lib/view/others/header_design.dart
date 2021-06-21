@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 
 
 BoxDecoration buildHeaderDecoration() {

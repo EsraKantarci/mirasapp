@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/view/forms/child/spouse_0_child_1.dart';
 
 import 'forms/child/spouse_0_child_0.dart';

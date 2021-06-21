@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/view/disclaimer_page.dart';
 import 'package:miras/view/others/blog.dart';
+import 'package:miras/view/others/blog_list.dart';
+import 'package:miras/view/others/contact_page.dart';
 import 'package:miras/view/others/dynamic_list.dart';
 import 'package:miras/view/others/guide.dart';
 import 'package:miras/view/result/test_info.dart';
@@ -17,6 +19,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+
+
 
     if (GlobalState.instance.answers != null) {
       print(GlobalState.instance.answers.toString());
@@ -88,6 +92,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           buildManual(context),
+          SizedBox(height: 10),
+          buildKnowledgeBase(context),
+          SizedBox(height: 10),
+          buildWhoAreWe(context),
+          SizedBox(height: 30),
         ],
       ),
     );
@@ -160,6 +169,146 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
+  GestureDetector buildKnowledgeBase(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            //Blog layout will be prepared
+            builder: (_) => BlogList(),
+          ),
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.10,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
+          border: Border.all(color: Colors.white),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(1, 1),
+              spreadRadius: 1,
+              blurRadius: 1,
+            )
+          ],
+        ),
+        padding: EdgeInsets.all(12),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Image.asset("assets/images/mid.png"),
+            RichText(
+              text: TextSpan(
+                text: "Gelecek Sayfalar\n",
+                style: TextStyle(
+                  color: AppColors.mainColor,
+                  fontWeight: FontWeight.bold,
+                ),
+
+                children: [
+                  TextSpan(
+                    text: "Arama özellikleri ile beraber veri bankası\n",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 12,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "Blog yerine geçecektir",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 10,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+        margin: EdgeInsets.symmetric(horizontal: 16),
+      ),
+    );
+  }
+
+
+
+  GestureDetector buildWhoAreWe(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            //Blog layout will be prepared
+            builder: (_) => ContactPage(),
+          ),
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.10,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
+          border: Border.all(color: Colors.white),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(1, 1),
+              spreadRadius: 1,
+              blurRadius: 1,
+            )
+          ],
+        ),
+        padding: EdgeInsets.all(12),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Image.asset("assets/images/mid.png"),
+            RichText(
+              text: TextSpan(
+                text: "Bize Ulaşın\n",
+                style: TextStyle(
+                  color: AppColors.mainColor,
+                  fontWeight: FontWeight.bold,
+                ),
+
+                children: [
+                  TextSpan(
+                    text: "Uygulama ile ilgili fikirlerinizi paylaşın\n",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 12,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "Geliştirici iletişim bilgileri",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 10,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+        margin: EdgeInsets.symmetric(horizontal: 16),
+      ),
+    );
+  }
+
 
   Container buildScrollable() {
     return Container(

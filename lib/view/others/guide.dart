@@ -3,14 +3,14 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/view/home_page.dart';
 import 'package:miras/view/start_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/controller/rank_calculator.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/view/start_page.dart';
 
 class GuidePage extends StatelessWidget {

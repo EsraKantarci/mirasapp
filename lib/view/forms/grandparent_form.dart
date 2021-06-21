@@ -4,7 +4,7 @@ import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:miras/controller/global_state.dart';
 import 'package:miras/model/answers.dart';
 import 'package:miras/model/person.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 
 // TODO: Sağ üstte id ya da countı yazdır
 

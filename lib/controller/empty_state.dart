@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 
 //https://github.com/putraxor/flutter_multipage_form reference
 

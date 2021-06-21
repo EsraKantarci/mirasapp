@@ -5,7 +5,7 @@ import 'package:miras/model/answers.dart';
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/model/person.dart';
 import 'package:miras/view/forms/child/spouse_0_child_1.dart';
 import 'package:miras/view/result/result.dart';

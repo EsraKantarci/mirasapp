@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/model/person.dart';
 import 'package:miras/view/forms/spouse_child/spouse_1_child_1.dart';
 import 'package:miras/view/forms/spouse_parent/spouse_1_parent.dart';

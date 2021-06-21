@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:miras/controller/global_state.dart';
-import 'package:miras/model/constants.dart';
+import 'package:miras/model/constants/constants.dart';
 import 'package:miras/view/forms/spouse_grandparent/spouse_1_grandparent_1.dart';
 import 'package:miras/view/result/result.dart';
 
