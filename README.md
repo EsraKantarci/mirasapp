@@ -88,7 +88,11 @@ More exclusive explanation will be given here.
 The contents will be given.
 
 
-## Screenshots
+## Demo
+
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/Animation.gif"> 
+
+## Screenshots 
 <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/disclaimer.png" width="216" height="380"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/home.png" width="216" height="380">
 <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/blog.png" width="216" height="380">
  <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/1.png" width="216" height="380">
