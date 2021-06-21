@@ -133,7 +133,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@Ornitorenkus](https://instagram.com/ornitorenkus) - av.esrakantarci@gmail.com
+Esra Kantarcı Çayır - [@Ornitorenkus](https://instagram.com/ornitorenkus) - av.esrakantarci@gmail.com
 
 Project Link: [https://github.com/esrakantarci/mirasapp](https://github.com/esrakantarci/mirasapp)
 
