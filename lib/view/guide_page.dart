@@ -17,6 +17,7 @@ class GuidePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
@@ -32,58 +33,26 @@ class GuidePage extends StatelessWidget {
                 scrollDirection: Axis.vertical,//.horizontal
                 child: Column(
                   children: [
-                    new Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        "Uygulamanın Amacı",
-                        style: new TextStyle(
-                            fontSize: 20.0,
-                            color: AppColors.mainColor.withOpacity(0.8),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
+                    buildHeader("Uygulamanın Amacı"),
+                    buildText("Uygulamamız miras paylaşımı noktasında insanlara fikir vermek ve "
+                        "miras hukuku konusunda kişileri bilgilendirmektir. Bu uygulamanın "
+                        "hesaplama kuralları Türk Medeni Kanunu'nun 495. madde ve devamında"
+                        " yer alan kaideler üzerinden geliştirilmiştir. "
+                        "\n\n"
+                        "Uygulamamız bilgi verme amaçlıdır, hukuki bir bağlayıcılığı bulunmamaktadır."),
 
+                    buildDivider(),
 
-                    new Text(
-                      "Uygulamamız miras paylaşımı noktasında insanlara fikir vermek ve "
-                          "miras hukuku konusunda kişileri bilgilendirmektir. Bu uygulamanın "
-                          "hesaplama kuralları Türk Medeni Kanunu'nun 495. madde ve devamında"
-                          " yer alan kaideler üzerinden geliştirilmiştir. "
-                          "\n\n"
-                          "Uygulamamız bilgi verme amaçlıdır, hukuki bir bağlayıcılığı bulunmamaktadır.",
-                      style: new TextStyle(
-                        fontSize: 16.0, color: AppColors.mainColor.withOpacity(0.7),
-                      ),
-                    ),
+                    buildHeader("Hesaplama Kuralları"),
 
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child:
-                          Image.asset("assets/images/independence.png", fit: BoxFit.fitWidth),
-                        ),
-                      ),
-
-                    new Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        "Hesaplama Kuralları",
-                        style: new TextStyle(
-                            fontSize: 20.0,
-                            color: AppColors.mainColor.withOpacity(0.8),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    new Text(
-                      "Öncelikle miras bırakan kişinin ismini giriniz. "
+                    buildHeader2("Adım 1"),
+                    buildImage(context, "assets/images/1.png"),
+                    buildText("Öncelikle miras bırakan kişinin ismini giriniz. "
                           "Bu sonraki sayfalarda size kolaylık sağlayacaktır. Merak etmeyin, "
                           "girdiğiniz hiçbir veri tarafımızda saklanmamaktadır. Uygulama hesaplama"
-                          " ekranından çıktığınızda girdiğiniz bütün veriler silinmektedir.\n\n",
-                      style: new TextStyle(
-                        fontSize: 16.0, color: AppColors.mainColor.withOpacity(0.7),
-                      ),
-                    ),
+                          " ekranından çıktığınızda girdiğiniz bütün veriler silinmektedir.\n\n"),
+                    buildImage(context, "assets/images/2.png"),
+                    buildText(""),
                   ],
                 ),
               ),
@@ -105,13 +74,62 @@ class GuidePage extends StatelessWidget {
   }
 }
 
-Widget buildImage(BuildContext context) {
+Widget buildHeader(String text){
+  Color headerColor = Colors.black;
+  return new Padding(
+    padding: const EdgeInsets.all(12.0),
+    child: Text(
+      text,
+      style: new TextStyle(
+          fontSize: 25.0,
+          color: headerColor,
+          fontWeight: FontWeight.w600),
+    ),
+  );
+}
+
+Widget buildHeader2(String text){
+  Color headerColor = Colors.black54;
+  return new Padding(
+    padding: const EdgeInsets.all(12.0),
+    child: Text(
+      text,
+      style: new TextStyle(
+          fontSize: 20.0,
+          color: headerColor,
+          fontWeight: FontWeight.w600),
+    ),
+  );
+}
+
+Widget buildText(String text){
+  Color textColor = Colors.black54;
+  return new Text(text,
+    style: new TextStyle(
+      fontSize: 16.0, color: textColor,
+    ),
+  );
+}
+
+Padding buildDivider() {
+ return Padding(
+    padding: const EdgeInsets.all(20),
+    child: const Divider(
+      height: 20,
+      thickness: 5,
+      indent: 20,
+      endIndent: 20,
+    ),
+  );
+}
+
+Widget buildImage(BuildContext context, String path) {
   return   Padding(
-    padding: const EdgeInsets.only(bottom: 5 ),
+    padding: const EdgeInsets.all(20),
     child: Align(
         alignment: Alignment.center,
         child:
-        Image.asset("assets/images/vasiyet.png", fit: BoxFit.fitWidth)),
+        Image.asset(path, fit: BoxFit.fitWidth)),
 
   );
 }
