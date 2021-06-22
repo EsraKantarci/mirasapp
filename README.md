@@ -32,7 +32,7 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
     <a href="https://github.com/EsraKantarci/mirasapp/tree/master/documentation"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/EsraKantarci/mirasapp/">View Demo</a>
+    <a href="https://github.com/EsraKantarci/mirasapp/tree/master/Miras%20Demo%20APK%20v.1">View Demo</a>
     ·
     <a href="https://github.com/EsraKantarci/mirasapp/issues">Report Bug</a>
     ·
@@ -58,7 +58,7 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
         <li><a href="#configuration-steps">Configuration Steps</a></li>
       </ul>
     </li>
-    <li><a href="#howtouse">How to use?</a></li>
+    <li><a href="#how-to-use">How to use?</a></li>
     <li><a href="#demo">Demo</a></li>
     <li><a href="#future-work">Future Work</a></li>
     <li><a href="#license">License</a></li>
@@ -156,6 +156,8 @@ The name of the deceased parent, who transferred the inheritance share to the pe
 We need to make an explanation regarding the descendants of the second and third groups as follows: if both parents are dead, you will have to enter the same person separately for both parents, since they will inherit separately from both. Since double kinship is also discussed in this application, it is necessary to add people to their parents separately. Again, the flow of the application was arranged in this way because of the possibility of parents marrying other people and having children from others.
 
 ## Demo
+
+[Download the Demo Release v.1.0](https://github.com/EsraKantarci/mirasapp/tree/master/Miras%20Demo%20APK%20v.1)
 
 <img src="https://github.com/EsraKantarci/mirasapp/blob/master/Animation.gif"> 
 
