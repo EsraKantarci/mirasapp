@@ -88,8 +88,11 @@ The application is to give knowledge about their legal rights to people at the p
 
 ### Why Flutter?
 
-The contents will be given.
+Flutter is a highly responsive Cross-Platform UI development tool and the project can be used in Android, iOS and Web at the same time. 
 
+This is my first Flutter application, and even though I stressed out very much (because I did not know the Dart language or familiar with Flutter) the project resulted overall beyond my expectations. Therefore, Flutter is also a easy-to-adapt technology, if you are familiar with other programming languages. 
+
+One of the good advantages of the Flutter is "Hot Reload" feature, which saves a lot of time during the restarts. It is really fast and the changes can be shown at the moment you press Ctrl+S. 
 
 ## Configuration Steps
 1. Cloning the repository:
