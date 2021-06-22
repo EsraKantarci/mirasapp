@@ -54,7 +54,7 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#configurationsteps">Configuration Steps</a></li>
+        <li><a href="#configuration-steps">Configuration Steps</a></li>
       </ul>
     </li>
     <li><a href="#howtouse">How to use?</a></li>
@@ -62,7 +62,6 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
     <li><a href="#future-work">Future Work</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
