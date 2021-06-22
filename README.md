@@ -181,7 +181,7 @@ And there are some future view changes which are not business related, but good 
  <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/1.png" width="216" height="380">
 <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/4.png" width="216" height="380"><img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/6.png" width="216" height="380">
 <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/11.png" width="216" height="380"> 
-<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/12.png" width="216" height="380"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/13.png" width="216" height="380">
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/12.png" width="216" height="380">
 
 <!-- LICENSE -->
 ## License
