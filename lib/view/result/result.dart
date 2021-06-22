@@ -84,24 +84,6 @@ class ResultPage extends StatelessWidget {
               ),
             ),
 
-      /*body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: (<Widget>[
-
-            //Text(GlobalState.instance.answers.toString()),
-
-            //Text(GlobalState.instance.people.toString()),
-
-            Text(calculatedResults.toString()),
-
-
-
-            buildAlign(context),
-          ]),
-        ),
-      ),*/
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 8.0,

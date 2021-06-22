@@ -9,6 +9,7 @@ class BlogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: AppColors.mainColor,
         title: Text("Miras Hukuku Veri Bankası") ,

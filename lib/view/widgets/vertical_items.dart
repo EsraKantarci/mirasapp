@@ -16,11 +16,12 @@ class VerticalPlaceItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 15.0),
       child: InkWell(
         child: Container(
-          height: 70.0,
+          //color: Colors.white.withOpacity(0.4),
+          height: MediaQuery.of(context).size.height*0.1,
           child: Row(
             children: <Widget>[
               ClipRRect(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
                   "${blogTexts["img"]}",
                   height: 70.0,

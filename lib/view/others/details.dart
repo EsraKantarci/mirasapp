@@ -8,7 +8,7 @@ class Details extends StatelessWidget {
   Widget build(BuildContext context) {
     String header = blogTexts[0]["name"];
     return Scaffold(
-
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: AppColors.mainColor,
         title: Text(header),
@@ -18,9 +18,7 @@ class Details extends StatelessWidget {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        actions: <Widget>[
-
-        ],
+        actions: <Widget>[],
       ),
       body: ListView(
         children: <Widget>[
@@ -49,7 +47,6 @@ class Details extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                   ),
-
                 ],
               ),
               Row(
@@ -75,7 +72,6 @@ class Details extends StatelessWidget {
                   ),
                 ],
               ),
-
               SizedBox(height: 40),
               Container(
                 alignment: Alignment.centerLeft,
@@ -96,6 +92,7 @@ class Details extends StatelessWidget {
                 child: Text(
                   "${blogTexts[0]["details"]}",
                   style: TextStyle(
+                    color: Colors.black54,
                     fontWeight: FontWeight.normal,
                     fontSize: 15.0,
                   ),
@@ -107,7 +104,6 @@ class Details extends StatelessWidget {
           ),
         ],
       ),
-
     );
   }
 

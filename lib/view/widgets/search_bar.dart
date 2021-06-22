@@ -10,7 +10,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.indigo[50],
+        color: Colors.white54,
 
         borderRadius: BorderRadius.all(
           Radius.circular(20.0),
@@ -19,12 +19,12 @@ class SearchBar extends StatelessWidget {
       child: TextField(
         style: TextStyle(
           fontSize: 15.0,
-          color: Colors.blueGrey[300],
+          color: Colors.grey,
         ),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(10.0),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(20.0),
             borderSide: BorderSide(
               color: Colors.white,
             ),
@@ -33,7 +33,7 @@ class SearchBar extends StatelessWidget {
             borderSide: BorderSide(
               color: Colors.white,
             ),
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(20.0),
           ),
           hintText: "Örn: Vasiyetname",
           prefixIcon: Icon(
