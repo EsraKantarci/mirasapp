@@ -57,6 +57,10 @@ class Calculator {
     Person spouse = peopleIterable[0];
     //we need to add spouse in any case. Rates will change.
 
+    if(spouse.name != "Eşi ölü"){
+      isSpouseAlive = true;
+    }
+
 
     if (GlobalState.instance.answers.hasSpouse == -1) {
       print("Eş yok ya da ölü");

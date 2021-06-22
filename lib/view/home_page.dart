@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
 
                 children: [
                   TextSpan(
-                    text: "Arama özellikleri ile beraber veri bankası\n",
+                    text: "Arama özellikleri ve veri bankası\n",
                     style: TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.normal,
@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
         );
       },
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width ,
         height: MediaQuery.of(context).size.height * 0.10,
         decoration: BoxDecoration(
           color: Colors.white,

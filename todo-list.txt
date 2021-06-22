@@ -3,7 +3,7 @@ TO-DO list:
 UI-Modifications:
 -Grandparent screen should get better --done--
 -Overflows: resizeToAvoidBottomPadding: false to scaffold --done--
--debug flags removal!!
+-debug flags removal --done--
 -----
 
 1- Child CARD:
@@ -32,7 +32,7 @@ e- Make blog UI --done--
 6- Knowledgebase
 a- Blog --done--
 b- Petitions --done--
-c- User manual
+c- User manual --done--
 
 7- Test
 a- Unit test --done--
