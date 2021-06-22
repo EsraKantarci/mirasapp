@@ -56,10 +56,10 @@ class Calculator {
     //spouse:
     Person spouse = peopleIterable[0];
     //we need to add spouse in any case. Rates will change.
-    if (spouse.isAlive == 1) {
-      isSpouseAlive = true;
-    }
-    else{
+
+
+    if (GlobalState.instance.answers.hasSpouse == -1) {
+      print("Eş yok ya da ölü");
       isSpouseAlive = false;
     }
 
@@ -200,6 +200,9 @@ class Calculator {
     print(rankRateMap.toString());
     print("VEEE SONUÇLAR:");
     print(rateListResult.toString());
+    print("spouse yaşıyor mu?" + peopleIterable.toString());
+    print("spouse yaşıyor mu 2?" + answers.toString());
+    print("spouse yaşıyor mu 3?" + isSpouseAlive.toString());
 
 
     GlobalState.instance.rates = rateListResult;
