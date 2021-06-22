@@ -15,7 +15,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/esrakantarci/mirasapp">
-    <img src="https://github.com/EsraKantarci/mirasapp/blob/master/posters/mph-poster-2.png" alt="Logo">
+    <img src="https://github.com/EsraKantarci/mirasapp/blob/master/posters/mph-poster-.png" alt="Logo">
     
   </a>
 
