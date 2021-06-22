@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
 
                 children: [
                   TextSpan(
-                    text: "Uygulamanın kullanımına ilişkin bilgiler\n",
+                    text: "Uygulama nasıl kullanılır?\n",
                     style: TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.normal,
@@ -280,7 +280,7 @@ class _HomePageState extends State<HomePage> {
 
                 children: [
                   TextSpan(
-                    text: "Uygulama ile ilgili fikirlerinizi paylaşın\n",
+                    text: "Geliştirici kimdir? \n",
                     style: TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.normal,

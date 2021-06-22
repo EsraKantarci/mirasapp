@@ -25,7 +25,6 @@ class ResultPage extends StatelessWidget {
     List<String> inheritorsName = rates.keys.toList();
 
     return Scaffold(
-
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
       body: inheritorsName.length <= 0
@@ -38,19 +37,22 @@ class ResultPage extends StatelessWidget {
                       padding: const EdgeInsets.all(30.0),
                       child: Text(
                           "\n\nUygun mirasçı bulunamadığı için, miras devlete kalmıştır.",
-                          style: TextStyle(color: Colors.blueGrey, fontSize: 25, fontWeight: FontWeight.w400)),
+                          style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w400)),
                     ),
                   ),
-                 Expanded(
-                 child: Padding(
-                    padding: const EdgeInsets.only(bottom: 50),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child:
-                      Image.asset("assets/images/independence.png", fit: BoxFit.fitWidth),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 50),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Image.asset("assets/images/independence.png",
+                            fit: BoxFit.fitWidth),
+                      ),
                     ),
                   ),
-                 ),
                 ]),
               ),
             )
@@ -83,7 +85,6 @@ class ResultPage extends StatelessWidget {
                 },
               ),
             ),
-
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 8.0,
@@ -91,26 +92,28 @@ class ResultPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-
-              TextButton(
-                child: Text("YENİDEN HESAPLA", style: TextStyle(color: AppColors.mainColor, fontWeight: FontWeight.bold),),
-
-                onPressed: () {
-                  print(GlobalState.instance.people.toString());
-                  clearForms();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => StartPage()),
-                    );
-                },
+            TextButton(
+              child: Text(
+                "YENİDEN HESAPLA",
+                style: TextStyle(
+                    color: AppColors.mainColor, fontWeight: FontWeight.bold),
               ),
-
+              onPressed: () {
+                print(GlobalState.instance.people.toString());
+                clearForms();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => StartPage()),
+                );
+              },
+            ),
             SizedBox(width: 48.0),
             TextButton(
-                child: Text("ANASAYFAYA DÖN", style: TextStyle(color: AppColors.mainColor, fontWeight: FontWeight.bold)),
-
+              child: Text("ANASAYFAYA DÖN",
+                  style: TextStyle(
+                      color: AppColors.mainColor, fontWeight: FontWeight.bold)),
               onPressed: () {
-                  clearForms();
+                clearForms();
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => HomePage()),
@@ -124,9 +127,29 @@ class ResultPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.mainColor,
         child: Icon(Icons.save),
-        onPressed: () {},
+        onPressed: () {
+          showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Bilgi Penceresi:'),
+              content: const Text(
+                  'Henüz telefona kaydetme özelliği uygulamamıza eklenmedi.  Ancak isterseniz ekran görüntüsü alabilirsiniz. İlginiz için teşekkür ederiz.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Anladım'),
+                  child: const Text(
+                    'Anladım',
+                    style: TextStyle(
+                        color: Colors.deepPurple,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
-
     );
   }
 
@@ -195,22 +218,27 @@ Widget buildElevatedButton(BuildContext context, String text) {
   );
 }
 
-void clearForms(){
+void clearForms() {
   GlobalState.instance.answers.childCount = 0;
-  GlobalState.instance.children.removeRange(0, GlobalState.instance.children.length);
+  GlobalState.instance.children
+      .removeRange(0, GlobalState.instance.children.length);
   print("çocuklar: " + GlobalState.instance.children.toString());
-  GlobalState.instance.people.removeRange(0, GlobalState.instance.people.length);
+  GlobalState.instance.people
+      .removeRange(0, GlobalState.instance.people.length);
   print("kişiler: " + GlobalState.instance.people.toString());
-  GlobalState.instance.idMatch.removeRange(0, GlobalState.instance.idMatch.length);
+  GlobalState.instance.idMatch
+      .removeRange(0, GlobalState.instance.idMatch.length);
   print("idmatch: " + GlobalState.instance.children.toString());
   GlobalState.instance.deadsWithChildren.clear();
-  print("deads with children: "+  GlobalState.instance.deadsWithChildren.toString());
+  print("deads with children: " +
+      GlobalState.instance.deadsWithChildren.toString());
   GlobalState.instance.deads.clear();
-  print("deads: "+  GlobalState.instance.deads.toString());
+  print("deads: " + GlobalState.instance.deads.toString());
   GlobalState.instance.rates.clear();
-  print("rates: "+  GlobalState.instance.rates.toString());
+  print("rates: " + GlobalState.instance.rates.toString());
   GlobalState.instance.hiddenRates.clear();
-  print("hiddenrates: "+  GlobalState.instance.deads.toString());
-  GlobalState.instance.parentalInfo.removeRange(0, GlobalState.instance.hiddenRates.length);
+  print("hiddenrates: " + GlobalState.instance.deads.toString());
+  GlobalState.instance.parentalInfo
+      .removeRange(0, GlobalState.instance.hiddenRates.length);
   print("temizlendi----");
 }
