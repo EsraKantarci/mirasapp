@@ -16,7 +16,7 @@
 <p align="center">
   <a href="https://github.com/esrakantarci/mirasapp">
     <img src="https://github.com/EsraKantarci/mirasapp/blob/master/posters/mph-poster-2.png" alt="Logo">
-    <img src="https://github.com/EsraKantarci/mirasapp/blob/master/posters/mph-poster.png" alt="Logo">
+    
   </a>
 
   <h3 align="center"> Miras Payı Hesaplayıcı App</h3>
@@ -67,6 +67,7 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 </details>
 
 
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/posters/mph-poster.png" alt="Logo">
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
