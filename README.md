@@ -57,7 +57,7 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
         <li><a href="#prerequisites">Prerequisites</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#howtouse">How to use?</a></li>
     <li><a href="#demo">Demo</a></li>
     <li><a href="#future-work">Future Work</a></li>
     <li><a href="#license">License</a></li>
@@ -157,6 +157,22 @@ We need to make an explanation regarding the descendants of the second and third
 ## Demo
 
 <img src="https://github.com/EsraKantarci/mirasapp/blob/master/Animation.gif"> 
+
+## Future Work
+
+The project will be put into PlayStore and AppStore for people to use. However, before submitting the project into the public access, there are some steps which needs to be taken care of:
+
+* Validator: The textfields validations were not implemented yet.
+* Modification in the Person Forms: The person forms can be changed once user hit the "Save to the list" button, but eventually it adds up as a new person. But, it should actually modify the person card.
+* Downloading the result page: Although users now can use screenshots to save the result, we can implement a downloadable version of the form. 
+* Stress testing
+* Loggers
+
+And there are some future view changes which are not business related, but good for the user:
+
+* Knowledgebase and searchbar: The blogs should be listed as a big long vertical list and a search bar should be implemented for users to be able to easily access the content. 
+* Blog context: The texts inside the blog is not mine, so it is a subject to copyright-permissions. I will be adding original content and petitions for users to use.
+* Downloading the petitions: Example petitions can be downloaded, this implementation can be done once I write down the example petitions by myself for original content. 
 
 ## Screenshots 
 <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/disclaimer.png" width="216" height="380"> <img src="https://github.com/EsraKantarci/mirasapp/blob/master/new-screens/home.png" width="216" height="380">
