@@ -59,6 +59,9 @@ class Calculator {
     if (spouse.isAlive == 1) {
       isSpouseAlive = true;
     }
+    else{
+      isSpouseAlive = false;
+    }
 
     //besides spouse:
     for (int i = 1; i < len; i++) {
@@ -176,6 +179,7 @@ class Calculator {
       hiddenRateListResult[spouse.name] =
           rateList["rate1"] * rateList["hiddenRate1"];
     }
+
 
     GlobalState.instance.rates = rateList;
 

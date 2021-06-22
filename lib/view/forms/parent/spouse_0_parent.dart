@@ -42,7 +42,7 @@ class _Spouse0ParentState extends State<Spouse0Parent> {
 
   @override
   Widget build(BuildContext context) {
-
+    GlobalState.instance.answers.hasSpouse = -1;
     GlobalState.instance.answers.spouseName = name;
     forms.clear();
     print(childCount);

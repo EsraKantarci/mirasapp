@@ -25,6 +25,7 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
   Widget build(BuildContext context) {
 
     GlobalState.instance.answers.spouseName = name;
+    GlobalState.instance.answers.hasSpouse = -1;
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: buildAppBar(),
@@ -35,10 +36,6 @@ class _Spouse0Child0State extends State<Spouse0Child0> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: (<Widget>[
-              buildQuestion("Miras bırakanın eşinin ismi:"),
-              buildSpace(),
-              buildTextInput(context),
-              buildSpace(),
 
               buildQuestion("Miras bırakanın anne babasından en az biri sağ mı?"),
               buildRadioButton1("Evet", 1, answer1),
