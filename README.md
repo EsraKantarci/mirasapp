@@ -198,14 +198,6 @@ Project Link: [https://github.com/esrakantarci/mirasapp](https://github.com/esra
 
 
 
-## TO-DO: 
-* Up-to-date screenshots
-* Demo video 
-* User Manual
-* Improve Readme
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/esrakantarci/mirasapp.svg?style=for-the-badge
