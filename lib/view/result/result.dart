@@ -214,6 +214,7 @@ Widget buildElevatedButton(BuildContext context, String text) {
 }
 
 void clearForms(){
+  GlobalState.instance.answers.childCount = 0;
   GlobalState.instance.children.removeRange(0, GlobalState.instance.children.length);
   print("çocuklar: " + GlobalState.instance.children.toString());
   GlobalState.instance.people.removeRange(0, GlobalState.instance.people.length);
@@ -229,7 +230,5 @@ void clearForms(){
   GlobalState.instance.hiddenRates.clear();
   print("hiddenrates: "+  GlobalState.instance.deads.toString());
   GlobalState.instance.parentalInfo.removeRange(0, GlobalState.instance.hiddenRates.length);
-
-  GlobalState.instance.people.removeRange(0, GlobalState.instance.people.length);
   print("temizlendi----");
 }

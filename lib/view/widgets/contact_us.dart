@@ -345,7 +345,7 @@ class ContactUs extends StatelessWidget {
                   ),
                   color: cardColor,
                   child: ListTile(
-                    leading: Icon(Typicons.social_facebook),
+                    leading: Icon(Typicons.social_youtube),
                     title: Text(
                       'Youtube',
                       style: TextStyle(
