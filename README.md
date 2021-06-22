@@ -71,7 +71,8 @@ Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup d
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-More exclusive explanation will be given here.
+The application is to give knowledge about their legal rights to people at the point of inheritance sharing and to inform people about inheritance law. The calculation rules of this application have been developed on the basis of the 495th article of the Turkish Civil Code and the following rules. Our application is for informational purposes only, it is not legally binding.
+
 
 ### Built With
 
@@ -110,6 +111,45 @@ This installs all the required dependencies like shared_preferences, cupertino_i
 4. Now run the app on your connected device (using terminal):
 
 `$ flutter run`
+
+
+## How to Use?: 
+
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/assets/images/1.png" width="300"> 
+
+First, enter the name of the inheritor. This will help you in the next pages. Do not worry, any data you enter is not stored by us. When you exit the application calculation screen, all the data you have entered is deleted.
+If the inheritor has a living spouse at the time of his death, select "Yes". If the inheritor is married, but the spouse died before the inheritor, you must tick the "No" option. 
+
+
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/assets/images/2.png" width="300">
+
+If they are divorced, the divorced spouse will not inherit (if there is no such clause in the will) since he is not legally considered his wife. Therefore, again select the option "No".
+
+What is meant by "Descendants" is children and their children. Adoption is also counted as a child. If there is even one living subline, please tick “Yes”.
+
+If the legator has descendants, you must include the number of all children (including dead children) of the legator on the next page 2. If you want convenience, you can not include people who have no descendants (i.e. no children/grandchildren, etc.) among the dead children, as they will not inherit.
+
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/assets/images/3.png" width="300">
+
+If the legator has descendants, you must include the number of all children (including dead children) of the legator on the next page 2. If you want convenience, you can not include people who have no descendants (i.e. no children/grandchildren, etc.) among the dead children, as they will not inherit.
+
+If the inheritor has no descendants, the inheritance passes to the next class, the upper lineage. What is meant by superline is the mother, father and their children of the inheritor. If both parents are dead, tick “No”. Otherwise, select “Yes”.
+
+The children of the parents of the legator or the children of the children of the parents (for example, nephews) fall into this category. If there is at least one living parent descendant, please tick “Yes”. Otherwise, select "No".
+
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/assets/images/4.png" width="300">
+
+If there is no heir candidate living in the second group, the inheritance is passed on to the grandparents (grandmother, paternal grandfather) and their descendants, who are super descendants. If there is at least one heir living at this stage, please tick “Yes” for the relevant option.
+
+Regardless of which faction, when adding heirs, you are expected to enter the names of the parents who died first. Then, enter the number of children of this person and click on the "Save this person to the list" text. When you click, the text on the button will change to “This person has been saved” and the “?” in the upper right. mark will turn into a tick mark. This means that the contact is registered.
+
+The name of the deceased parent, who transferred the inheritance share to the person, is located in the upper left part of these person addition forms as "Parent's name".
+
+
+<img src="https://github.com/EsraKantarci/mirasapp/blob/master/assets/images/5.png" width="300">
+
+### Note:
+We need to make an explanation regarding the descendants of the second and third groups as follows: if both parents are dead, you will have to enter the same person separately for both parents, since they will inherit separately from both. Since double kinship is also discussed in this application, it is necessary to add people to their parents separately. Again, the flow of the application was arranged in this way because of the possibility of parents marrying other people and having children from others.
 
 ## Demo
 
