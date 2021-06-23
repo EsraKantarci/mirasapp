@@ -19,7 +19,7 @@
     
   </a>
 
-  <h3 align="center"> Miras Payı Hesaplayıcı App</h3>
+  <h3 align="center">Miras Payı Hesaplayıcı App (Original Name in Turkish)</h3>
 
   <p align="center">
     A new Flutter application on calculating the rates of legal the inheritors and informing people who seeks knowledge on Inheritance Law. 
@@ -171,6 +171,14 @@ The project will be put into PlayStore and AppStore for people to use. However, 
 * Stress testing
 * Loggers
 
+Possible improvements in the future:
+* The expected inheritance's money can be entered into the result page and it calculates the inheritance for the inheritors as per share.
+* Maybe e-Devlet output can be used and automatically calculates all the shares without entering any other information. The project's calculator is designed for this case, too. We only need to add some image processing + tree detecting system. However, since there can be some issues with security or KVKK, I did not wanted to implement such feature.
+
+There are some known bugs:
+* If the first eligible rank relative (who is dead) have only 1 child(dead) and this child has eligible descendents, the DescendentAdder has bug to show only alive cards and do not go into recursion (View-bug). But since the project's aim is helping people with many relatives, this kind of issue will not have big impact for the usage.
+* If the user re-calculate over 5 times or maybe more, although the maps and lists are cleared, Answers list goes into bugged state and cannot figured out why yet. But it can be overcomed with a restart. 
+
 And there are some future view changes which are not business related, but good for the user:
 
 * Knowledgebase and searchbar: The blogs should be listed as a big long vertical list and a search bar should be implemented for users to be able to easily access the content. 
@@ -189,7 +197,6 @@ And there are some future view changes which are not business related, but good 
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
 
 
 <!-- CONTACT -->
