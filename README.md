@@ -24,13 +24,11 @@
   <p align="center">
     A new Flutter application on calculating the rates of legal the inheritors and informing people who seeks knowledge on Inheritance Law. 
   
-  The rules will be under Turkish Civil Code's orders. It aims to help people on inheritance related legal procedures. There are blogs as knowledgebase, calculator, descendent-adding forms and result page. Also you can find guide and contact us pages for the application itself. This project's main users are the people with many more relatives, which makes the inheritance shares difficult to calculate. In this app, you can add up to 100 eligible relatives. 
+  The rules will be under Turkish Civil Code's related articles. It aims to help people on inheritance related legal procedures. There are blogs as knowledgebase, calculator, descendent-adding forms and result page. Also you can find guide and contact us pages for the application itself. This project's main users are the people with many more relatives, which makes the inheritance shares difficult to calculate. In this app, you can add up to 100 eligible relatives. 
   
-  This app covers the double kinship issues and show the hidden rates of the share (which is quite important in the testament consequences) per person. The testers are mainly lawyers and were quite happy from the results.
-  
-  
-  
-  
+  This app covers the double kinship issues and show the hidden rates of the share (which is quite important in the testament consequences) per person. The testers are mainly lawyers and were quite satisfied from the results.
+
+Mockups were designed on Balsamiq Wireframe tool. You can find them in /mockup directory. For more information please see the content below.  
     <br />
     <a href="https://github.com/EsraKantarci/mirasapp/tree/master/documentation"><strong>Explore the docs »</strong></a>
     <br />
