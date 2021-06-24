@@ -111,7 +111,7 @@ $ flutter pub get
 ```
 This installs all the required dependencies like shared_preferences, cupertino_icons, flutter_spinbox, grouped_list, image_picker etc...
 
-3. Make sure you enable virtualization for AVD, follow the mentioned steps and you're good to go. You can also use Chrome or Edge as web browser. 
+3. Make sure you enable virtualization for AVD, follow the mentioned steps and you're good to go. You can also use Chrome or Edge as web browser (However, not recommended yet due to view-bugs in the dynamic descendent adder feature; to overcome this issue, you can resize your explorer window to mobile-display size). 
 
 4. Now run the app on your connected device (using terminal):
 
