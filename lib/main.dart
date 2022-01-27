@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:miras/view/disclaimer_page.dart';
 
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Miras App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-      fontFamily: "Ubuntu",
+        fontFamily: "Ubuntu",
       ),
       home: DisclaimerPage(),
       debugShowCheckedModeBanner: false,

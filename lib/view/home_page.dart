@@ -20,13 +20,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView (
+      body: SingleChildScrollView(
         child: Column(
-
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
@@ -138,7 +136,6 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
                 ),
-
                 children: [
                   TextSpan(
                     text: "Uygulama nasıl kullanılır?\n",
@@ -165,7 +162,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
 
   GestureDetector buildKnowledgeBase(BuildContext context) {
     return GestureDetector(
@@ -207,7 +203,6 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
                 ),
-
                 children: [
                   TextSpan(
                     text: "Arama özellikleri ve veri bankası\n",
@@ -235,8 +230,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
-
   GestureDetector buildWhoAreWe(BuildContext context) {
     return GestureDetector(
       onTap: () {
@@ -248,7 +241,7 @@ class _HomePageState extends State<HomePage> {
         );
       },
       child: Container(
-        width: MediaQuery.of(context).size.width ,
+        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.10,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -277,7 +270,6 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
                 ),
-
                 children: [
                   TextSpan(
                     text: "Geliştirici kimdir? \n",
@@ -304,7 +296,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
 
   Container buildScrollable() {
     return Container(
@@ -477,22 +468,27 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-void clearForms(){
+void clearForms() {
   GlobalState.instance.answers.childCount = 0;
-  GlobalState.instance.children.removeRange(0, GlobalState.instance.children.length);
+  GlobalState.instance.children
+      .removeRange(0, GlobalState.instance.children.length);
   print("çocuklar: " + GlobalState.instance.children.toString());
-  GlobalState.instance.people.removeRange(0, GlobalState.instance.people.length);
+  GlobalState.instance.people
+      .removeRange(0, GlobalState.instance.people.length);
   print("kişiler: " + GlobalState.instance.people.toString());
-  GlobalState.instance.idMatch.removeRange(0, GlobalState.instance.idMatch.length);
+  GlobalState.instance.idMatch
+      .removeRange(0, GlobalState.instance.idMatch.length);
   print("idmatch: " + GlobalState.instance.children.toString());
   GlobalState.instance.deadsWithChildren.clear();
-  print("deads with children: "+  GlobalState.instance.deadsWithChildren.toString());
+  print("deads with children: " +
+      GlobalState.instance.deadsWithChildren.toString());
   GlobalState.instance.deads.clear();
-  print("deads: "+  GlobalState.instance.deads.toString());
+  print("deads: " + GlobalState.instance.deads.toString());
   GlobalState.instance.rates.clear();
-  print("rates: "+  GlobalState.instance.rates.toString());
+  print("rates: " + GlobalState.instance.rates.toString());
   GlobalState.instance.hiddenRates.clear();
-  print("hiddenrates: "+  GlobalState.instance.deads.toString());
-  GlobalState.instance.parentalInfo.removeRange(0, GlobalState.instance.hiddenRates.length);
+  print("hiddenrates: " + GlobalState.instance.deads.toString());
+  GlobalState.instance.parentalInfo
+      .removeRange(0, GlobalState.instance.hiddenRates.length);
   print("temizlendi----");
 }

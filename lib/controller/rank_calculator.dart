@@ -5,7 +5,8 @@ import 'package:miras/model/person.dart';
 
 import 'global_state.dart';
 
-// TODO: inheritors cannot be appended.
+// TODO: inheritors' descendents are not appendable.
+// NEED TO IMPLEMENT INHERITORS ASAP
 
 class Calculator {
   Calculator({this.answers, this.people});
@@ -57,10 +58,9 @@ class Calculator {
     Person spouse = peopleIterable[0];
     //we need to add spouse in any case. Rates will change.
 
-    if(spouse.name != "Eşi ölü"){
+    if (spouse.name != "Eşi ölü") {
       isSpouseAlive = true;
     }
-
 
     if (GlobalState.instance.answers.hasSpouse == -1) {
       print("Eş yok ya da ölü");
@@ -184,7 +184,6 @@ class Calculator {
           rateList["rate1"] * rateList["hiddenRate1"];
     }
 
-
     GlobalState.instance.rates = rateList;
 
     //parent id -1 for the start, then it will return to a recursion
@@ -207,7 +206,6 @@ class Calculator {
     print("spouse yaşıyor mu?" + peopleIterable.toString());
     print("spouse yaşıyor mu 2?" + answers.toString());
     print("spouse yaşıyor mu 3?" + isSpouseAlive.toString());
-
 
     GlobalState.instance.rates = rateListResult;
     GlobalState.instance.hiddenRates = hiddenRateListResult;
@@ -243,7 +241,8 @@ class Calculator {
         rate = rate2 * (1 / personCount);
 
         if (person.isAlive == 1) {
-          hiddenRateListResult[person.name] = rate*GlobalState.instance.rates["hiddenRate2"];
+          hiddenRateListResult[person.name] =
+              rate * GlobalState.instance.rates["hiddenRate2"];
           rateListResult[person.name] = rate;
         } else {
           rankRateMap[person.id] = rate;
@@ -253,7 +252,8 @@ class Calculator {
         rate = parentRate * (1 / personCount);
         if (person.isAlive == 1) {
           rateListResult[person.name] = rate;
-          hiddenRateListResult[person.name] = rate*GlobalState.instance.rates["hiddenRate2"];
+          hiddenRateListResult[person.name] =
+              rate * GlobalState.instance.rates["hiddenRate2"];
         } else {
           rankRateMap[person.id] = rate;
           deadList.add(person.id);
@@ -312,8 +312,7 @@ class Calculator {
   List<String> getResult() {
     if (GlobalState.instance.answers.hasSpouse == 1) {
       inheritorsNames = rateListResult.keys.toList();
-    }
-    else{
+    } else {
       rateListResult.remove(GlobalState.instance.answers.spouseName);
       inheritorsNames = rateListResult.keys.toList();
     }

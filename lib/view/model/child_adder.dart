@@ -27,19 +27,18 @@ class ChildAdder extends StatefulWidget {
 }
 
 class _ChildAdderState extends State<ChildAdder> {
+  int MAX = 40; // Maximum child limit for view
   List<Person> children = [];
   List<PersonForm> forms = [];
   int childCount = GlobalState.instance.answers.childCount;
-
-
 
   @override
   Widget build(BuildContext context) {
     forms.clear();
     print(childCount);
 
-
-    for (int i = 0; i < childCount.toInt(); i++) {
+    for (int i = 0; i <= childCount.toInt() * MAX; i++) {
+      // Workaround
       setState(() {
         print("çocuk ekledim");
         children.add(Person());
@@ -48,7 +47,6 @@ class _ChildAdderState extends State<ChildAdder> {
       forms.add(PersonForm(
         person: children[i],
       ));
-
       childCount--;
     }
     return MaterialApp(
@@ -57,12 +55,10 @@ class _ChildAdderState extends State<ChildAdder> {
       home: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: buildAppBar(),
-
-        body:
-          SingleChildScrollView(
-            physics: ScrollPhysics(),
-            child: Column(
-              children: <Widget>[
+        body: SingleChildScrollView(
+          physics: ScrollPhysics(),
+          child: Column(
+            children: <Widget>[
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -71,26 +67,22 @@ class _ChildAdderState extends State<ChildAdder> {
                   person: children[i],
                 ),
               ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      width: MediaQuery.of(context).size.width,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: buildElevatedButton(
-                            context),
-                      ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: buildElevatedButton(context),
                     ),
-
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-
-
+        ),
       ),
     );
   }
@@ -101,13 +93,11 @@ class _ChildAdderState extends State<ChildAdder> {
     });
   }
 
-
   AppBar buildAppBar() {
     return AppBar(
       title: Text("Miras Payı Hesaplayıcı"),
       backgroundColor: AppColors.mainColor,
       actions: <Widget>[
-
         IconButton(
           icon: Icon(
             //Step: 1
@@ -122,34 +112,37 @@ class _ChildAdderState extends State<ChildAdder> {
     );
   }
 
-
   Widget buildElevatedButton(BuildContext context) {
     return ElevatedButton(
       child: Text('SONRAKİ ADIM'),
       onPressed: () {
-        List<int> descendentsList = GlobalState.instance.deadsWithChildren.keys.toList();
-        if(descendentsList.isNotEmpty){
+        List<int> descendentsList =
+            GlobalState.instance.deadsWithChildren.keys.toList();
+        if (descendentsList.isNotEmpty) {
           print("Gidiyorum:");
-          Navigator.push(
-              context,
+          Navigator.push(context,
               MaterialPageRoute(builder: (context) => DescendentList()));
-        }
-        else{
-        Calculator calc = Calculator(answers: GlobalState.instance.answers, people: GlobalState.instance.people);
+        } else {
+          Calculator calc = Calculator(
+              answers: GlobalState.instance.answers,
+              people: GlobalState.instance.people);
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ResultPage(
-            calculatedResults: calc.calculateRates(GlobalState.instance.people),
-            resultText: calc.getResult().toString(),
-            resultRatesText: calc.getInheritorsRates().toString(),
-          )),
-        );
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ResultPage()),
-        );
-      }},
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ResultPage(
+                      calculatedResults:
+                          calc.calculateRates(GlobalState.instance.people),
+                      resultText: calc.getResult().toString(),
+                      resultRatesText: calc.getInheritorsRates().toString(),
+                    )),
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ResultPage()),
+          );
+        }
+      },
       style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -165,5 +158,4 @@ class _ChildAdderState extends State<ChildAdder> {
               fontWeight: FontWeight.bold)),
     );
   }
-
 }
